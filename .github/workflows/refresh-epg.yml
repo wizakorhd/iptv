@@ -1,0 +1,43 @@
+name: Refresh EPG (guide.xml)
+
+# Program data changes daily, so we rebuild guide.xml from the committed
+# epg.channels.xml. This is location-independent, so a GitHub runner is fine.
+# NOTE: playlist.m3u is curated + geo-validated locally (from your location) and
+# is not rebuilt here — see README.
+
+on:
+  schedule:
+    - cron: "30 0 * * *"   # 00:30 UTC daily (~06:00 IST)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-epg
+  cancel-in-progress: true
+
+jobs:
+  epg:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build guide.xml from epg.channels.xml
+        run: ./build_epg.sh 15 2
+
+      - name: Commit refreshed guide
+        run: |
+          git config user.name  "epg-bot"
+          git config user.email "epg-bot@users.noreply.github.com"
+          if ! git diff --quiet -- guide.xml; then
+            git add guide.xml
+            git commit -m "chore: refresh EPG guide.xml ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "guide.xml unchanged"
+          fi

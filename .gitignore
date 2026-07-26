@@ -1,0 +1,13 @@
+# Data + generated artifacts we don't want to track as source
+data/
+.epg/
+epg_build.log
+
+# Secrets — never commit
+.env
+*.pat
+*.token
+secrets*
+
+# OS
+.DS_Store
