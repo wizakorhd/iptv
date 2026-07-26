@@ -38,6 +38,26 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=12288
         run: ./build_epg.sh 20 3
 
+      - name: Validate guide.xml.gz
+        # Guard against publishing an empty/corrupt guide: it must gunzip, parse as
+        # XML, and contain at least some channels and programmes. Fail loud otherwise.
+        run: |
+          python3 - <<'PY'
+          import gzip, sys
+          import xml.etree.ElementTree as ET
+          chans = progs = 0
+          with gzip.open("guide.xml.gz", "rb") as fh:
+              for _, el in ET.iterparse(fh, events=("end",)):
+                  if el.tag == "channel":
+                      chans += 1
+                  elif el.tag == "programme":
+                      progs += 1
+                  el.clear()
+          print(f"guide.xml.gz: {chans} channels, {progs} programmes")
+          if chans < 1 or progs < 1:
+              sys.exit("guide.xml.gz has no channels or programmes; refusing to publish")
+          PY
+
       - name: Commit refreshed guide
         run: |
           git config user.name  "epg-bot"

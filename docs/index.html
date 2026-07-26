@@ -82,6 +82,35 @@
     font-size: 13px; opacity: 0; pointer-events: none; transition: .2s; z-index: 10;
   }
   .toast.show { opacity: 1; }
+  .howto {
+    max-width: 1400px; margin: 0 auto; padding: 0 20px;
+    max-height: 0; overflow: hidden; transition: max-height .25s ease;
+  }
+  .howto.open { max-height: 1600px; }
+  .howto-inner {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px; margin-top: 16px;
+  }
+  .howto h2 { font-size: 15px; font-weight: 650; margin: 0 0 4px; display: flex; align-items: center; gap: 8px; }
+  .howto h2 i { width: 17px; height: 17px; color: var(--accent); }
+  .howto p.lead { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+  .players {
+    display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  .player {
+    display: flex; gap: 11px; padding: 12px; border: 1px solid var(--border-soft);
+    border-radius: var(--radius); background: var(--bg); transition: .15s;
+  }
+  .player:hover { border-color: var(--border); }
+  .player > i { width: 20px; height: 20px; color: var(--accent); flex: none; margin-top: 2px; }
+  .player .pn { font-weight: 600; font-size: 14px; }
+  .player .pd { color: var(--muted); font-size: 12px; margin-top: 2px; line-height: 1.4; }
+  .player .plat { color: var(--muted); font-size: 11px; margin-top: 5px; }
+  .steps { color: var(--muted); font-size: 12.5px; margin: 14px 0 0; padding-left: 18px; line-height: 1.7; }
+  .steps code {
+    background: var(--bg); border: 1px solid var(--border-soft); border-radius: 6px;
+    padding: 1px 6px; font-size: 12px; color: var(--text);
+  }
 </style>
 </head>
 <body>
@@ -93,8 +122,9 @@
       <i data-lucide="list"></i> Copy full playlist URL</span>
     <span class="urlbtn" data-copy="https://cdn.jsdelivr.net/gh/wizakorhd/iptv@main/playlist.m3u">
       <i data-lucide="zap"></i> Copy CDN (jsDelivr) URL</span>
-    <span class="urlbtn" data-copy="https://raw.githubusercontent.com/wizakorhd/iptv/main/guide.xml">
+    <span class="urlbtn" data-copy="https://raw.githubusercontent.com/wizakorhd/iptv/main/guide.xml.gz">
       <i data-lucide="calendar"></i> Copy EPG URL</span>
+    <span class="urlbtn" id="howtoBtn"><i data-lucide="circle-help"></i> How to watch</span>
   </div>
   <div class="controls">
     <input id="q" type="search" placeholder="Search channels…" autocomplete="off" />
@@ -106,6 +136,44 @@
     </select>
   </div>
 </header>
+<div class="howto" id="howto">
+  <div class="howto-inner">
+    <h2><i data-lucide="circle-help"></i> How to watch</h2>
+    <p class="lead">Load the playlist URL in any IPTV player, then add the EPG (guide) URL for a
+      programme schedule. All players below are free and open-source or have a free tier.</p>
+    <div class="players">
+      <div class="player"><i data-lucide="play"></i><div>
+        <div class="pn">VLC</div>
+        <div class="pd">Open Network Stream → paste the playlist URL. Simplest way to test on any OS.</div>
+        <div class="plat">Windows · macOS · Linux · Android · iOS</div></div></div>
+      <div class="player"><i data-lucide="server"></i><div>
+        <div class="pn">Jellyfin</div>
+        <div class="pd">Live TV → add an M3U Tuner (playlist URL) and an XMLTV guide (EPG URL). Best for a home server.</div>
+        <div class="plat">Self-hosted · all clients</div></div></div>
+      <div class="player"><i data-lucide="clapperboard"></i><div>
+        <div class="pn">Kodi</div>
+        <div class="pd">Add the “PVR IPTV Simple Client” add-on, then point it at the playlist + EPG URLs.</div>
+        <div class="plat">Windows · macOS · Linux · Android</div></div></div>
+      <div class="player"><i data-lucide="monitor"></i><div>
+        <div class="pn">IPTVnator</div>
+        <div class="pd">Open-source desktop IPTV player — add a playlist by URL and it picks up EPG automatically.</div>
+        <div class="plat">Windows · macOS · Linux</div></div></div>
+      <div class="player"><i data-lucide="tablet-smartphone"></i><div>
+        <div class="pn">TiviMate / OTT Navigator</div>
+        <div class="pd">Popular Android-TV players (free tiers). Add a playlist by URL, then the EPG URL.</div>
+        <div class="plat">Android · Android TV · Fire TV</div></div></div>
+      <div class="player"><i data-lucide="terminal"></i><div>
+        <div class="pn">mpv / termv</div>
+        <div class="pd">For the terminal: pipe a channel URL to <code>mpv</code>, or browse the M3U with termv.</div>
+        <div class="plat">Windows · macOS · Linux</div></div></div>
+    </div>
+    <ol class="steps">
+      <li>Copy the <strong>playlist URL</strong> (or the faster jsDelivr CDN URL) from the buttons above.</li>
+      <li>In your player, add a playlist / M3U source and paste that URL.</li>
+      <li>Copy the <strong>EPG URL</strong> and add it as the XMLTV / guide source for programme names &amp; times.</li>
+    </ol>
+  </div>
+</div>
 <main>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" hidden>No channels match.</div>
@@ -177,6 +245,10 @@ $("#epgf").addEventListener("change", render);
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-copy]");
   if (b) copy(b.getAttribute("data-copy"));
+});
+$("#howtoBtn").addEventListener("click", () => {
+  const h = $("#howto"); const open = h.classList.toggle("open");
+  if (open) h.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });
 lucide.createIcons();
 </script>
