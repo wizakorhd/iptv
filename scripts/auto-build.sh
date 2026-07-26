@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
 #
 # Unattended build+publish for the curated IPTV playlist.
-# Invoked by launchd (com.wizakorhd.iptv-build) on a schedule, from THIS Mac
-# (in India) so stream geo-validation matches the target audience.
+# Run on a schedule from a connection in the target region so stream
+# geo-validation matches the intended audience.
 #
-# It: pulls latest -> rebuilds playlist + EPG + site -> commits -> pushes.
+# It: pulls latest -> rebuilds playlist + EPG config + site -> commits -> pushes.
 # All output is appended to logs/auto-build.log (rotated at ~5 MB).
 #
 set -uo pipefail
 
-REPO="/Users/arwen/Development/legolas/iptv"
+# Resolve the repo root from this script's location (scripts/ is one level down).
+REPO="$(cd "$(dirname "$0")/.." && pwd)"
 LOG_DIR="$REPO/logs"
 LOG="$LOG_DIR/auto-build.log"
 
-# launchd gives us a minimal PATH; add Homebrew, nvm node, and system dirs.
+# A scheduler may hand us a minimal PATH; add common node + system dirs.
 NODE_BIN="$(/bin/ls -d "$HOME"/.nvm/versions/node/*/bin 2>/dev/null | /usr/bin/sort -V | /usr/bin/tail -1)"
 export PATH="$NODE_BIN:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export HOME="${HOME:-/Users/arwen}"
 
 mkdir -p "$LOG_DIR"
 # rotate if big
@@ -66,14 +66,14 @@ else
   DAGE=$(( $(date +%s) - $(stat -f %m data/streams.json) ))
   [ "$DAGE" -ge "$DATA_MAX_AGE" ] && REFRESH="--refresh"
 fi
-echo "==> Rebuild playlist (geo-validated from India)${REFRESH:+ [refreshing source data]}"
+echo "==> Rebuild playlist (geo-validated)${REFRESH:+ [refreshing source data]}"
 if ! make playlist REFRESH="$REFRESH"; then
   echo "!! playlist build failed; leaving repo untouched"
   exit 1
 fi
 # Regenerate the EPG channel list so the GitHub Actions EPG builder grabs the
 # current curated set. The EPG *grab* itself runs on GitHub (location-independent)
-# so this Mac never clones iptv-org/epg or its node_modules — see README.
+# so this build never clones iptv-org/epg or its node_modules — see README.
 make epg-config || { echo "!! epg-config failed"; exit 1; }
 
 echo "==> Regenerate site data"
@@ -91,7 +91,7 @@ fi
 STAMP="$(date '+%Y-%m-%d %H:%M %Z')"
 N="$(grep -c '^#EXTINF' playlist.m3u 2>/dev/null || echo '?')"
 git add -A
-git commit -q -m "Auto rebuild ${STAMP} (${N} channels, geo-validated from India)" \
+git commit -q -m "Auto rebuild ${STAMP} (${N} channels)" \
   -m "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
 echo "==> committed: $(git log --oneline -1)"
 

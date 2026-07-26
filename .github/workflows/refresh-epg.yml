@@ -1,12 +1,11 @@
 name: Refresh EPG (guide.xml.gz)
 
 # The EPG grab is location-independent (program data, not geo-restricted streams),
-# so it runs here on GitHub's runners instead of the Mac — that keeps the ~460 MB
-# iptv-org/epg clone + node_modules off local disk. This workflow OWNS guide.xml.gz.
+# so it runs here on GitHub's runners. This workflow OWNS guide.xml.gz.
 #
-# The playlist is curated + geo-validated locally from India (scripts/auto-build.sh)
-# and is NOT rebuilt here. File ownership is disjoint (local owns playlists + site;
-# this Action owns guide.xml.gz) so the two schedulers never conflict.
+# The playlist is curated + geo-validated separately (see the playlist workflow /
+# local build). File ownership is disjoint (the playlist build owns the playlists +
+# site; this Action owns guide.xml.gz) so the two never conflict.
 
 on:
   schedule:

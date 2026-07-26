@@ -1,0 +1,74 @@
+name: Playlist freshness
+
+# Daily check of how long ago the playlist was last rebuilt. Writes STATUS.md and,
+# once the playlist hasn't been refreshed for STALE_DAYS, adds a "may be stale"
+# warning. Owns only STATUS.md (disjoint from every other job), so it never
+# conflicts with the playlist build, the EPG Action, or the health check.
+
+on:
+  schedule:
+    - cron: "30 3 * * *"     # 03:30 UTC daily
+  workflow_dispatch:
+    inputs:
+      stale_days:
+        description: "Days before the playlist is flagged stale"
+        default: "7"
+
+permissions: {}
+
+concurrency:
+  group: freshness
+  cancel-in-progress: true
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      STALE_DAYS: ${{ github.event.inputs.stale_days || '7' }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0   # need history to find the last playlist commit
+
+      - name: Compute freshness and write STATUS.md
+        run: |
+          last_epoch=$(git log -1 --format=%ct -- playlist.m3u)
+          [ -n "$last_epoch" ] || { echo "no playlist.m3u history"; exit 0; }
+          now=$(date -u +%s)
+          days=$(( (now - last_epoch) / 86400 ))
+          last_date=$(date -u -d "@$last_epoch" +%Y-%m-%d)
+          upd=$(date -u +"%Y-%m-%d %H:%M UTC")
+          {
+            echo "# Status"
+            echo
+            echo "_Updated: ${upd}_"
+            echo
+            echo "- **Playlist last refreshed:** ${last_date} (${days} day(s) ago)"
+            if [ "$days" -ge "$STALE_DAYS" ]; then
+              echo "- **Playlist may be stale** — not rebuilt in ${days} days (threshold ${STALE_DAYS}). Streams still play, but channels that died recently may not have been pruned yet."
+            else
+              echo "- Playlist is up to date."
+            fi
+            echo
+            echo "The program guide (\`guide.xml.gz\`) refreshes daily and is independent of the playlist."
+            echo
+            echo "See [HEALTH.md](HEALTH.md) for the latest per-channel reachability report."
+          } > STATUS.md
+
+      - name: Commit STATUS.md
+        run: |
+          git config user.name  "status-bot"
+          git config user.email "status-bot@users.noreply.github.com"
+          git add STATUS.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update playlist freshness status ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3; do
+              git push && break
+              echo "push rejected (attempt $i); rebasing"
+              git fetch origin main && git rebase origin/main || { git rebase --abort; break; }
+            done
+          else
+            echo "status unchanged"
+          fi

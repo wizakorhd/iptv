@@ -1,17 +1,16 @@
-name: Refresh playlist (self-hosted, India)
+name: Refresh playlist (self-hosted)
 
-# Rebuilds the geo-validated playlist AND the EPG on a self-hosted runner located
-# in India, then commits everything.
+# Rebuilds the geo-validated playlist AND the EPG on a self-hosted runner, then
+# commits everything.
 #
 # WHY self-hosted: streams are validated by probing them from the runner's
-# network. GitHub's hosted runners are in the US, so they would drop India-only
-# channels and keep US-only ones (i.e. break the "no-VPN-from-India" guarantee).
+# network, so the runner should sit on a connection in the target region.
+# GitHub-hosted runners live in a different region and would drop region-locked
+# channels and keep ones that only work elsewhere.
 #
-# NOTE: the local macOS launchd job (scripts/auto-build.sh) already does this
-# from your India-connected Mac and is the PRIMARY builder. This workflow is an
-# alternative for people who prefer an Actions-driven flow with a registered
-# self-hosted India runner; its daily schedule is disabled to avoid double-push
-# churn with the launchd job. Trigger manually from the Actions tab if desired.
+# This is an optional Actions-driven alternative to a periodic build; its daily
+# schedule is disabled to avoid double-push churn. Trigger it manually from the
+# Actions tab if you have a suitable self-hosted runner registered.
 
 on:
   workflow_dispatch:
@@ -28,14 +27,13 @@ concurrency:
 
 jobs:
   build:
-    # runner must be registered with these labels (see README)
-    runs-on: [self-hosted, india]
+    runs-on: [self-hosted]
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Build validated playlist (from India)
+      - name: Build validated playlist
         run: python3 generate_playlist.py
 
       - name: Build EPG config
@@ -45,6 +43,7 @@ jobs:
         # inputs.days is untrusted -> pass via env, never interpolate into the shell
         env:
           EPG_DAYS: ${{ github.event.inputs.days || '3' }}
+          NODE_OPTIONS: --max-old-space-size=12288
         run: ./build_epg.sh 15 "${EPG_DAYS}"
 
       - name: Regenerate site data

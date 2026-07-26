@@ -68,7 +68,7 @@ def main():
         f"_Checked {ts} · {n} channels · {n - d} reachable · **{d} unreachable**_",
         "",
         "> Probed from the GitHub runner (US region). Geo-restricted streams may "
-        "appear dead here but still work from India — verify before removing.",
+        "appear dead here but still work from the intended region — verify before removing.",
         "",
     ]
     if dead:

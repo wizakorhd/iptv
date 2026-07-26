@@ -11,7 +11,7 @@ all: playlist epg-config epg site
 data:
 	$(PY) generate_playlist.py --refresh --no-validate --out /dev/null --ids-out /dev/null || true
 
-## Curate + geo-validate streams from THIS machine's location -> playlist.m3u
+## Curate + geo-validate streams from the build machine's location -> playlist.m3u
 ## Pass REFRESH=--refresh to also re-download the iptv-org source snapshot.
 playlist:
 	$(PY) generate_playlist.py $(REFRESH)

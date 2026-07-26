@@ -1,7 +1,8 @@
 # Curated IPTV — Hindi + Indian/Foreign English
 
-Your own, self‑curated IPTV playlist and program guide (EPG), generated from the
-free community [iptv-org](https://github.com/iptv-org) dataset.
+A self‑curated IPTV playlist and program guide (EPG), generated from the free
+community [iptv-org](https://github.com/iptv-org) dataset. It hosts no video — it
+only re‑arranges public metadata and links to publicly listed streams.
 
 ## What's inside
 
@@ -13,17 +14,17 @@ free community [iptv-org](https://github.com/iptv-org) dataset.
 | `playlist-english-intl.m3u` | International English channels only. |
 | `playlist-anime.m3u` | Anime channels only (sub or dub). |
 | `playlist-top.m3u` | Quick‑access list of popular channels (working only). |
-| `guide.xml` / `guide.xml.gz` | XMLTV program guide (EPG); gz is ~1 MB for fast loading. Ids match the playlists. |
-| `REPORT.md` | Auto-generated health report (counts, missing EPG/logos, drops). |
+| `guide.xml.gz` | XMLTV program guide (EPG); ~2 MB for fast loading. Ids match the playlists. |
+| `REPORT.md` | Auto‑generated build report (counts, missing EPG/logos, drops). |
+| `HEALTH.md` | Latest per‑channel reachability report (from the health‑check Action). |
+| `STATUS.md` | Playlist freshness / staleness status (from the freshness Action). |
 | `generate_playlist.py` | Builds the playlists (curation + geo‑validation + channel numbers + HD tags). |
 | `generate_epg_config.py` | Builds `epg.channels.xml` for the EPG grabber. |
-| `epg.channels.xml` | Guide‑source config consumed by `build_epg.sh`. |
-| `build_epg.sh` | Grabs `guide.xml` (+ `.gz`) via iptv-org/epg, then fills gaps from epgshare01. |
+| `build_epg.sh` | Grabs `guide.xml.gz` via iptv-org/epg, then fills gaps from epgshare01. |
 | `merge_epg.py` | Crosswalks epgshare01 guides onto our tvg-ids to fill EPG gaps. |
 | `gen_site.py` + `docs/` | Builds the GitHub Pages browse/status page (`docs/channels.json`). |
-| `check_health.py` | Re-validates streams for the weekly health-check Action. |
+| `check_health.py` | Re‑validates streams for the health‑check Action. |
 | `curated_ids.json` | The final channel ids (playlist ↔ EPG link). |
-| `scripts/auto-build.sh` + `com.wizakorhd.iptv-build.plist` | macOS `launchd` job for hands‑off local rebuild + push (see below). |
 | `Makefile` | Convenience targets (`make all`, `make playlist`, `make epg`, `make site`). |
 
 Each entry carries a stable `tvg-chno` (channel number) so ordering is identical
@@ -37,16 +38,17 @@ across players, and an HD/ᶠᴴᴰ/4K marker in the name reflecting stream qual
   documentary** only. A channel qualifies if English is available on any of its
   feeds (primary **or** secondary/dual audio), so you can switch audio in the player.
 
-Every stream is **probed from the machine that runs the script**, so dead links
-and streams that are **geo‑blocked from your location (i.e. would need a VPN)**
-are dropped automatically. Run the playlist step **from India** to get the
-correct "no‑VPN" result. NSFW and blocklisted channels are always excluded.
+Every stream is **probed from the machine that runs the build**, so dead links
+and streams that are **geo‑blocked from that location (i.e. would need a VPN)**
+are dropped automatically. Run the build from a connection in your target region
+to get the correct "no‑VPN" result. NSFW and blocklisted channels are always
+excluded.
 
 Channels are grouped as `Hindi - <Category>`, `English (India) - <Category>`,
 `English (Intl) - <Category>`. Categories include Movies, Entertainment, Sports,
-News, and the themed sub-categories **Documentary** (Discovery / Nat Geo /
+News, and the themed sub‑categories **Documentary** (Discovery / Nat Geo /
 History / Animal Planet type), **Reality** (TLC / Bravo / HGTV type) and
-**Horror**. Themed sub-categories are detected by channel name/category and also
+**Horror**. Themed sub‑categories are detected by channel name/category and also
 let a channel qualify for the International bucket even if its raw iptv-org
 category isn't in the default set (e.g. a Reality channel tagged only
 `lifestyle`).
@@ -56,7 +58,7 @@ category isn't in the default set (e.g. a Reality channel tagged only
 ```bash
 python3 generate_playlist.py     # -> playlist.m3u (+ curated_ids.json), geo-validated
 python3 generate_epg_config.py   # -> epg.channels.xml
-./build_epg.sh 15 2              # -> guide.xml  (needs node 20)
+./build_epg.sh 15 3              # -> guide.xml.gz  (needs node 20)
 # or simply:
 make all
 ```
@@ -66,18 +68,17 @@ probing), `--timeout`, `--workers`, `--max-try`.
 
 ## Hosting (free, via GitHub)
 
-This repo is meant to be pushed to a **public** GitHub repo. Raw file URLs then
-become your permanent playlist/EPG links (public is important — most Apple TV
-players can't send an auth header for a private repo):
+Push to a **public** GitHub repo; the raw file URLs then become permanent
+playlist/EPG links (public matters — many Apple TV players can't send an auth
+header for a private repo):
 
 ```
 Playlist:  https://raw.githubusercontent.com/<user>/<repo>/main/playlist.m3u
 EPG:       https://raw.githubusercontent.com/<user>/<repo>/main/guide.xml.gz
 ```
 
-**CDN mirror (recommended for reliability/speed):** the jsDelivr CDN serves the
-same files with better global caching and uptime — handy if `raw.githubusercontent.com`
-is slow or rate‑limited on a device:
+**CDN mirror (recommended for reliability/speed):** jsDelivr serves the same
+files with better global caching and uptime:
 
 ```
 Playlist:  https://cdn.jsdelivr.net/gh/<user>/<repo>@main/playlist.m3u
@@ -89,107 +90,55 @@ EPG:       https://cdn.jsdelivr.net/gh/<user>/<repo>@main/guide.xml.gz
 `docs/` is a static, searchable channel browser (logos, group, channel number,
 EPG‑availability badge, one‑click copy for the playlist/CDN/EPG URLs). Enable it
 under **Settings → Pages → Source: Deploy from branch → `main` / `/docs`**. It
-reads `docs/channels.json`, which is regenerated by `make site` / `gen_site.py`
-and by the daily EPG Action.
+reads `docs/channels.json`, regenerated by `make site` / `gen_site.py`.
 
-### Auto‑refresh model
-Work is split by **what needs your India network** vs. **what doesn't**, which also
-keeps the bulky EPG toolchain off your Mac:
+## Automation
 
-- **Playlist → local (macOS `launchd`), the geo‑validated layer.** The job
-  revalidates + pushes the **playlist daily (~90 s)** from your India connection,
-  regenerates the site, and weekly `--refresh`es the iptv‑org source snapshot so
-  new/removed channels are picked up. It does **not** build the EPG, so this Mac
-  never clones iptv‑org/epg (~460 MB saved). Setup below.
-- **EPG → GitHub Actions, the location‑independent layer.** `refresh-epg.yml`
-  rebuilds `guide.xml.gz` **daily on GitHub's runners** (02:00 UTC) — program data
-  isn't geo‑restricted, so a US runner is fine. This keeps the Node clone +
-  `node_modules` in the cloud, not on disk.
-- **No conflicts:** file ownership is disjoint — the local job owns
-  `playlist*.m3u` / `curated_ids.json` / `epg.channels.xml` / `docs/channels.json`,
-  the Action owns `guide.xml.gz` — and both use rebase‑and‑retry on push, so the
-  two schedulers never clash. (The site's EPG badges may lag the newest guide by
-  one local run; the guide players actually load is always current.)
-- **`refresh-playlist.yml`** stays as a **manual‑only** alternative (self‑hosted
-  India runner) if you ever prefer an Actions‑driven playlist build; its daily
-  schedule is disabled to avoid clashing with the launchd job.
-- **Health check** — `.github/workflows/health-check.yml` re‑probes every stream
-  weekly and opens/updates a single **"Channel health report"** issue listing
-  unreachable channels. Caveat: it runs from the runner's region (US), so
-  geo‑restricted channels can show as dead there even though they work from India
-  — treat it as a hint, then confirm with a local `make health`.
-- **Manual playlist rebuild:** run `make playlist` locally (add `REFRESH=--refresh`
-  to also re‑pull source data) and push when you want to re‑curate.
-- **Local automation (macOS `launchd`) — recommended:** a hands‑off job that
-  rebuilds the playlist + site **from your Mac's India connection** and
-  pushes automatically. It's the right place for the geo‑validated playlist.
-    ```bash
-    # 1) one-time: a repo-scoped SSH deploy key (write) is used for the push,
-    #    so no PAT ever lives on disk. The remote uses a dedicated host alias:
-    #    ~/.ssh/config     -> Host github-iptv (IdentityFile ~/.ssh/iptv_deploy_ed25519)
-    #    git remote origin -> git@github-iptv:wizakorhd/iptv.git
-    #    (the public key is registered under repo Settings → Deploy keys.)
-    # 2) install + load the agent:
-    cp com.wizakorhd.iptv-build.plist ~/Library/LaunchAgents/
-    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.wizakorhd.iptv-build.plist
-    # run once now (bypasses the 20h guard):
-    scripts/auto-build.sh --force
-    ```
-    It fires at 09:30 / 14:00 / 20:00 local (plus on load), but a built‑in
-    "already built in the last 20h?" guard means it actually rebuilds **once per
-    day** — the extra slots are just retries in case the Mac was asleep or offline
-    (launchd also runs a missed slot on the next wake, which matters since this
-    Mac rarely restarts). It skips cleanly when offline, logs to
-    `logs/auto-build.log`, and does its own housekeeping (`git gc`, drops the bulky
-    uncompressed `guide.xml`, trims logs).
-  - **Fully automated (GitHub Actions + self‑hosted India runner):** register a
-    self‑hosted runner on any always‑on machine on an **India** connection (your
-    Mac, or a cheap India VPS), then `.github/workflows/refresh-playlist.yml`
-    rebuilds + commits the validated playlist and EPG via **Run workflow**
-    (manual; the daily schedule is disabled to avoid clashing with the launchd
-    job above). One‑time runner setup:
-    ```bash
-    # On the India machine (needs python3 + node 20 installed):
-    # GitHub → repo → Settings → Actions → Runners → New self-hosted runner,
-    # then run the shown ./config.sh, adding the required labels:
-    ./config.sh --url https://github.com/<user>/<repo> --token <RUNNER_TOKEN> \
-                --labels india --name india-runner
-    ./run.sh        # or install as a service: ./svc.sh install && ./svc.sh start
-    ```
-    The workflow's `runs-on: [self-hosted, india]` targets that runner, so the
-    "no‑VPN‑from‑India" validation is preserved while builds run in the cloud.
-    (A GitHub‑hosted US runner is intentionally **not** used for the playlist — it
-    would drop India‑only channels and keep US‑only ones.)
+Refreshes are split so each part runs where it makes sense, with **disjoint file
+ownership** and rebase‑and‑retry pushes so jobs never clash:
+
+- **EPG → GitHub Actions (`refresh-epg.yml`), daily.** Rebuilds `guide.xml.gz` on
+  GitHub's runners — program data isn't geo‑restricted, so a cloud runner is fine.
+  Owns `guide.xml.gz`.
+- **Playlist → a periodic geo‑validated build.** Because streams are validated by
+  probing, the playlist should be built from a connection in the target region
+  (an unattended local build helper is in `scripts/auto-build.sh`, or use the
+  self‑hosted `refresh-playlist.yml`). Owns `playlist*.m3u` / `curated_ids.json` /
+  `epg.channels.xml` / `docs/channels.json`.
+- **Health check (`health-check.yml`), weekly.** Re‑probes every stream and writes
+  `HEALTH.md`. It runs from the cloud runner's region, so region‑restricted
+  channels can appear dead there even if they work from the target region — treat
+  it as a hint, then confirm with a local `make health`.
+- **Freshness (`freshness.yml`), daily.** Records how long ago the playlist was
+  last rebuilt in `STATUS.md`, and flags it once it exceeds a threshold (default 7
+  days; override via the workflow's `stale_days` input). Useful if the periodic
+  playlist build pauses for a while — the guide keeps refreshing regardless.
 
 ## Using it on your devices
 
 All you need is an IPTV player that accepts an **m3u URL** + an **XMLTV EPG URL**:
 
-- **Apple TV** — iPlayTV (~$5 one‑time) or GSE Smart IPTV, or the Channels app.
-  Add the playlist URL, then set the EPG/XMLTV URL to `guide.xml.gz`.
-- **Mac / PC** — [Jellyfin](https://jellyfin.org) Live TV (free, best EPG UI):
-  add an M3U Tuner (playlist URL) + an XMLTV guide source (EPG URL). VLC also
-  plays the playlist but has no real guide UI.
-- **[Lume](https://apps.apple.com/app/lume)** — add the playlist URL; it exposes
-  a track selector for **audio** and **subtitles**. Note these tracks come from
-  the *stream itself* — if a channel only publishes a single Hindi audio track,
-  no player (Lume included) can add English or subtitles to it. Dual‑audio Indian
-  channels and many intl channels do expose an English track to switch to.
+- **Apple TV** — iPlayTV or GSE Smart IPTV, or the Channels app. Add the playlist
+  URL, then set the EPG/XMLTV URL to `guide.xml.gz`.
+- **Desktop** — [Jellyfin](https://jellyfin.org) Live TV (free, best EPG UI): add
+  an M3U Tuner (playlist URL) + an XMLTV guide source (EPG URL). VLC also plays the
+  playlist but has no real guide UI.
+- **[Lume](https://apps.apple.com/app/lume)** — add the playlist URL; it exposes a
+  track selector for **audio** and **subtitles**. These tracks come from the
+  *stream itself* — if a channel only publishes a single audio track, no player can
+  add another audio/subtitle track to it.
 
-The EPG (`guide.xml`) is **hybrid**: primary program data comes from the
-iptv-org grabber, and channels it doesn't cover are backfilled from
+The EPG is **hybrid**: primary program data comes from the iptv-org grabber, and
+channels it doesn't cover are backfilled from
 [epgshare01](https://epgshare01.online) by matching channel names (see
 `merge_epg.py`). Ids are normalized to our `tvg-id`, so the whole playlist shares
-one guide.
-
-The playlist header already contains `x-tvg-url="guide.xml.gz"`, so players that
-auto‑load the EPG from the playlist will pick it up once both are hosted
-side‑by‑side.
+one guide. The playlist header carries `x-tvg-url="guide.xml.gz"`, so players that
+auto‑load the EPG from the playlist pick it up automatically.
 
 ## Notes & attribution
 
-- Data/metadata © the [iptv-org](https://github.com/iptv-org) project (MIT).
-  This project only re‑arranges public metadata and links to publicly listed
-  streams; it hosts no video.
+- Data/metadata © the [iptv-org](https://github.com/iptv-org) project (MIT). This
+  project only re‑arranges public metadata and links to publicly listed streams;
+  it hosts no video.
 - Stream availability is community‑maintained and changes often — re‑run
   `make playlist` if channels stop working.

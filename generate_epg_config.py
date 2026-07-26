@@ -21,12 +21,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # or are consistently geo-blocked / 403 from an Indian IP, so they add no data.
 BAD_SITES = {
     "tv.mail.ru",   # returns HTML error page -> JSON.parse crash kills whole run
-    "tvtv.us",      # 403 from India
-    "directv.com",  # 403 from India
+    "tvtv.us",      # 403 in some regions
+    "directv.com",  # 403 in some regions
 }
 
 # One guide site per channel keeps program data clean (no duplicate programmes).
-# Prefer these reliable/regional sites (that work from India) when a channel is
+# Prefer these reliable/regional sites when a channel is
 # listed on several.
 PREFERRED_SITES = [
     "airtelxstream.in", "tatasky.com", "jiotv.com", "siti.in",
