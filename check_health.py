@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Re-validate playlist streams and emit a Markdown health report (health-report.md).
+"""Re-validate playlist streams and emit a Markdown health report (HEALTH.md).
 
 Intended for the weekly GitHub Action. NOTE: probing runs from the Action
 runner's location (usually US), so geo-restricted streams may show as dead here
@@ -13,7 +13,7 @@ import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PLAYLIST = os.path.join(HERE, "playlist.m3u")
-OUT = os.path.join(HERE, "health-report.md")
+OUT = os.path.join(HERE, "HEALTH.md")
 ATTR = re.compile(r'(\S+?)="(.*?)"')
 TIMEOUT = float(os.environ.get("HEALTH_TIMEOUT", "10"))
 

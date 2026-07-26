@@ -20,8 +20,7 @@ on:
         description: "EPG days to grab"
         default: "3"
 
-permissions:
-  contents: write
+permissions: {}
 
 concurrency:
   group: refresh-playlist
@@ -31,8 +30,10 @@ jobs:
   build:
     # runner must be registered with these labels (see README)
     runs-on: [self-hosted, india]
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Build validated playlist (from India)
         run: python3 generate_playlist.py
@@ -41,7 +42,10 @@ jobs:
         run: python3 generate_epg_config.py
 
       - name: Grab EPG (+ epgshare merge + gzip)
-        run: ./build_epg.sh 15 "${{ github.event.inputs.days || '3' }}"
+        # inputs.days is untrusted -> pass via env, never interpolate into the shell
+        env:
+          EPG_DAYS: ${{ github.event.inputs.days || '3' }}
+        run: ./build_epg.sh 15 "${EPG_DAYS}"
 
       - name: Regenerate site data
         run: python3 gen_site.py

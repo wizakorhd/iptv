@@ -1,17 +1,16 @@
 name: Channel health check
 
-# Weekly re-validation of playlist streams. Opens/updates a single tracking issue
-# listing unreachable channels. Probes run from the runner (US region), so treat
-# geo-restricted results as a hint, not proof — see the issue body.
+# Weekly re-validation of playlist streams. Commits an updated HEALTH.md report
+# (no GitHub Issues are used, so the Issues feature can stay disabled). Probes run
+# from the runner (US region), so treat geo-restricted results as a hint, not proof.
 
 on:
   schedule:
     - cron: "0 6 * * 1"     # 06:00 UTC every Monday
   workflow_dispatch: {}
 
-permissions:
-  contents: read
-  issues: write
+# Deny by default; grant the minimum per job (principle of least privilege).
+permissions: {}
 
 concurrency:
   group: health-check
@@ -20,37 +19,27 @@ concurrency:
 jobs:
   health:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Probe streams
         run: python3 check_health.py
 
-      - name: Upsert tracking issue
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const body = fs.readFileSync('health-report.md', 'utf8');
-            const title = 'Channel health report';
-            const { owner, repo } = context.repo;
-            const existing = await github.rest.issues.listForRepo({
-              owner, repo, state: 'open', labels: 'health', per_page: 1,
-            });
-            if (existing.data.length) {
-              await github.rest.issues.update({
-                owner, repo, issue_number: existing.data[0].number,
-                title, body,
-              });
-            } else {
-              // ensure the label exists (ignore error if it already does)
-              try {
-                await github.rest.issues.createLabel({
-                  owner, repo, name: 'health', color: 'd29922',
-                  description: 'Automated stream health reports',
-                });
-              } catch (e) {}
-              await github.rest.issues.create({
-                owner, repo, title, body, labels: ['health'],
-              });
-            }
+      - name: Commit health report
+        run: |
+          git config user.name  "health-bot"
+          git config user.email "health-bot@users.noreply.github.com"
+          git add HEALTH.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: refresh channel health report ($(date -u +%Y-%m-%d))"
+            # other jobs may push concurrently; disjoint files -> rebase-retry is safe
+            for i in 1 2 3; do
+              git push && break
+              echo "push rejected (attempt $i); rebasing"
+              git fetch origin main && git rebase origin/main || { git rebase --abort; break; }
+            done
+          else
+            echo "health report unchanged"
+          fi
