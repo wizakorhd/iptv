@@ -23,7 +23,7 @@ free community [iptv-org](https://github.com/iptv-org) dataset.
 | `gen_site.py` + `docs/` | Builds the GitHub Pages browse/status page (`docs/channels.json`). |
 | `check_health.py` | Re-validates streams for the weekly health-check Action. |
 | `curated_ids.json` | The final channel ids (playlist ↔ EPG link). |
-| `refresh-local.sh` + `com.wizakorhd.iptv.refresh.plist` | Optional macOS `launchd` job for daily local rebuild + push. |
+| `scripts/auto-build.sh` + `com.wizakorhd.iptv-build.plist` | macOS `launchd` job for hands‑off local rebuild + push (see below). |
 | `Makefile` | Convenience targets (`make all`, `make playlist`, `make epg`, `make site`). |
 
 Each entry carries a stable `tvg-chno` (channel number) so ordering is identical
@@ -72,7 +72,7 @@ players can't send an auth header for a private repo):
 
 ```
 Playlist:  https://raw.githubusercontent.com/<user>/<repo>/main/playlist.m3u
-EPG:       https://raw.githubusercontent.com/<user>/<repo>/main/guide.xml
+EPG:       https://raw.githubusercontent.com/<user>/<repo>/main/guide.xml.gz
 ```
 
 **CDN mirror (recommended for reliability/speed):** the jsDelivr CDN serves the
@@ -81,7 +81,7 @@ is slow or rate‑limited on a device:
 
 ```
 Playlist:  https://cdn.jsdelivr.net/gh/<user>/<repo>@main/playlist.m3u
-EPG:       https://cdn.jsdelivr.net/gh/<user>/<repo>@main/guide.xml
+EPG:       https://cdn.jsdelivr.net/gh/<user>/<repo>@main/guide.xml.gz
 ```
 (jsDelivr caches for up to ~12h; use the raw URL if you need the newest build immediately.)
 
@@ -104,17 +104,28 @@ and by the daily EPG Action.
 - **Playlist** is geo‑validated and must be regenerated from an **India network**.
   Three options, from simplest to most automated:
   - **On demand:** run `make playlist` locally and push when you want to re‑curate.
-  - **Local cron (macOS):** install the daily `launchd` job for a hands‑off local
-    rebuild + push:
+  - **Local automation (macOS `launchd`) — recommended:** a hands‑off job that
+    rebuilds the playlist + EPG + site **from your Mac's India connection** and
+    pushes automatically. It's the right place for the geo‑validated playlist.
     ```bash
-    # store the push token once in the macOS Keychain
-    git config --global credential.helper osxkeychain
-    printf 'protocol=https\nhost=github.com\nusername=x-access-token\npassword=<PAT>\n' \
-      | git credential-osxkeychain store
-    # install + start the daily job (06:15 local)
-    cp com.wizakorhd.iptv.refresh.plist ~/Library/LaunchAgents/
-    launchctl load ~/Library/LaunchAgents/com.wizakorhd.iptv.refresh.plist
+    # 1) one-time: a repo-scoped SSH deploy key (write) is used for the push,
+    #    so no PAT ever lives on disk. The remote uses a dedicated host alias:
+    #    ~/.ssh/config     -> Host github-iptv (IdentityFile ~/.ssh/iptv_deploy_ed25519)
+    #    git remote origin -> git@github-iptv:wizakorhd/iptv.git
+    #    (the public key is registered under repo Settings → Deploy keys.)
+    # 2) install + load the agent:
+    cp com.wizakorhd.iptv-build.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.wizakorhd.iptv-build.plist
+    # run once now (bypasses the 20h guard):
+    scripts/auto-build.sh --force
     ```
+    It fires at 09:30 / 14:00 / 20:00 local (plus on load), but a built‑in
+    "already built in the last 20h?" guard means it actually rebuilds **once per
+    day** — the extra slots are just retries in case the Mac was asleep or offline
+    (launchd also runs a missed slot on the next wake, which matters since this
+    Mac rarely restarts). It skips cleanly when offline, logs to
+    `logs/auto-build.log`, and does its own housekeeping (`git gc`, drops the bulky
+    uncompressed `guide.xml`, trims logs).
   - **Fully automated (GitHub Actions + self‑hosted India runner):** register a
     self‑hosted runner on any always‑on machine on an **India** connection (your
     Mac, or a cheap India VPS), then `.github/workflows/refresh-playlist.yml`
@@ -138,7 +149,7 @@ and by the daily EPG Action.
 All you need is an IPTV player that accepts an **m3u URL** + an **XMLTV EPG URL**:
 
 - **Apple TV** — iPlayTV (~$5 one‑time) or GSE Smart IPTV, or the Channels app.
-  Add the playlist URL, then set the EPG/XMLTV URL to `guide.xml`.
+  Add the playlist URL, then set the EPG/XMLTV URL to `guide.xml.gz`.
 - **Mac / PC** — [Jellyfin](https://jellyfin.org) Live TV (free, best EPG UI):
   add an M3U Tuner (playlist URL) + an XMLTV guide source (EPG URL). VLC also
   plays the playlist but has no real guide UI.
@@ -154,7 +165,7 @@ iptv-org grabber, and channels it doesn't cover are backfilled from
 `merge_epg.py`). Ids are normalized to our `tvg-id`, so the whole playlist shares
 one guide.
 
-The playlist header already contains `x-tvg-url="guide.xml"`, so players that
+The playlist header already contains `x-tvg-url="guide.xml.gz"`, so players that
 auto‑load the EPG from the playlist will pick it up once both are hosted
 side‑by‑side.
 

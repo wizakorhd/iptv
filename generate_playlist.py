@@ -411,7 +411,7 @@ def main():
     ap.add_argument("--max-try", type=int, default=4,
                     help="max streams to probe per channel before giving up")
     ap.add_argument("--out", default=os.path.join(HERE, "playlist.m3u"))
-    ap.add_argument("--epg-url", default="https://raw.githubusercontent.com/wizakorhd/iptv/main/guide.xml",
+    ap.add_argument("--epg-url", default="https://raw.githubusercontent.com/wizakorhd/iptv/main/guide.xml.gz",
                     help="value for x-tvg-url in the playlist header")
     ap.add_argument("--ids-out", default=os.path.join(HERE, "curated_ids.json"),
                     help="write the final curated channel ids (for EPG generation)")

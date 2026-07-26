@@ -25,7 +25,7 @@ epg-config:
 
 ## Grab guide.xml (XMLTV EPG) for the curated channels (+ epgshare01 gap fill)
 epg:
-	./build_epg.sh 15 3
+	./build_epg.sh 20 3
 
 ## Generate the GitHub Pages browse/status data (docs/channels.json)
 site:

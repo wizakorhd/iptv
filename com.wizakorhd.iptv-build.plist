@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.wizakorhd.iptv-build</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/arwen/Development/legolas/iptv/scripts/auto-build.sh</string>
+    </array>
+
+    <!-- Fire at a few daytime hours when the Mac is likely awake and online.
+         The script's own "built in the last 20h?" guard ensures it actually
+         rebuilds only once per day; the extra slots are retries in case an
+         earlier attempt was offline or the Mac was asleep. launchd also runs
+         a missed slot on the next wake (important since this Mac rarely
+         restarts and mostly sleeps rather than powers off). -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>30</integer></dict>
+        <dict><key>Hour</key><integer>14</integer><key>Minute</key><integer>0</integer></dict>
+        <dict><key>Hour</key><integer>20</integer><key>Minute</key><integer>0</integer></dict>
+    </array>
+
+    <!-- Also run shortly after the agent is (re)loaded / login, throttled by
+         the script's 20h guard so it's harmless if it fires often. -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Be a good citizen: low CPU/IO priority. -->
+    <key>ProcessType</key>
+    <string>Background</string>
+    <key>Nice</key>
+    <integer>10</integer>
+    <key>LowPriorityIO</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/arwen/Development/legolas/iptv/logs/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/arwen/Development/legolas/iptv/logs/launchd.err.log</string>
+</dict>
+</plist>

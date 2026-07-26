@@ -20,8 +20,16 @@ if [ ! -d "$EPG_DIR/.git" ]; then
   git clone --depth 1 https://github.com/iptv-org/epg.git "$EPG_DIR"
 fi
 
-echo "==> Installing epg dependencies (first run only) ..."
-( cd "$EPG_DIR" && npm ci --no-audit --no-fund --silent || npm install --no-audit --no-fund --silent )
+# Install deps only when missing (node_modules absent or package.json changed).
+# `npm ci` on every run wasted minutes; this makes repeat builds much faster.
+STAMP="$EPG_DIR/node_modules/.iptv-deps-stamp"
+if [ ! -d "$EPG_DIR/node_modules" ] || [ "$EPG_DIR/package-lock.json" -nt "$STAMP" ]; then
+  echo "==> Installing epg dependencies ..."
+  ( cd "$EPG_DIR" && npm ci --no-audit --no-fund --silent || npm install --no-audit --no-fund --silent )
+  touch "$STAMP"
+else
+  echo "==> epg dependencies present; skipping install"
+fi
 
 echo "==> Grabbing guide for curated channels (maxConnections=$MAXCONN, days=$DAYS) ..."
 ( cd "$EPG_DIR" && npm run grab -- \

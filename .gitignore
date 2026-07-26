@@ -21,3 +21,5 @@ secrets*
 
 # transient Action artifact
 health-report.md
+logs/
+guide.xml
