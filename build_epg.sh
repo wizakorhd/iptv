@@ -11,7 +11,7 @@ set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 EPG_DIR="$HERE/.epg"                 # cloned iptv-org/epg lives here (git-ignored)
 MAXCONN="${1:-10}"
-DAYS="${2:-2}"
+DAYS="${2:-3}"
 
 command -v node >/dev/null || { echo "node is required (nvm: 'nvm use 20')"; exit 1; }
 
@@ -32,3 +32,7 @@ echo "==> Grabbing guide for curated channels (maxConnections=$MAXCONN, days=$DA
 
 echo "==> Done. Wrote $HERE/guide.xml"
 ls -lh "$HERE/guide.xml"
+
+echo "==> Writing gzipped copy (guide.xml.gz) for faster loading ..."
+gzip -9 -k -f "$HERE/guide.xml"
+ls -lh "$HERE/guide.xml.gz"

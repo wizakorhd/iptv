@@ -186,6 +186,33 @@ def pick_working_stream(chan: dict, timeout: float, max_try: int) -> dict | None
 
 # ---------------------------------------------------------------------------- output
 BUCKET_ORDER = {"hindi": 0, "eng_in": 1, "eng_foreign": 2, "anime": 3}
+BUCKET_LABEL = {"hindi": "Hindi", "eng_in": "English (India)",
+                "eng_foreign": "English (Intl)", "anime": "Anime"}
+BUCKET_FILE = {"hindi": "playlist-hindi.m3u", "eng_in": "playlist-english-india.m3u",
+               "eng_foreign": "playlist-english-intl.m3u", "anime": "playlist-anime.m3u"}
+
+
+def quality_tag(q: str | None) -> str:
+    score = quality_score(q)
+    if score >= 6:            # 2160p
+        return " 4K"
+    if score >= 4:            # 1080p / 1440p
+        return " ᶠᴴᴰ"
+    if score >= 3:            # 720p
+        return " ᴴᴰ"
+    return ""
+
+
+def finalize(rows: list[dict]) -> list[dict]:
+    """Sort rows and assign a stable sequential channel number (tvg-chno)."""
+    rows.sort(key=lambda r: (BUCKET_ORDER[r["bucket"]], r["group"], r["name"].lower()))
+    for i, r in enumerate(rows, start=1):
+        r["chno"] = i
+        tag = quality_tag(r["stream"].get("quality"))
+        # avoid doubling a tag if the name already ends with HD/4K
+        base = r["name"]
+        r["display"] = base if base.rstrip().upper().endswith(("HD", "4K")) else base + tag
+    return rows
 
 
 def write_m3u(path: str, rows: list[dict], epg_url: str | None):
@@ -193,17 +220,45 @@ def write_m3u(path: str, rows: list[dict], epg_url: str | None):
     if epg_url:
         header += f' x-tvg-url="{epg_url}"'
     lines = [header]
-    rows.sort(key=lambda r: (BUCKET_ORDER[r["bucket"]], r["group"], r["name"].lower()))
     for r in rows:
         s = r["stream"]
-        attrs = (f'tvg-id="{r["id"]}" tvg-logo="{r["logo"]}" '
-                 f'group-title="{r["group"]}"')
-        lines.append(f'#EXTINF:-1 {attrs},{r["name"]}')
+        attrs = (f'tvg-id="{r["id"]}" tvg-chno="{r["chno"]}" '
+                 f'tvg-logo="{r["logo"]}" group-title="{r["group"]}"')
+        lines.append(f'#EXTINF:-1 {attrs},{r["display"]}')
         if s.get("referrer"):
             lines.append(f'#EXTVLCOPT:http-referrer={s["referrer"]}')
         if s.get("user_agent"):
             lines.append(f'#EXTVLCOPT:http-user-agent={s["user_agent"]}')
         lines.append(s["url"])
+    open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
+
+
+def write_report(path: str, rows: list[dict], n_candidates: int, epg_ids: set):
+    from datetime import datetime, timezone
+    by_bucket = defaultdict(list)
+    for r in rows:
+        by_bucket[r["bucket"]].append(r)
+    no_logo = sum(1 for r in rows if not r["logo"])
+    no_epg = sum(1 for r in rows if r["id"] not in epg_ids)
+    lines = [
+        "# Playlist health report", "",
+        f"_Last built: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}_", "",
+        f"- **Total channels:** {len(rows)}",
+        f"- **Candidates before validation:** {n_candidates} "
+        f"(dropped {n_candidates - len(rows)} dead/geo-blocked from build location)",
+        f"- **Channels without EPG guide:** {no_epg}",
+        f"- **Channels without a logo:** {no_logo}", "",
+        "## By group", "", "| Group | Channels | File |", "|---|---:|---|",
+    ]
+    for b in sorted(by_bucket, key=lambda x: BUCKET_ORDER[x]):
+        lines.append(f"| {BUCKET_LABEL[b]} | {len(by_bucket[b])} | `{BUCKET_FILE[b]}` |")
+    lines += ["", "## Sub-groups", "", "| Sub-group | Channels |", "|---|---:|"]
+    sub = defaultdict(int)
+    for r in rows:
+        sub[r["group"]] += 1
+    for g in sorted(sub):
+        lines.append(f"| {g} | {sub[g]} |")
+    lines.append("")
     open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
 
 
@@ -262,9 +317,31 @@ def main():
     print(f"  Anime ................ {by_bucket['anime']}", file=sys.stderr)
     print(f"  TOTAL channels ....... {len(rows)}", file=sys.stderr)
 
+    rows = finalize(rows)
     write_m3u(args.out, rows, args.epg_url)
     json.dump(sorted(r["id"] for r in rows), open(args.ids_out, "w"), indent=1)
+
+    # per-category playlists
+    for b, fname in BUCKET_FILE.items():
+        subset = [r for r in rows if r["bucket"] == b]
+        if subset:
+            write_m3u(os.path.join(os.path.dirname(args.out) or ".", fname),
+                      subset, args.epg_url)
+
+    # health report (epg coverage from guides.json if available locally)
+    epg_ids = set()
+    gpath = os.path.join(DATA, "guides.json")
+    if os.path.exists(gpath):
+        try:
+            for g in json.load(open(gpath)):
+                epg_ids.add(g["channel"])
+        except Exception:
+            pass
+    write_report(os.path.join(os.path.dirname(args.out) or ".", "REPORT.md"),
+                 rows, len(cands), epg_ids)
+
     print(f"\nWrote {args.out}", file=sys.stderr)
+    print(f"Wrote per-category playlists + REPORT.md", file=sys.stderr)
     print(f"Wrote {args.ids_out} ({len(rows)} ids for EPG)", file=sys.stderr)
 
 

@@ -7,14 +7,23 @@ free community [iptv-org](https://github.com/iptv-org) dataset.
 
 | File | Purpose |
 |------|---------|
-| `playlist.m3u` | The curated channel list (point your player here). |
-| `guide.xml` | XMLTV program guide (EPG). Channel ids match `playlist.m3u`. |
-| `generate_playlist.py` | Builds `playlist.m3u` (curation + geo‑validation). |
+| `playlist.m3u` | The full curated channel list (point your player here). |
+| `playlist-hindi.m3u` | Hindi channels only. |
+| `playlist-english-india.m3u` | English Indian channels only. |
+| `playlist-english-intl.m3u` | International English channels only. |
+| `playlist-anime.m3u` | Anime channels only (sub or dub). |
+| `guide.xml` / `guide.xml.gz` | XMLTV program guide (EPG); gz is ~1 MB for fast loading. Ids match the playlists. |
+| `REPORT.md` | Auto-generated health report (counts, missing EPG/logos, drops). |
+| `generate_playlist.py` | Builds the playlists (curation + geo‑validation + channel numbers + HD tags). |
 | `generate_epg_config.py` | Builds `epg.channels.xml` for the EPG grabber. |
 | `epg.channels.xml` | Guide‑source config consumed by `build_epg.sh`. |
-| `build_epg.sh` | Grabs `guide.xml` via iptv-org/epg. |
+| `build_epg.sh` | Grabs `guide.xml` (+ `.gz`) via iptv-org/epg. |
 | `curated_ids.json` | The final channel ids (playlist ↔ EPG link). |
+| `refresh-local.sh` + `com.wizakorhd.iptv.refresh.plist` | Optional macOS `launchd` job for daily local rebuild + push. |
 | `Makefile` | Convenience targets (`make all`, `make playlist`, `make epg`). |
+
+Each entry carries a stable `tvg-chno` (channel number) so ordering is identical
+across players, and an HD/ᶠᴴᴰ/4K marker in the name reflecting stream quality.
 
 ## Curation rules
 
@@ -55,11 +64,21 @@ EPG:       https://raw.githubusercontent.com/<user>/<repo>/main/guide.xml
 ```
 
 ### Auto‑refresh model
-- **EPG** (`guide.xml`) changes daily and is location‑independent, so
+- **EPG** (`guide.xml` / `.gz`) changes daily and is location‑independent, so
   `.github/workflows/refresh-epg.yml` rebuilds it every day on GitHub's runners.
-- **Playlist** (`playlist.m3u`) is geo‑validated and must be regenerated **from
-  your location**. Re‑run `make playlist` locally and push when you want to
-  re‑curate (channels/streams change slowly).
+- **Playlist** is geo‑validated and must be regenerated **from your location**.
+  Two options:
+  - Run `make playlist` locally and push when you want to re‑curate; or
+  - Install the daily `launchd` job for a hands‑off local rebuild + push:
+    ```bash
+    # store the push token once in the macOS Keychain
+    git config --global credential.helper osxkeychain
+    printf 'protocol=https\nhost=github.com\nusername=x-access-token\npassword=<PAT>\n' \
+      | git credential-osxkeychain store
+    # install + start the daily job (06:15 local)
+    cp com.wizakorhd.iptv.refresh.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.wizakorhd.iptv.refresh.plist
+    ```
 
 ## Using it on your devices
 

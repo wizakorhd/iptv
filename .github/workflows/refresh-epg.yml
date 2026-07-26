@@ -28,14 +28,14 @@ jobs:
           node-version: "20"
 
       - name: Build guide.xml from epg.channels.xml
-        run: ./build_epg.sh 15 2
+        run: ./build_epg.sh 15 3
 
       - name: Commit refreshed guide
         run: |
           git config user.name  "epg-bot"
           git config user.email "epg-bot@users.noreply.github.com"
-          if ! git diff --quiet -- guide.xml; then
-            git add guide.xml
+          if ! git diff --quiet -- guide.xml guide.xml.gz; then
+            git add guide.xml guide.xml.gz
             git commit -m "chore: refresh EPG guide.xml ($(date -u +%Y-%m-%d))"
             git push
           else

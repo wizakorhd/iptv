@@ -2,6 +2,10 @@
 data/
 .epg/
 epg_build.log
+refresh.log
+
+# Local-only, never published (e.g. privately validated re-streams)
+local/
 
 # Secrets — never commit
 .env
@@ -11,3 +15,6 @@ secrets*
 
 # OS
 .DS_Store
+
+# Do not publish pasted third-party/subscription playlists
+*.pdf
