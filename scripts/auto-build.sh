@@ -71,26 +71,14 @@ if ! make playlist REFRESH="$REFRESH"; then
   echo "!! playlist build failed; leaving repo untouched"
   exit 1
 fi
+# Regenerate the EPG channel list so the GitHub Actions EPG builder grabs the
+# current curated set. The EPG *grab* itself runs on GitHub (location-independent)
+# so this Mac never clones iptv-org/epg or its node_modules — see README.
 make epg-config || { echo "!! epg-config failed"; exit 1; }
 
-# --- The EPG grab is the slow part (~40 min). We fetch a 3-day guide, so only
-#     re-grab once the current guide has <=1 day of runway left (>=2 days old);
-#     otherwise reuse it. This turns most daily runs into a ~3-min playlist
-#     revalidation instead of a 44-min full build. ---
-EPG_MAX_AGE=$((2 * 24 * 3600))
-if [ -f guide.xml.gz ]; then
-  EAGE=$(( $(date +%s) - $(stat -f %m guide.xml.gz) ))
-else
-  EAGE=$((EPG_MAX_AGE + 1))
-fi
-if [ "$EAGE" -ge "$EPG_MAX_AGE" ]; then
-  echo "==> EPG is $((EAGE / 3600))h old; re-grabbing 3-day guide"
-  make epg || echo "!! EPG grab failed (keeping previous guide.xml.gz)"
-else
-  echo "==> EPG is $((EAGE / 3600))h old (<2 days); reusing current guide"
-fi
-
 echo "==> Regenerate site data"
+# with_epg is read from the committed guide.xml.gz (built by the GitHub Action);
+# it may lag the very latest EPG by one build, which is fine.
 make site || echo "!! site generation failed (continuing)"
 
 if git diff --quiet && git diff --cached --quiet; then
@@ -108,10 +96,19 @@ git commit -q -m "Auto rebuild ${STAMP} (${N} channels, geo-validated from India
 echo "==> committed: $(git log --oneline -1)"
 
 echo "==> git push"
-if git push origin main; then
+# The GitHub EPG Action may push guide.xml.gz around the same time. We touch
+# disjoint files (it owns guide.xml.gz; we own playlists/ids/site), so a rejected
+# push just needs a rebase + retry with no conflicts.
+pushed=""
+for attempt in 1 2 3; do
+  if git push origin main; then pushed="yes"; break; fi
+  echo "   push rejected (attempt $attempt); rebasing on origin/main and retrying"
+  git fetch --quiet origin main && git rebase --quiet origin/main || { git rebase --abort 2>/dev/null; break; }
+done
+if [ -n "$pushed" ]; then
   echo "==> pushed OK"
 else
-  echo "!! push failed (auth?). Commit is saved locally; will retry next run."
+  echo "!! push failed. Commit is saved locally; will retry next run."
 fi
 
 echo "==> Build finished: $(date '+%Y-%m-%d %H:%M:%S %Z')"
@@ -119,13 +116,15 @@ date +%s > "$MARKER"
 
 # ---- Housekeeping: keep the working tree and caches from growing unbounded ----
 echo "==> Housekeeping"
-# Compact git object stores (main repo + the shallow iptv-org/epg cache).
+# Compact the git object store.
 git gc --auto --quiet 2>/dev/null || true
-[ -d .epg/.git ] && git -C .epg gc --auto --quiet 2>/dev/null || true
-# Drop the bulky uncompressed guide from disk (we publish only guide.xml.gz).
+# The EPG grab runs on GitHub, so there should be no local iptv-org/epg clone;
+# remove it if an older build left one behind (frees ~460 MB).
+[ -d .epg ] && rm -rf .epg
+# Drop any bulky uncompressed guide from disk (we publish only guide.xml.gz).
 [ -f guide.xml ] && rm -f guide.xml
 # Trim rotated logs to a single generation.
 rm -f "$LOG_DIR"/*.1 2>/dev/null || true
 # Remove any stray temp files this project may leave behind.
-rm -f epg_build.log refresh.log 2>/dev/null || true
+rm -f epg_build.log refresh.log .grab.out 2>/dev/null || true
 echo "==> Housekeeping done"

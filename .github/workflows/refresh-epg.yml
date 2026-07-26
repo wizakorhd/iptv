@@ -1,16 +1,16 @@
-name: Refresh EPG (guide.xml)
+name: Refresh EPG (guide.xml.gz)
 
-# Program data changes daily, so we rebuild guide.xml from the committed
-# epg.channels.xml. This is location-independent, so a GitHub runner is fine.
-# NOTE: playlist.m3u is curated + geo-validated locally (from your location) and
-# is not rebuilt here — see README.
+# The EPG grab is location-independent (program data, not geo-restricted streams),
+# so it runs here on GitHub's runners instead of the Mac — that keeps the ~460 MB
+# iptv-org/epg clone + node_modules off local disk. This workflow OWNS guide.xml.gz.
 #
-# The local macOS launchd job (scripts/auto-build.sh) is the PRIMARY builder and
-# already produces the EPG from India. This workflow is a manual-only failsafe
-# for when that Mac is offline for a while; its daily schedule is disabled to
-# avoid double-push churn. Trigger it from the Actions tab when needed.
+# The playlist is curated + geo-validated locally from India (scripts/auto-build.sh)
+# and is NOT rebuilt here. File ownership is disjoint (local owns playlists + site;
+# this Action owns guide.xml.gz) so the two schedulers never conflict.
 
 on:
+  schedule:
+    - cron: "0 2 * * *"    # 02:00 UTC daily (~07:30 IST)
   workflow_dispatch: {}
 
 permissions:
@@ -30,20 +30,23 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Build guide.xml from epg.channels.xml
-        run: ./build_epg.sh 15 3
-
-      - name: Regenerate site data (docs/channels.json)
-        run: python3 gen_site.py
+      - name: Build guide.xml.gz from epg.channels.xml
+        run: ./build_epg.sh 20 3
 
       - name: Commit refreshed guide
         run: |
           git config user.name  "epg-bot"
           git config user.email "epg-bot@users.noreply.github.com"
-          git add guide.xml.gz docs/channels.json
+          git add guide.xml.gz
           if ! git diff --cached --quiet; then
-            git commit -m "chore: refresh EPG guide.xml ($(date -u +%Y-%m-%d))"
-            git push
+            git commit -m "chore: refresh EPG guide ($(date -u +%Y-%m-%d))"
+            # local job may push playlists concurrently; disjoint files -> rebase-retry is safe
+            for i in 1 2 3; do
+              git push && break
+              echo "push rejected (attempt $i); rebasing"
+              git fetch origin main && git rebase origin/main || { git rebase --abort; break; }
+            done
           else
             echo "guide unchanged"
           fi
+

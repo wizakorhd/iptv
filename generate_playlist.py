@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import concurrent.futures as cf
+import http.client
 import json
 import os
 import re
@@ -277,7 +278,12 @@ def probe(url: str, ua: str | None, ref: str | None, timeout: float) -> bool:
         code, _, chunk = _get(url, h, timeout, 2048)
         return code in (200, 206) and bool(chunk)
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError,
-            ConnectionError, OSError, ValueError):
+            ConnectionError, OSError, ValueError, http.client.HTTPException):
+        return False
+    except Exception:
+        # Probing untrusted third-party servers can raise almost anything
+        # (malformed chunked encoding, decode errors, ...). Any failure just
+        # means "not usable" — it must never abort the whole build.
         return False
 
 
@@ -437,7 +443,10 @@ def main():
                 done += 1
                 if done % 100 == 0:
                     print(f"  probed {done}/{len(cands)} ...", file=sys.stderr)
-                s = fut.result()
+                try:
+                    s = fut.result()
+                except Exception:
+                    s = None                          # a worker crash never aborts the run
                 if s:
                     c = futs[fut]
                     rows.append({**c, "stream": s})

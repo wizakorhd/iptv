@@ -198,6 +198,7 @@
   <channel site="tataplay.com" lang="en" xmltv_id="FatehTV.in" site_id="791">Fateh TV</channel>
   <channel site="programetv.ro" lang="en" xmltv_id="FightBox.nl" site_id="fight-box-hd">Fight Box HD</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="FightNetwork.ca" site_id="Plex/au#697140a85d851f5e69414688-606605549dbfca002d2ae877">Fight Network</channel>
+  <channel site="tvgids.nl" lang="nl" xmltv_id="Film1Action.nl" site_id="film1action">Film1 Action</channel>
   <channel site="horizon.tv" lang="cs" xmltv_id="FilmBox.nl" site_id="10044">FilmBox HD</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="FilmRiseAnime.us" site_id="Plex/gb#64305451fc3be5947773c339-65ec577b07060fb76a3916bf">FilmRise Anime</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="FilmRiseWestern.us" site_id="Plex/ca#647f8d22a2fc3fadb4721685-6627ab12580825e8a7bc4f05">FilmRise Western</channel>
@@ -483,7 +484,6 @@
   <channel site="i.mjh.nz" lang="da" xmltv_id="PlutoTVWildWest.se" site_id="PlutoTV/dk#68c01732b3900870ec74766f">Pluto TV Wild West</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="PokerGo.us" site_id="Plex/au#697140a85d851f5e69414688-64ac687b4192b4e1bab96279">PokerGO</channel>
   <channel site="tapdmv.com" lang="en" xmltv_id="PremierSports.ph" site_id="24249e64-374c-4c32-bc02-1bfa953fa5ea">premiersports1</channel>
-  <channel site="sky.com" lang="en" xmltv_id="PremierSports1.ie" site_id="1289">Premier 1 HD</channel>
   <channel site="tapdmv.com" lang="en" xmltv_id="PremierSports2.ph" site_id="c8997290-0446-455e-9b55-ca3c749786b6">premiersports2</channel>
   <channel site="sat.tv" lang="en" xmltv_id="PressTV.ir" site_id="1#33#Press TV HD">Press TV HD</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="PursuitUP.us" site_id="Plex/au#697140a85d851f5e69414688-63628eb88e4b18ca22f897dc">PursuitUP</channel>
@@ -525,8 +525,6 @@
   <channel site="sky.com" lang="en" xmltv_id="SkyNews.ie" site_id="1406">Sky News</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="SkyRacing1.au" site_id="Foxtel/epg#SRA">Sky Racing 1</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="SkyRacing2.au" site_id="Foxtel/epg#SR2">Sky Racing 2</channel>
-  <channel site="sky.com" lang="en" xmltv_id="SkySportsF1.ie" site_id="1306">SkySp F1</channel>
-  <channel site="sky.com" lang="en" xmltv_id="SkySportsGolf.uk" site_id="4026">SkySp Golf HD</channel>
   <channel site="sky.com" lang="en" xmltv_id="SkySportsMainEvent.ie" site_id="1309">SkySpMainEv</channel>
   <channel site="ontvtonight.com" lang="en" xmltv_id="Slice.ca" site_id="ca#69023040/slice-tv">Slice TV</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="SlopesTV.us" site_id="Plex/au#697140a85d851f5e69414688-616df1be2cf008a748c8cb53">SLOPES</channel>
