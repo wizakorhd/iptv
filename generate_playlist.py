@@ -37,7 +37,14 @@ from collections import Counter, defaultdict
 API = "https://iptv-org.github.io/api"
 FILES = ["channels", "streams", "feeds", "categories", "languages",
          "countries", "blocklist", "logos"]
-FOREIGN_CATS = {"movies", "entertainment", "sports", "news", "documentary"}
+FOREIGN_CATS = {"movies", "entertainment", "sports", "news", "documentary",
+                "kids", "music", "comedy", "animation", "family", "lifestyle",
+                "culture", "cooking", "science", "travel", "education",
+                "series", "classic", "auto", "outdoor", "weather", "relax",
+                "business", "legislative"}
+# Categories we never carry regardless of language/region: devotional content
+# (per curation), adult, teleshopping, and uncategorised "general" bloat.
+EXCLUDE_CATS = {"religious", "xxx", "shop"}
 # Anime is not a category in the dataset, so detect dedicated anime channels by name.
 ANIME_KW = ("anime", "animax", "ani-one", "ani one", "aniplus", "toonami",
             "crunchyroll", "one piece", "naruto", "pokemon", "dragon ball",
@@ -141,15 +148,25 @@ KOREAN_KW = ("korean", "k-pop", "kpop", "kocowa", "k by mbc", " mbc", " kbs")
 # Samsung group label -> our category slug.
 SAMSUNG_CAT = {
     "movies": "movies", "movie": "movies",
-    "news": "news", "news & opinion": "news", "business": "news",
+    "news": "news", "news & opinion": "news", "business": "business",
+    "english news": "news", "hindi news": "news",
     "sports": "sports", "sport": "sports", "sports & outdoors": "sports",
+    "motor sports": "sports",
     "documentaries": "documentary", "nature, history & science": "documentary",
+    "nature": "documentary", "infotainment": "documentary",
     "entertainment": "entertainment", "action & drama": "entertainment",
-    "tv series": "entertainment", "comedy": "entertainment", "drama": "entertainment",
+    "tv series": "series", "comedy": "comedy", "drama": "entertainment",
+    "crime": "entertainment", "sci-fi & horror": "entertainment",
     "reality": "entertainment", "reality tv": "entertainment",
-    "reality competition": "entertainment", "western & classic tv": "entertainment",
-    "lifestyle & pop culture": "entertainment", "game shows": "entertainment",
+    "reality competition": "entertainment", "western & classic tv": "classic",
+    "game shows": "entertainment", "anime & gaming": "entertainment",
+    "music": "music", "music & ambient": "music", "ambiance": "relax",
+    "kids": "kids",
+    "home & food": "cooking", "food & travel": "cooking",
+    "lifestyle": "lifestyle", "lifestyle & pop culture": "lifestyle",
 }
+# Samsung groups we never carry (devotional per curation, Latino = Spanish).
+SAMSUNG_EXCLUDE_GROUPS = {"devotional", "latino"}
 
 
 def norm_name(s: str) -> str:
@@ -201,11 +218,14 @@ def fast_candidates(existing_names: set[str], refresh: bool = False) -> list[dic
             elif any(k in low for k in KOREAN_KW):
                 bucket, group = "eng_foreign", "Korean"
             elif reg == "in":
-                if "regional" in grp_raw or any(k in low for k in REGIONAL_EXCLUDE_KW):
+                if (grp_raw in SAMSUNG_EXCLUDE_GROUPS or "regional" in grp_raw
+                        or any(k in low for k in REGIONAL_EXCLUDE_KW)):
                     continue
                 bucket = "hindi"
                 group = f"Hindi - {theme or (cat.capitalize() if cat else 'General')}"
             else:  # intl -> English foreign, on-target categories only
+                if grp_raw in SAMSUNG_EXCLUDE_GROUPS:
+                    continue
                 if not (theme or (cat in FOREIGN_CATS)):
                     continue
                 bucket = "eng_foreign"
@@ -221,6 +241,87 @@ def fast_candidates(existing_names: set[str], refresh: bool = False) -> list[dic
                 "streams": [{"url": SAMSUNG_STREAM.format(id=cid),
                              "quality": None, "feed": None}],
             })
+    return out
+
+
+# The Roku Channel (US FAST). Same matthuisman backend + jmp2 redirector, but the
+# metadata carries no category, so we label by name (guess_cat/theme) and only
+# drop devotional-by-name entries. Streams resolve to Roku's own CDN (no token).
+ROKU_CHANNELS = "https://i.mjh.nz/Roku/.channels.json.gz"
+ROKU_STREAM = "https://jmp2.uk/rok-{id}.m3u8"
+ROKU_DEVOTIONAL_KW = ("faith", "church", "gospel", "daystar", "ewtn", "bible",
+                      "word network", "gaither", "trinity broadcast", " tbn",
+                      "prayer", "ministries", "catholic", "christian", "hillsong")
+# Name-keyword -> category label (Roku has no category field).
+NAME_CAT = (
+    (("news", "cnn", "fox news", "abc news", "cbs news", "nbc news", "msnbc",
+      "bloomberg", "weather", "newsmax", "cheddar"), "news"),
+    (("movie", "cinema", "films", "flix", "grindhouse"), "movies"),
+    (("sport", "nfl", "nba", "mlb", "nhl", "soccer", "golf", "poker", "wwe",
+      "fight", "racing", "outdoor"), "sports"),
+    (("kids", "cartoon", "toon", "baby", "kid ", "pbs kids", "nick"), "kids"),
+    (("music", "mtv", "vevo", "radio", "beats", "hits", "classical"), "music"),
+    (("comedy", "funny", "laugh"), "comedy"),
+    (("food", "cook", "kitchen", "recipe"), "cooking"),
+    (("travel", "explore"), "travel"),
+)
+
+
+def guess_cat(name: str) -> str | None:
+    low = name.lower()
+    for kws, cat in NAME_CAT:
+        if any(k in low for k in kws):
+            return cat
+    return None
+
+
+def roku_candidates(existing_names: set[str], refresh: bool = False) -> list[dict]:
+    """The Roku Channel (US) FAST channels not already covered, shaped like rows."""
+    import gzip
+    cache = os.path.join(DATA, "roku.channels.json.gz")
+    try:
+        if refresh and os.path.exists(cache):
+            os.remove(cache)
+        if not os.path.exists(cache):
+            os.makedirs(DATA, exist_ok=True)
+            req = urllib.request.Request(ROKU_CHANNELS,
+                                         headers={"User-Agent": DEFAULT_UA})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                open(cache, "wb").write(r.read())
+        with gzip.open(cache, "rb") as fh:
+            data = json.load(fh)
+    except Exception as e:
+        print(f"  ! Roku source unavailable: {e}", file=sys.stderr)
+        return []
+
+    seen = set(existing_names)
+    out = []
+    for cid, c in data.get("channels", {}).items():
+        name = (c.get("name") or "").strip()
+        nn = norm_name(name)
+        if not name or not nn or nn in seen:
+            continue
+        low = name.lower()
+        if any(k in low for k in ROKU_DEVOTIONAL_KW):
+            continue
+        if any(k in low for k in ANIME_KW):
+            bucket, group = "anime", "Anime"
+        elif any(k in low for k in KOREAN_KW):
+            bucket, group = "eng_foreign", "Korean"
+        else:
+            bucket = "eng_foreign"
+            cat = guess_cat(name)
+            group = f"English (Intl) - {theme_of(name, set()) or (cat.capitalize() if cat else 'General')}"
+        seen.add(nn)
+        out.append({
+            "id": cid,
+            "name": name,
+            "bucket": bucket,
+            "group": group,
+            "logo": c.get("logo", ""),
+            "streams": [{"url": ROKU_STREAM.format(id=cid),
+                         "quality": None, "feed": None}],
+        })
     return out
 
 
@@ -245,8 +346,10 @@ def quality_score(q: str | None) -> int:
 
 
 def primary_group(prefix: str, cats: set[str]) -> str:
-    for c in ("movies", "sports", "news", "entertainment", "kids",
-              "music", "documentary", "series"):
+    for c in ("movies", "sports", "news", "kids", "music", "comedy",
+              "documentary", "science", "travel", "cooking", "animation",
+              "family", "lifestyle", "culture", "education", "classic",
+              "auto", "outdoor", "business", "series", "entertainment"):
         if c in cats:
             return f"{prefix} - {c.capitalize()}"
     return f"{prefix} - General"
@@ -298,6 +401,9 @@ def build_candidates(db: dict) -> list[dict]:
             continue
         langs = ch_langs.get(cid, set())
         cats = set(c.get("categories") or [])
+        # devotional/adult/teleshopping are never carried (per curation).
+        if cats & EXCLUDE_CATS:
+            continue
         country = c.get("country")
         mfl = main_feed_langs.get(cid, [])
         primary = mfl[0] if mfl else None
@@ -316,13 +422,8 @@ def build_candidates(db: dict) -> list[dict]:
                      else primary_group("English (India)", cats))
         elif "eng" in langs and country != "IN" and ((cats & FOREIGN_CATS) or theme):
             bucket = "eng_foreign"
-            if theme:
-                group = f"English (Intl) - {theme}"
-            else:
-                cat = next(c2 for c2 in ("movies", "sports", "news",
-                                         "documentary", "entertainment")
-                           if c2 in cats)
-                group = f"English (Intl) - {cat.capitalize()}"
+            group = (f"English (Intl) - {theme}" if theme
+                     else primary_group("English (Intl)", cats))
         else:
             continue
 
@@ -557,6 +658,10 @@ def main():
         fast = fast_candidates(existing, refresh=args.refresh)
         print(f"FAST (Samsung TV Plus) candidates: {len(fast)}", file=sys.stderr)
         cands += fast
+        existing = {norm_name(c["name"]) for c in cands}
+        roku = roku_candidates(existing, refresh=args.refresh)
+        print(f"FAST (Roku) candidates: {len(roku)}", file=sys.stderr)
+        cands += roku
 
     rows = []
     if args.no_validate:

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Append Samsung TV Plus EPG (from i.mjh.nz) for FAST channels in the playlist.
+"""Append Samsung TV Plus + Roku EPG (from i.mjh.nz) for FAST channels.
 
 generate_playlist.py adds Samsung TV Plus channels whose tvg-id is the Samsung
 channel id (e.g. "IN38000072R"). Their guide isn't produced by the iptv-org grab,
@@ -23,19 +23,19 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 GUIDE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "guide.xml")
 CURATED = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "curated_ids.json")
 
-# Same regions generate_playlist.py pulls Samsung channels from.
-REGIONS = ("in", "us", "gb", "ca")
-URL = "https://i.mjh.nz/SamsungTVPlus/{region}.xml.gz"
+# Same regions generate_playlist.py pulls Samsung channels from, plus Roku (all).
+SOURCES = [("samsung " + r, "https://i.mjh.nz/SamsungTVPlus/%s.xml.gz" % r)
+           for r in ("in", "us", "gb", "ca")]
+SOURCES.append(("roku", "https://i.mjh.nz/Roku/all.xml.gz"))
 
 
-def fetch(region: str) -> bytes | None:
+def fetch(url: str) -> bytes | None:
     try:
-        req = urllib.request.Request(URL.format(region=region),
-                                     headers={"User-Agent": "Mozilla/5.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=90) as r:
             return gzip.decompress(r.read())
     except Exception as e:
-        print(f"  ! samsung {region}: {e}", file=sys.stderr)
+        print(f"  ! {url}: {e}", file=sys.stderr)
         return None
 
 
@@ -48,8 +48,8 @@ def main():
 
     added_ch = prog = 0
     got: set[str] = set()
-    for reg in REGIONS:
-        data = fetch(reg)
+    for label, url in SOURCES:
+        data = fetch(url)
         if not data:
             continue
         src = ET.parse(io.BytesIO(data)).getroot()
@@ -65,7 +65,7 @@ def main():
             if pr.get("channel") in ids:
                 root.append(pr)
                 prog += 1
-        print(f"  samsung {reg}: +{len(ids)} channels", file=sys.stderr)
+        print(f"  {label}: +{len(ids)} channels", file=sys.stderr)
 
     ET.indent(tree, space="  ")
     tree.write(GUIDE, encoding="utf-8", xml_declaration=True)

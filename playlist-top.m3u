@@ -1,251 +1,267 @@
 #EXTM3U x-tvg-url="https://raw.githubusercontent.com/wizakorhd/iptv/main/guide.xml.gz"
-#EXTINF:-1 tvg-id="HistoryTV18.in" tvg-chno="2" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_HISTORY_TV18/images/LOGO_HD/image.png" group-title="Hindi - Documentary (5)",History TV18 ᶠᴴᴰ
+#EXTINF:-1 tvg-id="CNBCAwaaz.in" tvg-chno="1" tvg-logo="https://www.cnbctv18.com/static/images/cnbc-new-logo/cnbc-awaaz-livetv.svg" group-title="Hindi - Business (2)",CNBC Awaaz ᶠᴴᴰ
+https://n18syndication.akamaized.net/bpk-tv/CNBC_Awaaz_NW18_MOB/output01/master.m3u8
+#EXTINF:-1 tvg-id="FoodFood.in" tvg-chno="5" tvg-logo="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Food%20Food.png" group-title="Hindi - Cooking (1)",Food Food
+https://mumt03.tangotv.in/Dsly5z3HFOODFOOD/index.m3u8
+#EXTINF:-1 tvg-id="HistoryTV18.in" tvg-chno="13" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_HISTORY_TV18/images/LOGO_HD/image.png" group-title="Hindi - Documentary (14)",History TV18 ᶠᴴᴰ
 https://amg01448-amg01448c16-samsung-in-3495.playouts.now.amagi.tv/playlist/amg01448-samsungindia-historychannelenglish-samsungin/playlist.m3u8
-#EXTINF:-1 tvg-id="IndiaTVAapKiAdalat.in" tvg-chno="3" tvg-logo="https://play-lh.googleusercontent.com/2IlBX3IQHna8g4g-56vwGWb14K38spcviIh3i7uJCJ32ydfhcKZdOsacgijPkPeerEA" group-title="Hindi - Documentary (5)",India TV Aap Ki Adalat ᶠᴴᴰ
+#EXTINF:-1 tvg-id="IndiaTVAapKiAdalat.in" tvg-chno="14" tvg-logo="https://play-lh.googleusercontent.com/2IlBX3IQHna8g4g-56vwGWb14K38spcviIh3i7uJCJ32ydfhcKZdOsacgijPkPeerEA" group-title="Hindi - Documentary (14)",India TV Aap Ki Adalat ᶠᴴᴰ
 https://amg01550-amg01550c6-samsung-in-4679.playouts.now.amagi.tv/playlist/amg01550-indiatvfast-indiatvakasamsung-samsungin/playlist.m3u8
-#EXTINF:-1 tvg-id="Travelxp.in" tvg-chno="5" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_TRAVELXP/images/LOGO_HD/image.png" group-title="Hindi - Documentary (5)",Travelxp 4K
+#EXTINF:-1 tvg-id="Travelxp.in" tvg-chno="17" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_TRAVELXP/images/LOGO_HD/image.png" group-title="Hindi - Documentary (14)",Travelxp 4K
 https://deltatesttatasky.akamaized.net/out/i/968284.m3u8
-#EXTINF:-1 tvg-id="Colors.in" tvg-chno="13" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_COLORS/images/LOGO_HD/image.png" group-title="Hindi - Entertainment (36)",Colors
+#EXTINF:-1 tvg-id="Colors.in" tvg-chno="31" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_COLORS/images/LOGO_HD/image.png" group-title="Hindi - Entertainment (31)",Colors
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 http://59.103.38.46:8000/play/a00b/index.m3u8
-#EXTINF:-1 tvg-id="DDNational.in" tvg-chno="18" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_DD_NATIONAL/images/LOGO_HD/image.png" group-title="Hindi - Entertainment (36)",DD National
+#EXTINF:-1 tvg-id="DDNational.in" tvg-chno="36" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_DD_NATIONAL/images/LOGO_HD/image.png" group-title="Hindi - Entertainment (31)",DD National
 https://cdn-1.pishow.tv/live/11/master.m3u8
-#EXTINF:-1 tvg-id="SonyEntertainmentTelevision.in" tvg-chno="34" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SET/images/LOGO_HD/image.png" group-title="Hindi - Entertainment (36)",Sony Entertainment Television ᶠᴴᴰ
+#EXTINF:-1 tvg-id="SonyEntertainmentTelevision.in" tvg-chno="49" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SET/images/LOGO_HD/image.png" group-title="Hindi - Entertainment (31)",Sony Entertainment Television ᶠᴴᴰ
 http://38.96.178.205/SONYHD/index.m3u8
-#EXTINF:-1 tvg-id="INBA5100021WP" tvg-chno="56" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/INBA5100021WP_20260623T011902SQUARE.png" group-title="Hindi - General (131)",Bloomberg TV
-https://jmp2.uk/stvp-INBA5100021WP
-#EXTINF:-1 tvg-id="CNBCAwaaz.in" tvg-chno="60" tvg-logo="https://www.cnbctv18.com/static/images/cnbc-new-logo/cnbc-awaaz-livetv.svg" group-title="Hindi - General (131)",CNBC Awaaz ᶠᴴᴰ
-https://n18syndication.akamaized.net/bpk-tv/CNBC_Awaaz_NW18_MOB/output01/master.m3u8
-#EXTINF:-1 tvg-id="INBD1300009QZ" tvg-chno="61" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/INBD1300009QZ_20260623T014648SQUARE.png" group-title="Hindi - General (131)",CNN News18
-https://jmp2.uk/stvp-INBD1300009QZ
-#EXTINF:-1 tvg-id="FoodFood.in" tvg-chno="86" tvg-logo="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Food%20Food.png" group-title="Hindi - General (131)",Food Food
-https://mumt03.tangotv.in/Dsly5z3HFOODFOOD/index.m3u8
-#EXTINF:-1 tvg-id="IN4000001LP" tvg-chno="102" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN4000001LP_20260623T015115SQUARE.png" group-title="Hindi - General (131)",India TV News
-https://jmp2.uk/stvp-IN4000001LP
-#EXTINF:-1 tvg-id="IN2600021ED" tvg-chno="103" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN2600021ED_20260623T015129SQUARE.png" group-title="Hindi - General (131)",India TV Yoga
+#EXTINF:-1 tvg-id="IN2600021ED" tvg-chno="106" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN2600021ED_20260623T015129SQUARE.png" group-title="Hindi - Lifestyle (14)",India TV Yoga
 https://jmp2.uk/stvp-IN2600021ED
-#EXTINF:-1 tvg-id="SonyMax1.in" tvg-chno="199" tvg-logo="https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/general_content/PGT_1822_2.png" group-title="Hindi - Movies (37)",Sony Max 1 ᴴᴰ
+#EXTINF:-1 tvg-id="SonyMax1.in" tvg-chno="137" tvg-logo="https://brand-websites-prod.s3.ap-south-1.amazonaws.com/sonypicturesnetworksindia/general_content/PGT_1822_2.png" group-title="Hindi - Movies (37)",Sony Max 1 ᴴᴰ
 http://103.159.180.34:5001/live/3418.m3u8
-#EXTINF:-1 tvg-id="StarGold.in" tvg-chno="201" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_GOLD/images/LOGO_HD/image.png" group-title="Hindi - Movies (37)",Star Gold ᶠᴴᴰ
+#EXTINF:-1 tvg-id="StarGold.in" tvg-chno="139" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_GOLD/images/LOGO_HD/image.png" group-title="Hindi - Movies (37)",Star Gold ᶠᴴᴰ
 http://103.253.18.58:8000/play/a00q
-#EXTINF:-1 tvg-id="StarGold2.in" tvg-chno="202" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_GOLD_2/images/LOGO_HD/image.png" group-title="Hindi - Movies (37)",Star Gold 2
+#EXTINF:-1 tvg-id="StarGold2.in" tvg-chno="140" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_GOLD_2/images/LOGO_HD/image.png" group-title="Hindi - Movies (37)",Star Gold 2
 http://103.253.18.58:8000/play/a00r
-#EXTINF:-1 tvg-id="StarGoldRomance.in" tvg-chno="203" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_GOLD_ROMANCE/images/LOGO_HD/image.png" group-title="Hindi - Movies (37)",Star Gold Romance
+#EXTINF:-1 tvg-id="StarGoldRomance.in" tvg-chno="141" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_GOLD_ROMANCE/images/LOGO_HD/image.png" group-title="Hindi - Movies (37)",Star Gold Romance
 http://103.253.18.58:8000/play/a017
-#EXTINF:-1 tvg-id="StarGoldSelect.in" tvg-chno="204" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_GOLD_SELECT/images/LOGO_HD/image.png" group-title="Hindi - Movies (37)",Star Gold Select ᶠᴴᴰ
+#EXTINF:-1 tvg-id="StarGoldSelect.in" tvg-chno="142" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_GOLD_SELECT/images/LOGO_HD/image.png" group-title="Hindi - Movies (37)",Star Gold Select ᶠᴴᴰ
 http://103.253.18.58:8000/play/a02u
-#EXTINF:-1 tvg-id="ZeeCinema.in" tvg-chno="209" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ZEE_CINEMA_HD/images/LOGO_HD/LOGO_HD_image.png" group-title="Hindi - Movies (37)",Zee Cinema
+#EXTINF:-1 tvg-id="ZeeCinema.in" tvg-chno="147" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ZEE_CINEMA_HD/images/LOGO_HD/LOGO_HD_image.png" group-title="Hindi - Movies (37)",Zee Cinema
 https://d1g8wgjurz8via.cloudfront.net/bpk-tv/NGCHD/default/NGCHD.m3u8
-#EXTINF:-1 tvg-id="AajTak.in" tvg-chno="224" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_AAJ_TAK/images/LOGO_HD/image.png" group-title="Hindi - News (60)",Aaj Tak ᴴᴰ
+#EXTINF:-1 tvg-id="AajTak.in" tvg-chno="169" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_AAJ_TAK/images/LOGO_HD/image.png" group-title="Hindi - News (68)",Aaj Tak ᴴᴰ
 https://d1rc86nwwc9fag.cloudfront.net/vglive-sk-791258/master.m3u8
-#EXTINF:-1 tvg-id="ABPNews.in" tvg-chno="226" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ABP_NEWS/images/LOGO_HD/image.png" group-title="Hindi - News (60)",ABP News ᶠᴴᴰ
+#EXTINF:-1 tvg-id="ABPNews.in" tvg-chno="171" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ABP_NEWS/images/LOGO_HD/image.png" group-title="Hindi - News (68)",ABP News ᶠᴴᴰ
 https://d1rc86nwwc9fag.cloudfront.net/vglive-sk-472500/abpnews/master.m3u8
-#EXTINF:-1 tvg-id="AwaazIndiaTV.in" tvg-chno="230" tvg-logo="https://i.ytimg.com/vi/8BzmlfZm2xU/hqdefault.jpg" group-title="Hindi - News (60)",Awaaz India TV ᴴᴰ
+#EXTINF:-1 tvg-id="AwaazIndiaTV.in" tvg-chno="175" tvg-logo="https://i.ytimg.com/vi/8BzmlfZm2xU/hqdefault.jpg" group-title="Hindi - News (68)",Awaaz India TV ᴴᴰ
 https://awaazindia.livebox.co.in/AwaazIndaTVhls/Live.m3u8
-#EXTINF:-1 tvg-id="DDNews.in" tvg-chno="236" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_DD_NEWS_HD/images/LOGO_HD/LOGO_HD_image.png" group-title="Hindi - News (60)",DD News
-https://cdn-2.pishow.tv/live/12/master.m3u8
-#EXTINF:-1 tvg-id="IndiaTV.in" tvg-chno="242" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_INDIA_TV/images/LOGO_HD/image.png" group-title="Hindi - News (60)",India TV ᴴᴰ
+#EXTINF:-1 tvg-id="INBD1300009QZ" tvg-chno="181" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/INBD1300009QZ_20260623T014648SQUARE.png" group-title="Hindi - News (68)",CNN News18
+https://jmp2.uk/stvp-INBD1300009QZ
+#EXTINF:-1 tvg-id="DDNews.in" tvg-chno="182" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_DD_NEWS_HD/images/LOGO_HD/LOGO_HD_image.png" group-title="Hindi - News (68)",DD News ᶠᴴᴰ
+https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/0811cd8c37ca4c409d5385a6cd2fa18b/index.m3u8
+#EXTINF:-1 tvg-id="IndiaTV.in" tvg-chno="189" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_INDIA_TV/images/LOGO_HD/image.png" group-title="Hindi - News (68)",India TV ᴴᴰ
 https://pl-indiatvnews.akamaized.net/out/v1/db79179b608641ceaa5a4d0dd0dca8da/index.m3u8
-#EXTINF:-1 tvg-id="IndiaTVSpeedNews.in" tvg-chno="243" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_INDIA_TV_SPEED_NEWS/images/LOGO_HD/image.png" group-title="Hindi - News (60)",India TV Speed News ᶠᴴᴰ
+#EXTINF:-1 tvg-id="IN4000001LP" tvg-chno="190" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/IN4000001LP_20260623T015115SQUARE.png" group-title="Hindi - News (68)",India TV News
+https://jmp2.uk/stvp-IN4000001LP
+#EXTINF:-1 tvg-id="IndiaTVSpeedNews.in" tvg-chno="191" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_INDIA_TV_SPEED_NEWS/images/LOGO_HD/image.png" group-title="Hindi - News (68)",India TV Speed News ᶠᴴᴰ
 https://cc-lyf4c0hwzg5dd.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-lyf4c0hwzg5dd/v1/vglive-sk-479089/main.m3u8
-#EXTINF:-1 tvg-id="NDTVIndia.in" tvg-chno="248" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NDTV_INDIA/images/LOGO_HD/image.png" group-title="Hindi - News (60)",NDTV India
+#EXTINF:-1 tvg-id="NDTVIndia.in" tvg-chno="196" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NDTV_INDIA/images/LOGO_HD/image.png" group-title="Hindi - News (68)",NDTV India
 https://ndtvindiaelemarchana.akamaized.net/hls/live/2003679/ndtvindia/master.m3u8
-#EXTINF:-1 tvg-id="RepublicBharat.in" tvg-chno="264" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_R_BHARAT/images/LOGO_HD/image.png" group-title="Hindi - News (60)",Republic Bharat ᶠᴴᴰ
+#EXTINF:-1 tvg-id="RepublicBharat.in" tvg-chno="217" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_R_BHARAT/images/LOGO_HD/image.png" group-title="Hindi - News (68)",Republic Bharat ᶠᴴᴰ
 https://vg-republictvlive.akamaized.net/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-275673/main.m3u8
-#EXTINF:-1 tvg-id="StarBharat.in" tvg-chno="268" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_BHARAT/images/LOGO_HD/image.png" group-title="Hindi - News (60)",Star Bharat
+#EXTINF:-1 tvg-id="StarBharat.in" tvg-chno="221" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_BHARAT/images/LOGO_HD/image.png" group-title="Hindi - News (68)",Star Bharat
 http://103.253.18.58:8000/play/a00u
-#EXTINF:-1 tvg-id="TimesNow.in" tvg-chno="272" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/TIMESPLAY/LIVECHANNEL/6904ba3e39f3b175376a61dd/images/LOGO_HD/LOGO_HD_fJ-zWhRuW_TimesNow1_1.png" group-title="Hindi - News (60)",Times Now ᴴᴰ
+#EXTINF:-1 tvg-id="TimesNow.in" tvg-chno="225" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/TIMESPLAY/LIVECHANNEL/6904ba3e39f3b175376a61dd/images/LOGO_HD/LOGO_HD_fJ-zWhRuW_TimesNow1_1.png" group-title="Hindi - News (68)",Times Now ᴴᴰ
 #EXTVLCOPT:http-referrer=https://www.timesnownews.com/
 https://dztlhgid9me95.cloudfront.net/live-tv/Vidgyor/timesnow/timesnow_master.m3u8
-#EXTINF:-1 tvg-id="TimesNowNavbharat.in" tvg-chno="273" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/TIMESPLAY/LIVECHANNEL/6904ba4339f3b175376a61e0/images/LOGO_HD/LOGO_HD_asIWhlk80_TimesNowBharat1_1.png" group-title="Hindi - News (60)",Times Now Navbharat ᶠᴴᴰ
+#EXTINF:-1 tvg-id="TimesNowNavbharat.in" tvg-chno="226" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/TIMESPLAY/LIVECHANNEL/6904ba4339f3b175376a61e0/images/LOGO_HD/LOGO_HD_asIWhlk80_TimesNowBharat1_1.png" group-title="Hindi - News (68)",Times Now Navbharat ᶠᴴᴰ
 #EXTVLCOPT:http-referrer=https://www.timesnownews.com
 https://dztlhgid9me95.cloudfront.net/live-tv/Vidgyor/navbharat/navbharat_master.m3u8
-#EXTINF:-1 tvg-id="StarSports1Hindi.in" tvg-chno="290" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_1_HINDI/images/LOGO_HD/image.png" group-title="Hindi - Sports (12)",Star Sports 1 Hindi
+#EXTINF:-1 tvg-id="StarSports1Hindi.in" tvg-chno="242" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_1_HINDI/images/LOGO_HD/image.png" group-title="Hindi - Sports (11)",Star Sports 1 Hindi
 http://103.253.18.58:8000/play/a03o
-#EXTINF:-1 tvg-id="StarSports2.in" tvg-chno="291" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_2/images/LOGO_HD/image.png" group-title="Hindi - Sports (12)",Star Sports 2 ᴴᴰ
+#EXTINF:-1 tvg-id="StarSports2.in" tvg-chno="243" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_2/images/LOGO_HD/image.png" group-title="Hindi - Sports (11)",Star Sports 2 ᴴᴰ
 http://tvsen5.aynascope.net/cXPB2LKkErN9/index.m3u8
-#EXTINF:-1 tvg-id="CNBCTV18.in" tvg-chno="299" tvg-logo="https://www.cnbctv18.com/static/images/cnbc-new-logo/cnbc-new-livetv.svg" group-title="English (India) - General (16)",CNBC TV18 ᶠᴴᴰ
+#EXTINF:-1 tvg-id="CNBCTV18.in" tvg-chno="247" tvg-logo="https://www.cnbctv18.com/static/images/cnbc-new-logo/cnbc-new-livetv.svg" group-title="English (India) - Business (5)",CNBC TV18 ᶠᴴᴰ
 https://n18syndication.akamaized.net/bpk-tv/CNBC_TV18_NW18_MOB/output01/index.m3u8
-#EXTINF:-1 tvg-id="CNBCTV18PrimeHD.in" tvg-chno="300" tvg-logo="https://www.cnbctv18.com/static/images/cnbc-new-logo/cnbc-prime-livetv.svg" group-title="English (India) - General (16)",CNBC TV18 Prime HD
+#EXTINF:-1 tvg-id="CNBCTV18PrimeHD.in" tvg-chno="248" tvg-logo="https://www.cnbctv18.com/static/images/cnbc-new-logo/cnbc-prime-livetv.svg" group-title="English (India) - Business (5)",CNBC TV18 Prime HD
 https://n18syndication.akamaized.net/bpk-tv/CNBC_Tv18_Prime_HD_NW18_MOB/output01/index.m3u8
-#EXTINF:-1 tvg-id="IndiaToday.in" tvg-chno="322" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_INDIA_TODAY/images/LOGO_HD/image.png" group-title="English (India) - News (16)",India Today ᴴᴰ
+#EXTINF:-1 tvg-id="IndiaToday.in" tvg-chno="268" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_INDIA_TODAY/images/LOGO_HD/image.png" group-title="English (India) - News (15)",India Today ᴴᴰ
 https://amg00644-amg00644c1-ondemandkorea-amesia-10266.playouts.now.amagi.tv/playlist/amg00644-tvtodaynetworkltdfast-indiatoday-ondemandkoreaamesia/playlist.m3u8
-#EXTINF:-1 tvg-id="NDTV24x7.in" tvg-chno="324" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NDTV_24X7/images/LOGO_HD/image.png" group-title="English (India) - News (16)",NDTV 24x7 ᴴᴰ
+#EXTINF:-1 tvg-id="NDTV24x7.in" tvg-chno="270" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NDTV_24X7/images/LOGO_HD/image.png" group-title="English (India) - News (15)",NDTV 24x7 ᴴᴰ
 https://raw.githubusercontent.com/amazeyourself/adaptive-streams/refs/heads/main/streams/in/YuppTV/NDTV24x7.m3u8
-#EXTINF:-1 tvg-id="RepublicTV.in" tvg-chno="328" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_REPUBLIC_TV/images/LOGO_HD/image.png" group-title="English (India) - News (16)",Republic TV ᶠᴴᴰ
+#EXTINF:-1 tvg-id="RepublicTV.in" tvg-chno="274" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_REPUBLIC_TV/images/LOGO_HD/image.png" group-title="English (India) - News (15)",Republic TV ᶠᴴᴰ
 https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/2e31d831f08640ff92f65003bdc89991/index.m3u8
-#EXTINF:-1 tvg-id="WION.in" tvg-chno="331" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/ZEEDIGITAL/LIVECHANNEL/67ed357bd88a5f7a856b6fbb/images/LOGO/LOGO_14l9kmNae_WION-(2).png" group-title="English (India) - News (16)",WION ᶠᴴᴰ
+#EXTINF:-1 tvg-id="WION.in" tvg-chno="277" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/ZEEDIGITAL/LIVECHANNEL/67ed357bd88a5f7a856b6fbb/images/LOGO/LOGO_14l9kmNae_WION-(2).png" group-title="English (India) - News (15)",WION ᶠᴴᴰ
 https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
-#EXTINF:-1 tvg-id="StarSports1.in" tvg-chno="332" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_1/images/LOGO_HD/image.png" group-title="English (India) - Sports (2)",Star Sports 1 ᶠᴴᴰ
+#EXTINF:-1 tvg-id="StarSports1.in" tvg-chno="278" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_1/images/LOGO_HD/image.png" group-title="English (India) - Sports (2)",Star Sports 1 ᶠᴴᴰ
 http://103.253.18.58:8000/play/a00m
-#EXTINF:-1 tvg-id="BBCEarth.uk" tvg-chno="346" tvg-logo="https://i.imgur.com/nGSsUd4.png" group-title="English (Intl) - Documentary (169)",BBC Earth ᶠᴴᴰ
+#EXTINF:-1 tvg-id="BloombergTV.us" tvg-chno="299" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Bloomberg_TV.png" group-title="English (Intl) - Business (15)",Bloomberg TV ᶠᴴᴰ
+https://gpuserver3.tier1streams.com/BLOOMBERG/index.m3u8
+#EXTINF:-1 tvg-id="CGTNGlobalBiz.cn" tvg-chno="301" tvg-logo="https://i.imgur.com/qBmomnF.png" group-title="English (Intl) - Business (15)",CGTN Global Biz ᶠᴴᴰ
+https://amg01314-amg01314c6-distrotv-us-10220.playouts.now.amagi.tv/playlist/amg01314-cgtn-cgtnglobalbiz-distrotvus/playlist.m3u8
+#EXTINF:-1 tvg-id="CNBC.us" tvg-chno="303" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/CNBC_2025.svg/960px-CNBC_2025.svg.png" group-title="English (Intl) - Business (15)",CNBC ᶠᴴᴰ
+https://gpuserver3.tier1streams.com/CNBC/index.m3u8
+#EXTINF:-1 tvg-id="CNBCWorld.us" tvg-chno="304" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/CNBC_World_2025.svg/960px-CNBC_World_2025.svg.png" group-title="English (Intl) - Business (15)",CNBC World
+https://gpuserver3.tier1streams.com/CNBC_WORLD/index.m3u8
+#EXTINF:-1 tvg-id="BBCEarth.uk" tvg-chno="501" tvg-logo="https://i.imgur.com/nGSsUd4.png" group-title="English (Intl) - Documentary (164)",BBC Earth ᶠᴴᴰ
 https://amg00793-amg00793c6-firetv-us-4067.playouts.now.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="BloombergOriginals.us" tvg-chno="352" tvg-logo="https://provider-static.plex.tv/epg/cms/production/a69341a2-fce3-4a05-af2e-469540b25d73/BBOriginals_2023_Plex_Stacked_WHTrdx.png" group-title="English (Intl) - Documentary (169)",Bloomberg Originals ᶠᴴᴰ
+#EXTINF:-1 tvg-id="BloombergOriginals.us" tvg-chno="507" tvg-logo="https://provider-static.plex.tv/epg/cms/production/a69341a2-fce3-4a05-af2e-469540b25d73/BBOriginals_2023_Plex_Stacked_WHTrdx.png" group-title="English (Intl) - Documentary (164)",Bloomberg Originals ᶠᴴᴰ
 https://bloomberg.com/media-manifest/streams/qt.m3u8
-#EXTINF:-1 tvg-id="CGTNDocumentary.cn" tvg-chno="356" tvg-logo="https://i.imgur.com/JHv0WxM.png" group-title="English (Intl) - Documentary (169)",CGTN Documentary ᶠᴴᴰ
+#EXTINF:-1 tvg-id="CGTNDocumentary.cn" tvg-chno="511" tvg-logo="https://i.imgur.com/JHv0WxM.png" group-title="English (Intl) - Documentary (164)",CGTN Documentary ᶠᴴᴰ
 https://amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv/master.m3u8
-#EXTINF:-1 tvg-id="DiscoveryTurbo.us" tvg-chno="373" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Discovery_Turbo_2025.svg/1920px-Discovery_Turbo_2025.svg.png" group-title="English (Intl) - Documentary (169)",Discovery Turbo ᴴᴰ
+#EXTINF:-1 tvg-id="DiscoveryTurbo.us" tvg-chno="526" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Discovery_Turbo_2025.svg/1920px-Discovery_Turbo_2025.svg.png" group-title="English (Intl) - Documentary (164)",Discovery Turbo ᴴᴰ
 https://gpuserver3.tier1streams.com/MOTORTREND/index.m3u8
-#EXTINF:-1 tvg-id="LoveNature.ca" tvg-chno="412" tvg-logo="https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png" group-title="English (Intl) - Documentary (169)",Love Nature ᶠᴴᴰ
+#EXTINF:-1 tvg-id="LoveNature.ca" tvg-chno="562" tvg-logo="https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png" group-title="English (Intl) - Documentary (164)",Love Nature ᶠᴴᴰ
 https://aegis-cloudfront-1.tubi.video/6d6d0f24-8445-4b4c-bdf6-44f9e38beaa4/playlist.m3u8
-#EXTINF:-1 tvg-id="LoveNatureenEspanol.us" tvg-chno="413" tvg-logo="https://i.imgur.com/7uNdcWB.png" group-title="English (Intl) - Documentary (169)",Love Nature en Espanol ᶠᴴᴰ
+#EXTINF:-1 tvg-id="LoveNatureenEspanol.us" tvg-chno="563" tvg-logo="https://i.imgur.com/7uNdcWB.png" group-title="English (Intl) - Documentary (164)",Love Nature en Espanol ᶠᴴᴰ
 https://amg01515-amg01515c17-xumo-us-2489.playouts.now.amagi.tv/bamus-lovenaturespanish-roku/playlist.m3u8
-#EXTINF:-1 tvg-id="NationalGeographic.ro" tvg-chno="423" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="English (Intl) - Documentary (169)",National Geographic
+#EXTINF:-1 tvg-id="03a419fc4dff59b39b176d9f76b09e38" tvg-chno="564" tvg-logo="https://images.sr.roku.com/idType/roku-trc/context/trc/id/03a419fc4dff59b39b176d9f76b09e38/https%3A%2F%2Fimage.roku.com%2Fbh-uploads%2Fproduction%2FinfoHUDLogo%2F1659563412501_LoveNature_260x147_HUDenEspanol.png" group-title="English (Intl) - Documentary (164)",Love Nature Spanish
+https://jmp2.uk/rok-03a419fc4dff59b39b176d9f76b09e38.m3u8
+#EXTINF:-1 tvg-id="NationalGeographic.ro" tvg-chno="572" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="English (Intl) - Documentary (164)",National Geographic
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 https://aes.m3u8simplu.workers.dev/natgeo/index.m3u8
-#EXTINF:-1 tvg-id="NationalGeographic.bg" tvg-chno="424" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="English (Intl) - Documentary (169)",National Geographic
+#EXTINF:-1 tvg-id="NationalGeographic.bg" tvg-chno="573" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="English (Intl) - Documentary (164)",National Geographic
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.3
 http://213.91.179.28:8000/play/a0ct
-#EXTINF:-1 tvg-id="NationalGeographic.gr" tvg-chno="425" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="English (Intl) - Documentary (169)",National Geographic ᴴᴰ
+#EXTINF:-1 tvg-id="NationalGeographic.gr" tvg-chno="574" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="English (Intl) - Documentary (164)",National Geographic ᴴᴰ
 http://185.102.171.218/NatGeo/index.m3u8
-#EXTINF:-1 tvg-id="NationalGeographic.us" tvg-chno="426" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="English (Intl) - Documentary (169)",National Geographic ᴴᴰ
+#EXTINF:-1 tvg-id="NationalGeographic.us" tvg-chno="575" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="English (Intl) - Documentary (164)",National Geographic ᴴᴰ
 http://40.160.24.53/NAT_GEO/index.m3u8
-#EXTINF:-1 tvg-id="NationalGeographicWild.us" tvg-chno="427" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/National_Geographic_Wild_logo.svg/960px-National_Geographic_Wild_logo.svg.png" group-title="English (Intl) - Documentary (169)",National Geographic Wild ᴴᴰ
+#EXTINF:-1 tvg-id="NationalGeographicWild.us" tvg-chno="576" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/National_Geographic_Wild_logo.svg/960px-National_Geographic_Wild_logo.svg.png" group-title="English (Intl) - Documentary (164)",National Geographic Wild ᴴᴰ
 http://40.160.24.53/NAT_GEO_WILD/index.m3u8
-#EXTINF:-1 tvg-id="PBSAntiquesRoadshow.us" tvg-chno="435" tvg-logo="https://i.imgur.com/U9CYaok.png" group-title="English (Intl) - Documentary (169)",PBS Antiques Roadshow ᶠᴴᴰ
+#EXTINF:-1 tvg-id="PBSAntiquesRoadshow.us" tvg-chno="584" tvg-logo="https://i.imgur.com/U9CYaok.png" group-title="English (Intl) - Documentary (164)",PBS Antiques Roadshow ᶠᴴᴰ
 https://amg02333-pbs-amg02333c8-firetv-us-4239.playouts.now.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="USBB800001O7" tvg-chno="436" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/USBB800001O7_20250325T020244SQUARE.png" group-title="English (Intl) - Documentary (169)",PBS Digital Studios
+#EXTINF:-1 tvg-id="USBB800001O7" tvg-chno="585" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/USBB800001O7_20250325T020244SQUARE.png" group-title="English (Intl) - Documentary (164)",PBS Digital Studios
 https://jmp2.uk/stvp-USBB800001O7
-#EXTINF:-1 tvg-id="PBSKids.us" tvg-chno="437" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (169)",PBS Kids ᴴᴰ
+#EXTINF:-1 tvg-id="PBSKids.us" tvg-chno="586" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (164)",PBS Kids ᴴᴰ
 https://livestream.pbskids.org/out/v1/14507d931bbe48a69287e4850e53443c/est.m3u8
-#EXTINF:-1 tvg-id="PBSKids247.us" tvg-chno="438" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (169)",PBS Kids 24/7 ᶠᴴᴰ
+#EXTINF:-1 tvg-id="PBSKids247.us" tvg-chno="587" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (164)",PBS Kids 24/7 ᶠᴴᴰ
 http://206.212.244.63/672/index.m3u8
-#EXTINF:-1 tvg-id="PBSKidsAlaska.us" tvg-chno="439" tvg-logo="https://i.imgur.com/ambc9le.png" group-title="English (Intl) - Documentary (169)",PBS Kids Alaska ᶠᴴᴰ
+#EXTINF:-1 tvg-id="PBSKidsAlaska.us" tvg-chno="588" tvg-logo="https://i.imgur.com/ambc9le.png" group-title="English (Intl) - Documentary (164)",PBS Kids Alaska ᶠᴴᴰ
 https://livestream.pbskids.org/out/v1/94b88ad58fc14f84a9382341f1c00b82/akst.m3u8
-#EXTINF:-1 tvg-id="PBSKidsEasternCentral.us" tvg-chno="440" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (169)",PBS Kids Eastern/Central ᴴᴰ
+#EXTINF:-1 tvg-id="PBSKidsEasternCentral.us" tvg-chno="589" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (164)",PBS Kids Eastern/Central ᴴᴰ
 https://2-fss-2.streamhoster.com/pl_140/amlst:200914-1298290/playlist.m3u8
-#EXTINF:-1 tvg-id="PBSKidsHawaii.us" tvg-chno="441" tvg-logo="https://i.imgur.com/ambc9le.png" group-title="English (Intl) - Documentary (169)",PBS Kids Hawaii ᴴᴰ
+#EXTINF:-1 tvg-id="PBSKidsHawaii.us" tvg-chno="590" tvg-logo="https://i.imgur.com/ambc9le.png" group-title="English (Intl) - Documentary (164)",PBS Kids Hawaii ᴴᴰ
 https://livestream.pbskids.org/out/v1/aa31792fee094b24b09045483f04d150/hast.m3u8
-#EXTINF:-1 tvg-id="PBSKidsMountain.us" tvg-chno="442" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (169)",PBS Kids Mountain ᶠᴴᴰ
+#EXTINF:-1 tvg-id="PBSKidsMountain.us" tvg-chno="591" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (164)",PBS Kids Mountain ᶠᴴᴰ
 https://livestream.pbskids.org/out/v1/3fe3030a2c8045a3932f4289d9eba3e6/mst.m3u8
-#EXTINF:-1 tvg-id="PBSKidsPacific.us" tvg-chno="443" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (169)",PBS Kids Pacific ᶠᴴᴰ
+#EXTINF:-1 tvg-id="PBSKidsPacific.us" tvg-chno="592" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/e3/PBS_Kids_logo_%282022%29.svg" group-title="English (Intl) - Documentary (164)",PBS Kids Pacific ᶠᴴᴰ
 https://livestream.pbskids.org/out/v1/11f2e6b73eaa4887b3746cb863960e79/pst.m3u8
-#EXTINF:-1 tvg-id="PBSNature.us" tvg-chno="444" tvg-logo="https://i.imgur.com/Brry7cZ.png" group-title="English (Intl) - Documentary (169)",PBS Nature ᶠᴴᴰ
+#EXTINF:-1 tvg-id="PBSNature.us" tvg-chno="593" tvg-logo="https://i.imgur.com/Brry7cZ.png" group-title="English (Intl) - Documentary (164)",PBS Nature ᶠᴴᴰ
 https://amg02333-pbs-amg02333c11-firetv-us-4242.playouts.now.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="RedBullTV.at" tvg-chno="470" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Red_Bull_TV.png" group-title="English (Intl) - Documentary (169)",Red Bull TV ᶠᴴᴰ
+#EXTINF:-1 tvg-id="RedBullTV.at" tvg-chno="619" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Red_Bull_TV.png" group-title="English (Intl) - Documentary (164)",Red Bull TV ᶠᴴᴰ
 https://3ea22335.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdXRlblRWLWdiX1JlZEJ1bGxUVl9ITFM/playlist.m3u8
-#EXTINF:-1 tvg-id="SmithsonianChannel.us" tvg-chno="476" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/SmithsonianChannellogo.png/960px-SmithsonianChannellogo.png" group-title="English (Intl) - Documentary (169)",Smithsonian Channel ᶠᴴᴰ
+#EXTINF:-1 tvg-id="SmithsonianChannel.us" tvg-chno="626" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/SmithsonianChannellogo.png/960px-SmithsonianChannellogo.png" group-title="English (Intl) - Documentary (164)",Smithsonian Channel ᶠᴴᴰ
 http://40.160.24.55/SMITHSONIAN/index.m3u8
-#EXTINF:-1 tvg-id="SmithsonianChannelSelects.us" tvg-chno="477" tvg-logo="https://images.pluto.tv/channels/5f21ea08007a49000762d349/featuredImage.jpg" group-title="English (Intl) - Documentary (169)",Smithsonian Channel Selects
-https://jmp2.uk/plu-5f21ea08007a49000762d349.m3u8
-#EXTINF:-1 tvg-id="SmithsonianChannelSelects.se" tvg-chno="478" tvg-logo="https://images.pluto.tv/channels/61fb988e032c0100077d5252/colorLogoSVG.svg" group-title="English (Intl) - Documentary (169)",Smithsonian Channel Selects
+#EXTINF:-1 tvg-id="SmithsonianChannelSelects.se" tvg-chno="627" tvg-logo="https://images.pluto.tv/channels/61fb988e032c0100077d5252/colorLogoSVG.svg" group-title="English (Intl) - Documentary (164)",Smithsonian Channel Selects
 https://jmp2.uk/plu-61fb9907b1b78d000717ed9f.m3u8
-#EXTINF:-1 tvg-id="DarkMatterTV.us" tvg-chno="773" tvg-logo="https://i.imgur.com/9K8T3ND.png" group-title="English (Intl) - Horror (15)",Dark Matter TV ᴴᴰ
+#EXTINF:-1 tvg-id="SmithsonianChannelSelects.us" tvg-chno="628" tvg-logo="https://images.pluto.tv/channels/5f21ea08007a49000762d349/featuredImage.jpg" group-title="English (Intl) - Documentary (164)",Smithsonian Channel Selects
+https://jmp2.uk/plu-5f21ea08007a49000762d349.m3u8
+#EXTINF:-1 tvg-id="SkyNewsWeather.uk" tvg-chno="1145" tvg-logo="https://pbs.twimg.com/profile_images/1604994875459518464/lGt2wEqM_400x400.jpg" group-title="English (Intl) - General (250)",Sky News Weather ᴴᴰ
+https://distro001-gb-hls1-prd.delivery.skycdp.com/easel_cdn/ngrp:weather_loop.stream_all/playlist.m3u8
+#EXTINF:-1 tvg-id="DarkMatterTV.us" tvg-chno="1210" tvg-logo="https://i.imgur.com/9K8T3ND.png" group-title="English (Intl) - Horror (17)",Dark Matter TV ᴴᴰ
 https://tricoast-tv-dark-matter-01-us.ono.wurl.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="HauntTV.ca" tvg-chno="775" tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_kFORSMlXKT0V9fBpkp5TS7VbpwlNC6XbfZxrSSWUt1UA=s512-c-k-c0x00ffffff-no-rj" group-title="English (Intl) - Horror (15)",HauntTV ᶠᴴᴰ
+#EXTINF:-1 tvg-id="HauntTV.ca" tvg-chno="1212" tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_kFORSMlXKT0V9fBpkp5TS7VbpwlNC6XbfZxrSSWUt1UA=s512-c-k-c0x00ffffff-no-rj" group-title="English (Intl) - Horror (17)",HauntTV ᶠᴴᴰ
 https://amg01446-blueantmediacan-haunttvaussam-samsungau-vcnai.amagi.tv/playlist/amg01446-blueantmediacan-haunttvaussam-samsungau/playlist.m3u8
-#EXTINF:-1 tvg-id="ScaresbyShudder.us" tvg-chno="784" tvg-logo="https://www.bgr.com/bgr/entertainment/freevee-added-5-spooky-new-live-channels-just-in-time-for-halloween/Scares-by-Shudder.jpg" group-title="English (Intl) - Horror (15)",Scares by Shudder ᴴᴰ
+#EXTINF:-1 tvg-id="ScaresbyShudder.us" tvg-chno="1222" tvg-logo="https://www.bgr.com/bgr/entertainment/freevee-added-5-spooky-new-live-channels-just-in-time-for-halloween/Scares-by-Shudder.jpg" group-title="English (Intl) - Horror (17)",Scares by Shudder ᴴᴰ
 http://206.212.244.63/147/index.m3u8
-#EXTINF:-1 tvg-id="PlutoTVAction.de" tvg-chno="877" tvg-logo="https://images.pluto.tv/channels/65004605110545000842035d/colorLogoSVG_1779087603285.svg" group-title="English (Intl) - Movies (168)",Pluto TV Action
-https://jmp2.uk/plu-65004605110545000842035d.m3u8
-#EXTINF:-1 tvg-id="PlutoTVAction.se" tvg-chno="878" tvg-logo="https://images.pluto.tv/channels/61c095861782bd000780e0ba/colorLogoSVG.svg" group-title="English (Intl) - Movies (168)",Pluto TV Action
-https://jmp2.uk/plu-61c0b0688a80a4000703fbcb.m3u8
-#EXTINF:-1 tvg-id="PlutoTVAction.us" tvg-chno="879" tvg-logo="https://i.imgur.com/tDapGal.png" group-title="English (Intl) - Movies (168)",Pluto TV Action
+#EXTINF:-1 tvg-id="PlutoTVAction.us" tvg-chno="1456" tvg-logo="https://i.imgur.com/tDapGal.png" group-title="English (Intl) - Movies (168)",Pluto TV Action
 https://jmp2.uk/plu-561d7d484dc7c8770484914a.m3u8
-#EXTINF:-1 tvg-id="PlutoTVActionMovies.us" tvg-chno="880" tvg-logo="https://images.pluto.tv/channels/62ea3c2e4823db00072788ed/colorLogoSVG.svg" group-title="English (Intl) - Movies (168)",Pluto TV Action Movies
+#EXTINF:-1 tvg-id="PlutoTVAction.se" tvg-chno="1457" tvg-logo="https://images.pluto.tv/channels/61c095861782bd000780e0ba/colorLogoSVG.svg" group-title="English (Intl) - Movies (168)",Pluto TV Action
+https://jmp2.uk/plu-61c0b0688a80a4000703fbcb.m3u8
+#EXTINF:-1 tvg-id="PlutoTVAction.de" tvg-chno="1458" tvg-logo="https://images.pluto.tv/channels/65004605110545000842035d/colorLogoSVG_1779087603285.svg" group-title="English (Intl) - Movies (168)",Pluto TV Action
+https://jmp2.uk/plu-65004605110545000842035d.m3u8
+#EXTINF:-1 tvg-id="PlutoTVActionMovies.us" tvg-chno="1459" tvg-logo="https://images.pluto.tv/channels/62ea3c2e4823db00072788ed/colorLogoSVG.svg" group-title="English (Intl) - Movies (168)",Pluto TV Action Movies
 https://jmp2.uk/plu-62ea3c2e4823db00072788ed.m3u8
-#EXTINF:-1 tvg-id="PlutoTVMovies.de" tvg-chno="899" tvg-logo="https://images.pluto.tv/channels/5c5c3b948002db3c3e0b262e/colorLogoSVG.svg" group-title="English (Intl) - Movies (168)",Pluto TV Movies
+#EXTINF:-1 tvg-id="PlutoTVMovies.de" tvg-chno="1477" tvg-logo="https://images.pluto.tv/channels/5c5c3b948002db3c3e0b262e/colorLogoSVG.svg" group-title="English (Intl) - Movies (168)",Pluto TV Movies
 https://jmp2.uk/plu-5c5c3b948002db3c3e0b262e.m3u8
-#EXTINF:-1 tvg-id="ABCNews.au" tvg-chno="956" tvg-logo="https://i.imgur.com/BrW7gk8.png" group-title="English (Intl) - News (139)",ABC News ᴴᴰ
+#EXTINF:-1 tvg-id="ABCNews.au" tvg-chno="1696" tvg-logo="https://i.imgur.com/BrW7gk8.png" group-title="English (Intl) - News (150)",ABC News ᴴᴰ
 https://abc-news-dmd-streams-1.akamaized.net/out/v1/701126012d044971b3fa89406a440133/index.m3u8
-#EXTINF:-1 tvg-id="ABCNewsLive.us" tvg-chno="957" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/ABC_News_Live_logo_2021.svg/960px-ABC_News_Live_logo_2021.svg.png" group-title="English (Intl) - News (139)",ABC News Live ᴴᴰ
+#EXTINF:-1 tvg-id="ABCNewsLive.us" tvg-chno="1697" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/ABC_News_Live_logo_2021.svg/960px-ABC_News_Live_logo_2021.svg.png" group-title="English (Intl) - News (150)",ABC News Live ᴴᴰ
 https://jmp2.uk/plu-6508be683a0d700008c534e4.m3u8
-#EXTINF:-1 tvg-id="AlJazeera.qa" tvg-chno="965" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/AL_Jazeera.png" group-title="English (Intl) - News (139)",Al Jazeera ᶠᴴᴰ
+#EXTINF:-1 tvg-id="AlJazeera.qa" tvg-chno="1705" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/AL_Jazeera.png" group-title="English (Intl) - News (150)",Al Jazeera ᶠᴴᴰ
 https://live-hls-apps-aja-fa.getaj.net/AJA/01.m3u8
-#EXTINF:-1 tvg-id="BBCNews.uk" tvg-chno="972" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_BBC_NEWS/images/LOGO_HD/image.png" group-title="English (Intl) - News (139)",BBC News ᶠᴴᴰ
+#EXTINF:-1 tvg-id="BBCNews.uk" tvg-chno="1713" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_BBC_NEWS/images/LOGO_HD/image.png" group-title="English (Intl) - News (150)",BBC News ᶠᴴᴰ
 https://xemzi.short.gy/1000015
-#EXTINF:-1 tvg-id="CBSNews247.us" tvg-chno="980" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/960px-CBS_News_247_logo.svg.png" group-title="English (Intl) - News (139)",CBS News 24/7 ᴴᴰ
+#EXTINF:-1 tvg-id="6183f9f73a64394cf3c55690605af2a7" tvg-chno="1714" tvg-logo="https://images.sr.roku.com/idType/roku-trc/context/trc/id/6183f9f73a64394cf3c55690605af2a7/https%3A%2F%2Fimage.roku.com%2Fbh-uploads%2Fproduction%2FinfoHUDLogo%2F1765822678156_ROKU_BBC_NEWS_LOGO_260x147_WHITE.png" group-title="English (Intl) - News (150)",BBC News (North America)
+https://jmp2.uk/rok-6183f9f73a64394cf3c55690605af2a7.m3u8
+#EXTINF:-1 tvg-id="CBSNews247.us" tvg-chno="1722" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/960px-CBS_News_247_logo.svg.png" group-title="English (Intl) - News (150)",CBS News 24/7 ᴴᴰ
 https://jmp2.uk/plu-6350fdd266e9ea0007bedec5.m3u8
-#EXTINF:-1 tvg-id="CBSNewsBaltimore.us" tvg-chno="981" tvg-logo="https://i.imgur.com/jy3UfCe.png" group-title="English (Intl) - News (139)",CBS News Baltimore ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsBaltimore.us" tvg-chno="1723" tvg-logo="https://i.imgur.com/jy3UfCe.png" group-title="English (Intl) - News (150)",CBS News Baltimore ᴴᴰ
 https://lineup.cbsivideo.com/playout/8877a7d5-b094-4ac8-bc72-75a5fed68e5b/index.m3u8
-#EXTINF:-1 tvg-id="CBSNewsBayArea.us" tvg-chno="982" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/1a/Logo-cbsn-bayarea-1920x1080.jpg/revision/latest/scale-to-width-down/512" group-title="English (Intl) - News (139)",CBS News Bay Area ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsBayArea.us" tvg-chno="1724" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/1/1a/Logo-cbsn-bayarea-1920x1080.jpg/revision/latest/scale-to-width-down/512" group-title="English (Intl) - News (150)",CBS News Bay Area ᴴᴰ
 https://jmp2.uk/plu-5eb1afb21486df0007abc57c.m3u8
-#EXTINF:-1 tvg-id="CBSNewsBoston.us" tvg-chno="983" tvg-logo="https://i.imgur.com/9un7R3N.png" group-title="English (Intl) - News (139)",CBS News Boston ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsBoston.us" tvg-chno="1725" tvg-logo="https://i.imgur.com/9un7R3N.png" group-title="English (Intl) - News (150)",CBS News Boston ᴴᴰ
 https://dai.google.com/linear/hls/event/dHA193vxQ_WqZNVoC-W5MA/master.m3u8
-#EXTINF:-1 tvg-id="CBSNewsChicago.us" tvg-chno="984" tvg-logo="https://i.imgur.com/qGbVQir.png" group-title="English (Intl) - News (139)",CBS News Chicago ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsChicago.us" tvg-chno="1726" tvg-logo="https://i.imgur.com/qGbVQir.png" group-title="English (Intl) - News (150)",CBS News Chicago ᴴᴰ
 https://jmp2.uk/plu-5eb1aeb2fd4b8a00076c2047.m3u8
-#EXTINF:-1 tvg-id="CBSNewsColorado.us" tvg-chno="985" tvg-logo="https://i.imgur.com/2oyYwBw.png" group-title="English (Intl) - News (139)",CBS News Colorado ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsColorado.us" tvg-chno="1727" tvg-logo="https://i.imgur.com/2oyYwBw.png" group-title="English (Intl) - News (150)",CBS News Colorado ᴴᴰ
 https://jmp2.uk/plu-5eb1b12146cba40007aa7e5d.m3u8
-#EXTINF:-1 tvg-id="CBSNewsDetroit.us" tvg-chno="986" tvg-logo="https://i.imgur.com/cMels2Y.png" group-title="English (Intl) - News (139)",CBS News Detroit ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsDetroit.us" tvg-chno="1728" tvg-logo="https://i.imgur.com/cMels2Y.png" group-title="English (Intl) - News (150)",CBS News Detroit ᴴᴰ
 https://jmp2.uk/plu-634f2610d5023700078f7dee.m3u8
-#EXTINF:-1 tvg-id="CBSNewsLosAngeles.us" tvg-chno="987" tvg-logo="https://i.imgur.com/klULxMV.png" group-title="English (Intl) - News (139)",CBS News Los Angeles ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsLosAngeles.us" tvg-chno="1729" tvg-logo="https://i.imgur.com/klULxMV.png" group-title="English (Intl) - News (150)",CBS News Los Angeles ᴴᴰ
 https://jmp2.uk/plu-5dc9b875e280c80009a8a44a.m3u8
-#EXTINF:-1 tvg-id="CBSNewsMiami.us" tvg-chno="988" tvg-logo="https://i.imgur.com/DExbVa9.png" group-title="English (Intl) - News (139)",CBS News Miami ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsMiami.us" tvg-chno="1730" tvg-logo="https://i.imgur.com/DExbVa9.png" group-title="English (Intl) - News (150)",CBS News Miami ᴴᴰ
 https://cbsn-mia.cbsnstream.cbsnews.com/out/v1/ac174b7938264d24ae27e56f6584bca0/master.m3u8
-#EXTINF:-1 tvg-id="CBSNewsMinnesota.us" tvg-chno="989" tvg-logo="https://i.imgur.com/ubxwfMY.png" group-title="English (Intl) - News (139)",CBS News Minnesota ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsMinnesota.us" tvg-chno="1731" tvg-logo="https://i.imgur.com/ubxwfMY.png" group-title="English (Intl) - News (150)",CBS News Minnesota ᴴᴰ
 https://jmp2.uk/plu-5eb1b0bf2240d8000732a09c.m3u8
-#EXTINF:-1 tvg-id="CBSNewsNewYork.us" tvg-chno="990" tvg-logo="https://i.imgur.com/bpc4v0u.png" group-title="English (Intl) - News (139)",CBS News New York ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsNewYork.us" tvg-chno="1732" tvg-logo="https://i.imgur.com/bpc4v0u.png" group-title="English (Intl) - News (150)",CBS News New York ᴴᴰ
 https://jmp2.uk/plu-5dc9b8223687ff000936ed79.m3u8
-#EXTINF:-1 tvg-id="CBSNewsPittsburgh.us" tvg-chno="991" tvg-logo="https://i.imgur.com/Un9IrUh.png" group-title="English (Intl) - News (139)",CBS News Pittsburgh ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsPittsburgh.us" tvg-chno="1733" tvg-logo="https://i.imgur.com/Un9IrUh.png" group-title="English (Intl) - News (150)",CBS News Pittsburgh ᴴᴰ
 https://jmp2.uk/plu-5eb1b17aa5277e00083f6521.m3u8
-#EXTINF:-1 tvg-id="CBSNewsSacramento.us" tvg-chno="992" tvg-logo="https://i.imgur.com/0e1kSGX.png" group-title="English (Intl) - News (139)",CBS News Sacramento ᴴᴰ
+#EXTINF:-1 tvg-id="CBSNewsSacramento.us" tvg-chno="1734" tvg-logo="https://i.imgur.com/0e1kSGX.png" group-title="English (Intl) - News (150)",CBS News Sacramento ᴴᴰ
 https://lineup.cbsivideo.com/playout/c1ed69db-6b71-4581-a937-a70ab4089f8a/index.m3u8
-#EXTINF:-1 tvg-id="CGTN.cn" tvg-chno="993" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/CGTN.svg/960px-CGTN.svg.png" group-title="English (Intl) - News (139)",CGTN ᶠᴴᴰ
+#EXTINF:-1 tvg-id="CGTN.cn" tvg-chno="1735" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/CGTN.svg/960px-CGTN.svg.png" group-title="English (Intl) - News (150)",CGTN ᶠᴴᴰ
 https://amg00405-rakutentv-cgtn-rakuten-i9tar.amagi.tv/master.m3u8
-#EXTINF:-1 tvg-id="GBBD3600001NO" tvg-chno="1001" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD3600001NO_20260317T034210SQUARE.png" group-title="English (Intl) - News (139)",CNBC
-https://jmp2.uk/stvp-GBBD3600001NO
-#EXTINF:-1 tvg-id="CNBCMongolia.mn" tvg-chno="1002" tvg-logo="https://i.imgur.com/Ak6JAkX.png" group-title="English (Intl) - News (139)",CNBC Mongolia ᴴᴰ
+#EXTINF:-1 tvg-id="CNBCMongolia.mn" tvg-chno="1745" tvg-logo="https://i.imgur.com/Ak6JAkX.png" group-title="English (Intl) - News (150)",CNBC Mongolia ᴴᴰ
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36
 https://cdn4.skygo.mn/live/disk1/CNBC/HLSv3-FTA/CNBC.m3u8
-#EXTINF:-1 tvg-id="CNBCUK.uk" tvg-chno="1003" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/CNBC_2025.svg/960px-CNBC_2025.svg.png" group-title="English (Intl) - News (139)",CNBC UK ᶠᴴᴰ
+#EXTINF:-1 tvg-id="CNBCUK.uk" tvg-chno="1746" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/CNBC_2025.svg/960px-CNBC_2025.svg.png" group-title="English (Intl) - News (150)",CNBC UK ᶠᴴᴰ
 https://amg01079-nbcuuk-amg01079c2-lg-gb-2030.playouts.now.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="GBBD8000016N" tvg-chno="1004" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD8000016N_20260714T040523SQUARE.png" group-title="English (Intl) - News (139)",CNN
+#EXTINF:-1 tvg-id="GBBD8000016N" tvg-chno="1747" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD8000016N_20260714T040523SQUARE.png" group-title="English (Intl) - News (150)",CNN
 https://jmp2.uk/stvp-GBBD8000016N
-#EXTINF:-1 tvg-id="GBBD1900008O3" tvg-chno="1005" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD1900008O3_20260331T032346SQUARE.png" group-title="English (Intl) - News (139)",CNN Headlines International
+#EXTINF:-1 tvg-id="GBBD1900008O3" tvg-chno="1748" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD1900008O3_20260331T032346SQUARE.png" group-title="English (Intl) - News (150)",CNN Headlines International
 https://jmp2.uk/stvp-GBBD1900008O3
-#EXTINF:-1 tvg-id="EuronewsEnglish.fr" tvg-chno="1012" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/DISTROTV/LIVECHANNEL/66698907bac4421ebc533647/images/logo_20231218_175557_70.png" group-title="English (Intl) - News (139)",Euronews English ᴴᴰ
+#EXTINF:-1 tvg-id="EuronewsEnglish.fr" tvg-chno="1756" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/DISTROTV/LIVECHANNEL/66698907bac4421ebc533647/images/logo_20231218_175557_70.png" group-title="English (Intl) - News (150)",Euronews English ᴴᴰ
 https://jmp2.uk/plu-61de96114757070008d33cae.m3u8
-#EXTINF:-1 tvg-id="GB2600019ON" tvg-chno="1013" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB2600019ON_20260714T040531SQUARE.png" group-title="English (Intl) - News (139)",Euronews LIVE
+#EXTINF:-1 tvg-id="8acb4f9b8a255216966db355daaa1749" tvg-chno="1757" tvg-logo="https://images.sr.roku.com/idType/roku-trc/context/trc/id/8acb4f9b8a255216966db355daaa1749/https%3A%2F%2Fimage.roku.com%2Fbh-uploads%2Fproduction%2FinfoHUDLogo%2F1678136277077_euronews_espanol_260x147.png" group-title="English (Intl) - News (150)",Euronews Español
+https://jmp2.uk/rok-8acb4f9b8a255216966db355daaa1749.m3u8
+#EXTINF:-1 tvg-id="GB2600019ON" tvg-chno="1758" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GB2600019ON_20260714T040531SQUARE.png" group-title="English (Intl) - News (150)",Euronews LIVE
 https://jmp2.uk/stvp-GB2600019ON
-#EXTINF:-1 tvg-id="France24.fr" tvg-chno="1018" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_FRANCE_24/images/LOGO_HD/image.png" group-title="English (Intl) - News (139)",France 24 ᶠᴴᴰ
+#EXTINF:-1 tvg-id="dafd06b712a35fbe9935d4c04c2e8b53" tvg-chno="1759" tvg-logo="https://images.sr.roku.com/idType/roku-trc/context/trc/id/dafd06b712a35fbe9935d4c04c2e8b53/https%3A%2F%2Fimage.roku.com%2Fbh-uploads%2Fproduction%2FinfoHUDLogo%2F1776110117061_Euronews_Info_HUD_Logo_EN.png" group-title="English (Intl) - News (150)",Euronews World
+https://jmp2.uk/rok-dafd06b712a35fbe9935d4c04c2e8b53.m3u8
+#EXTINF:-1 tvg-id="France24.fr" tvg-chno="1764" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_FRANCE_24/images/LOGO_HD/image.png" group-title="English (Intl) - News (150)",France 24 ᶠᴴᴰ
 https://live.france24.com/hls/live/2037179-b/F24_FR_HI_HLS/master_5000.m3u8
-#EXTINF:-1 tvg-id="GBBD1100002L5" tvg-chno="1019" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD1100002L5_20250107T030646SQUARE.png" group-title="English (Intl) - News (139)",FRANCE 24 FAST
+#EXTINF:-1 tvg-id="GBBD1100002L5" tvg-chno="1765" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD1100002L5_20250107T030646SQUARE.png" group-title="English (Intl) - News (150)",FRANCE 24 FAST
 https://jmp2.uk/stvp-GBBD1100002L5
-#EXTINF:-1 tvg-id="NBCNewsNOW.us" tvg-chno="1033" tvg-logo="https://provider-static.plex.tv/7/epg/channels/logos/gracenote/713ea11a46bcb609bc91c386c29076e6.png" group-title="English (Intl) - News (139)",NBC News NOW ᶠᴴᴰ
+#EXTINF:-1 tvg-id="NBCNewsNOW.us" tvg-chno="1781" tvg-logo="https://provider-static.plex.tv/7/epg/channels/logos/gracenote/713ea11a46bcb609bc91c386c29076e6.png" group-title="English (Intl) - News (150)",NBC News NOW ᶠᴴᴰ
 https://d1si3n1st4nkgb.cloudfront.net/10502/88896001/hls/master.m3u8?ads.xumo_channelId=88896001
-#EXTINF:-1 tvg-id="SABCNews.za" tvg-chno="1055" tvg-logo="https://i.imgur.com/liLta8j.png" group-title="English (Intl) - News (139)",SABC News ᴴᴰ
+#EXTINF:-1 tvg-id="SABCNews.za" tvg-chno="1803" tvg-logo="https://i.imgur.com/liLta8j.png" group-title="English (Intl) - News (150)",SABC News ᴴᴰ
 https://sabconetanw.cdn.mangomolo.com/news/smil:news.stream.smil/master.m3u8
-#EXTINF:-1 tvg-id="SkyNews.ie" tvg-chno="1060" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1404.png" group-title="English (Intl) - News (139)",Sky News
+#EXTINF:-1 tvg-id="SkyNews.ie" tvg-chno="1808" tvg-logo="https://d2n0069hmnqmmx.cloudfront.net/epgdata/1.0/newchanlogos/512/512/skychb1404.png" group-title="English (Intl) - News (150)",Sky News
 https://jmp2.uk/plu-55b285cd2665de274553d66f.m3u8
-#EXTINF:-1 tvg-id="SkyNewsExtra1.au" tvg-chno="1061" tvg-logo="https://i.imgur.com/ZsPb8nL.png" group-title="English (Intl) - News (139)",Sky News Extra 1
+#EXTINF:-1 tvg-id="SkyNewsExtra1.au" tvg-chno="1809" tvg-logo="https://i.imgur.com/ZsPb8nL.png" group-title="English (Intl) - News (150)",Sky News Extra 1
 https://skynewsau-live.akamaized.net/hls/live/2002689/skynewsau-extra1/master.m3u8
-#EXTINF:-1 tvg-id="SkyNewsExtra2.au" tvg-chno="1062" tvg-logo="https://i.imgur.com/ZsPb8nL.png" group-title="English (Intl) - News (139)",Sky News Extra 2
+#EXTINF:-1 tvg-id="SkyNewsExtra2.au" tvg-chno="1810" tvg-logo="https://i.imgur.com/ZsPb8nL.png" group-title="English (Intl) - News (150)",Sky News Extra 2
 https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8
-#EXTINF:-1 tvg-id="SkyNewsExtra3.au" tvg-chno="1063" tvg-logo="https://i.imgur.com/ZsPb8nL.png" group-title="English (Intl) - News (139)",Sky News Extra 3 ᶠᴴᴰ
+#EXTINF:-1 tvg-id="SkyNewsExtra3.au" tvg-chno="1811" tvg-logo="https://i.imgur.com/ZsPb8nL.png" group-title="English (Intl) - News (150)",Sky News Extra 3 ᶠᴴᴰ
 https://skynewsau-live.akamaized.net/hls/live/2002691/skynewsau-extra3/master.m3u8
-#EXTINF:-1 tvg-id="AbsoluteRealitybyWETV.us" tvg-chno="1094" tvg-logo="https://i.imgur.com/Gtwk8ic.png" group-title="English (Intl) - Reality (26)",Absolute Reality by WE TV
+#EXTINF:-1 tvg-id="AbsoluteRealitybyWETV.us" tvg-chno="1844" tvg-logo="https://i.imgur.com/Gtwk8ic.png" group-title="English (Intl) - Reality (29)",Absolute Reality by WE TV
 https://amc-absolutereality-1-us.plex.wurl.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="AllRealitybyWEtv.us" tvg-chno="1095" tvg-logo="https://i.imgur.com/HZTz5HJ.png" group-title="English (Intl) - Reality (26)",All Reality by WE tv ᴴᴰ
+#EXTINF:-1 tvg-id="AllRealitybyWEtv.us" tvg-chno="1845" tvg-logo="https://i.imgur.com/HZTz5HJ.png" group-title="English (Intl) - Reality (29)",All Reality by WE tv ᴴᴰ
 https://jmp2.uk/plu-5e82530945600e0007ca076c.m3u8
-#EXTINF:-1 tvg-id="AllWeddingsWEtv.us" tvg-chno="1096" tvg-logo="https://i.imgur.com/zKcaFcm.png" group-title="English (Intl) - Reality (26)",All Weddings WE tv
+#EXTINF:-1 tvg-id="AllWeddingsWEtv.us" tvg-chno="1846" tvg-logo="https://i.imgur.com/zKcaFcm.png" group-title="English (Intl) - Reality (29)",All Weddings WE tv
 https://amc-allweddings-1-us.xumo.wurl.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="Bravo.us" tvg-chno="1099" tvg-logo="https://i.imgur.com/JmTIRLF.png" group-title="English (Intl) - Reality (26)",Bravo ᶠᴴᴰ
+#EXTINF:-1 tvg-id="Bravo.us" tvg-chno="1849" tvg-logo="https://i.imgur.com/JmTIRLF.png" group-title="English (Intl) - Reality (29)",Bravo ᶠᴴᴰ
 https://gpuserver3.tier1streams.com/BRAVO/index.m3u8
-#EXTINF:-1 tvg-id="US1800003BG" tvg-chno="1100" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/US1800003BG_20260421T133858SQUARE.png" group-title="English (Intl) - Reality (26)",Bravo Vault
+#EXTINF:-1 tvg-id="US1800003BG" tvg-chno="1850" tvg-logo="https://tvpnlogopus.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/US1800003BG_20260421T133858SQUARE.png" group-title="English (Intl) - Reality (29)",Bravo Vault
 https://jmp2.uk/stvp-US1800003BG
-#EXTINF:-1 tvg-id="HallmarkChannel.us" tvg-chno="1104" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Hallmark_Channel.svg/960px-Hallmark_Channel.svg.png" group-title="English (Intl) - Reality (26)",Hallmark Channel ᶠᴴᴰ
+#EXTINF:-1 tvg-id="HallmarkChannel.us" tvg-chno="1855" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Hallmark_Channel.svg/960px-Hallmark_Channel.svg.png" group-title="English (Intl) - Reality (29)",Hallmark Channel ᶠᴴᴰ
 http://23.237.104.106:8080/USA_HALLMARK/index.m3u8
-#EXTINF:-1 tvg-id="HallmarkFamily.us" tvg-chno="1105" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Hallmark_Family_2024.svg/960px-Hallmark_Family_2024.svg.png" group-title="English (Intl) - Reality (26)",Hallmark Family ᶠᴴᴰ
+#EXTINF:-1 tvg-id="HallmarkFamily.us" tvg-chno="1856" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Hallmark_Family_2024.svg/960px-Hallmark_Family_2024.svg.png" group-title="English (Intl) - Reality (29)",Hallmark Family ᶠᴴᴰ
 http://40.160.24.53/HALLMARK_DRAMA/index.m3u8
-#EXTINF:-1 tvg-id="HallmarkMoviesMore.us" tvg-chno="1106" tvg-logo="https://provider-static.plex.tv/epg/cms/production/29af70d1-d3ba-4a16-bc4d-bd99e7e7def4/hallmark-movies-and-more_color.png" group-title="English (Intl) - Reality (26)",Hallmark Movies & More ᶠᴴᴰ
+#EXTINF:-1 tvg-id="HallmarkMoviesMore.us" tvg-chno="1857" tvg-logo="https://provider-static.plex.tv/epg/cms/production/29af70d1-d3ba-4a16-bc4d-bd99e7e7def4/hallmark-movies-and-more_color.png" group-title="English (Intl) - Reality (29)",Hallmark Movies & More ᶠᴴᴰ
 https://dbrb49pjoymg4.cloudfront.net/v1/master/3fec3e5cac39a52b2132f9c66c83dae043dc17d4/prod_default_xumo-ams-aws/master.m3u8?ads.xumo_channelId=99991709
-#EXTINF:-1 tvg-id="HallmarkMystery.us" tvg-chno="1107" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/32/Hallmark_Mystery_2024.svg" group-title="English (Intl) - Reality (26)",Hallmark Mystery ᶠᴴᴰ
+#EXTINF:-1 tvg-id="HallmarkMystery.us" tvg-chno="1858" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/32/Hallmark_Mystery_2024.svg" group-title="English (Intl) - Reality (29)",Hallmark Mystery ᶠᴴᴰ
 http://40.160.24.53/HALLMARK_MOVIES_AND_MYSTERIES/index.m3u8
-#EXTINF:-1 tvg-id="HGTV.nz" tvg-chno="1108" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/HGTV_US_Logo_2015.svg/960px-HGTV_US_Logo_2015.svg.png" group-title="English (Intl) - Reality (26)",HGTV ᶠᴴᴰ
+#EXTINF:-1 tvg-id="HGTV.nz" tvg-chno="1859" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/HGTV_US_Logo_2015.svg/960px-HGTV_US_Logo_2015.svg.png" group-title="English (Intl) - Reality (29)",HGTV ᶠᴴᴰ
 https://i.mjh.nz/.r/sky-hgtv.m3u8
-#EXTINF:-1 tvg-id="Lifetime.us" tvg-chno="1109" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Logo_Lifetime_2020.svg/960px-Logo_Lifetime_2020.svg.png" group-title="English (Intl) - Reality (26)",Lifetime ᴴᴰ
+#EXTINF:-1 tvg-id="Lifetime.us" tvg-chno="1860" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Logo_Lifetime_2020.svg/960px-Logo_Lifetime_2020.svg.png" group-title="English (Intl) - Reality (29)",Lifetime ᴴᴰ
 http://40.160.24.53/LIFETIME/index.m3u8
-#EXTINF:-1 tvg-id="LifetimeMovies.us" tvg-chno="1110" tvg-logo="https://i.imgur.com/BWmqYTO.png" group-title="English (Intl) - Reality (26)",Lifetime Movies ᶠᴴᴰ
+#EXTINF:-1 tvg-id="8d8befc9060e861eb1bdd5b21c0403b3" tvg-chno="1861" tvg-logo="https://images.sr.roku.com/idType/roku-trc/context/trc/id/8d8befc9060e861eb1bdd5b21c0403b3/https%3A%2F%2Fimage.roku.com%2Fbh-uploads%2Fproduction%2FinfoHUDLogo%2F1748881675113_LMLDHUD_logo_efefef_center_aligned_260x147.png" group-title="English (Intl) - Reality (29)",Lifetime Love & Drama
+https://jmp2.uk/rok-8d8befc9060e861eb1bdd5b21c0403b3.m3u8
+#EXTINF:-1 tvg-id="LifetimeMovies.us" tvg-chno="1862" tvg-logo="https://i.imgur.com/BWmqYTO.png" group-title="English (Intl) - Reality (29)",Lifetime Movies ᶠᴴᴰ
 http://23.237.104.106:8080/USA_LMN/index.m3u8
-#EXTINF:-1 tvg-id="LifetimeRealWomen.us" tvg-chno="1111" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/LRW_logo_2012.png/960px-LRW_logo_2012.png" group-title="English (Intl) - Reality (26)",Lifetime Real Women
+#EXTINF:-1 tvg-id="LifetimeRealWomen.us" tvg-chno="1863" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/LRW_logo_2012.png/960px-LRW_logo_2012.png" group-title="English (Intl) - Reality (29)",Lifetime Real Women
 http://40.160.24.58/LIFETIME_REAL_WOMEN/index.m3u8
-#EXTINF:-1 tvg-id="Slice.ca" tvg-chno="1117" tvg-logo="https://i.imgur.com/9UzQpum.png" group-title="English (Intl) - Reality (26)",Slice ᴴᴰ
+#EXTINF:-1 tvg-id="Slice.ca" tvg-chno="1869" tvg-logo="https://i.imgur.com/9UzQpum.png" group-title="English (Intl) - Reality (29)",Slice ᴴᴰ
 http://40.160.24.55/SLICE/index.m3u8
-#EXTINF:-1 tvg-id="WeTV.us" tvg-chno="1119" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Wetv-july-2024-logo.svg/3840px-Wetv-july-2024-logo.svg.png" group-title="English (Intl) - Reality (26)",We TV ᴴᴰ
+#EXTINF:-1 tvg-id="WeTV.us" tvg-chno="1871" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Wetv-july-2024-logo.svg/3840px-Wetv-july-2024-logo.svg.png" group-title="English (Intl) - Reality (29)",We TV ᴴᴰ
 https://streamer1.nexgen.bz/WE_TV/index.m3u8
-#EXTINF:-1 tvg-id="DAZNCombat.uk" tvg-chno="1134" tvg-logo="https://i.postimg.cc/VsW3Jsrz/logo-DAZN-Combat.png" group-title="English (Intl) - Sports (146)",DAZN Combat
+#EXTINF:-1 tvg-id="DAZNCombat.uk" tvg-chno="2050" tvg-logo="https://i.postimg.cc/VsW3Jsrz/logo-DAZN-Combat.png" group-title="English (Intl) - Sports (154)",DAZN Combat
 https://jmp2.uk/plu-64805922536e0c0008a1a1e6.m3u8
-#EXTINF:-1 tvg-id="GBBD30000038U" tvg-chno="1135" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD30000038U_20260421T123903SQUARE.png" group-title="English (Intl) - Sports (146)",DAZN Ringside
+#EXTINF:-1 tvg-id="GBBD30000038U" tvg-chno="2051" tvg-logo="https://tvpnlogopeu.samsungcloud.tv/platform/image/sourcelogo/vc/00/02/34/GBBD30000038U_20260421T123903SQUARE.png" group-title="English (Intl) - Sports (154)",DAZN Ringside
 https://jmp2.uk/stvp-GBBD30000038U
-#EXTINF:-1 tvg-id="FoxSports1.us" tvg-chno="1157" tvg-logo="https://i.imgur.com/O9BapV9.png" group-title="English (Intl) - Sports (146)",Fox Sports 1 ᴴᴰ
+#EXTINF:-1 tvg-id="FoxSports1.us" tvg-chno="2075" tvg-logo="https://i.imgur.com/O9BapV9.png" group-title="English (Intl) - Sports (154)",Fox Sports 1 ᴴᴰ
 http://85.237.89.160:9590/usa-s/FOX-SPORTS-1/index.m3u8
