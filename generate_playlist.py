@@ -8,6 +8,9 @@ Curation rules
   * English Indian ......... all categories (country == IN and language contains 'eng')
   * English foreign ........ categories in {movies, entertainment, sports, news}
                              (language contains 'eng', country != IN)
+  * FAST channels .......... Samsung TV Plus (India + intl) not indexed by
+                             iptv-org, listed via i.mjh.nz and resolved through
+                             jmp2.uk; curated with the same rules above.
 
 For the "no VPN required" requirement, every stream is probed *from this machine's
 location*. Streams that are dead or geo-blocked from here are dropped, so the final
@@ -106,6 +109,119 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 DEFAULT_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
               "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36")
+
+
+# --------------------------------------------------------------------------- FAST
+# Free ad-supported streaming (FAST) channels that iptv-org doesn't fully index
+# (it only carries channels that have an iptv-org *channel record*; many Samsung
+# TV Plus FAST channels have none). We take the channel list from matthuisman's
+# i.mjh.nz (already our EPG provider) and resolve each stream through his jmp2.uk
+# redirector -> the platform CDN (Samsung TV Plus is Amagi-backed, the same infra
+# as our existing entries). The Samsung channel id doubles as the tvg-id, so the
+# guide comes straight from the matching i.mjh.nz XMLTV (see merge_fast_epg.py).
+SAMSUNG_CHANNELS = "https://i.mjh.nz/SamsungTVPlus/.channels.json.gz"
+SAMSUNG_STREAM = "https://jmp2.uk/stvp-{id}"
+# India -> curated as Hindi / English-India (all categories); the rest -> English
+# foreign (kept only for on-target categories, see below).
+SAMSUNG_REGIONS = ("in", "us", "gb", "ca")
+
+# Indian regional languages we exclude (curation = Hindi + English-Indian only).
+# Korean is intentionally kept (subbed) per user request, grouped separately.
+# Includes regional-network brand names that don't carry the language in the name
+# (ETV=Telugu, Asianet=Malayalam, Jomjomat=Bengali, Sun/Gemini/Udaya/Surya, ...).
+REGIONAL_EXCLUDE_KW = ("tamil", "telugu", "kannada", "malayalam", "bengali",
+                       "bangla", "marathi", "gujarati", "punjabi", "bhojpuri",
+                       "odia", "oriya", "assamese", "nepali", "urdu",
+                       "etv", "asianet", "suvarna", "jomjomat", "gemini",
+                       "udaya", "surya tv", "kairali", "raj tv", "kalaignar",
+                       "polimer", "vijay tv", "sun tv", "south station",
+                       "south flix", "zee south", "aha ")
+KOREAN_KW = ("korean", "k-pop", "kpop", "kocowa", "k by mbc", " mbc", " kbs")
+
+# Samsung group label -> our category slug.
+SAMSUNG_CAT = {
+    "movies": "movies", "movie": "movies",
+    "news": "news", "news & opinion": "news", "business": "news",
+    "sports": "sports", "sport": "sports", "sports & outdoors": "sports",
+    "documentaries": "documentary", "nature, history & science": "documentary",
+    "entertainment": "entertainment", "action & drama": "entertainment",
+    "tv series": "entertainment", "comedy": "entertainment", "drama": "entertainment",
+    "reality": "entertainment", "reality tv": "entertainment",
+    "reality competition": "entertainment", "western & classic tv": "entertainment",
+    "lifestyle & pop culture": "entertainment", "game shows": "entertainment",
+}
+
+
+def norm_name(s: str) -> str:
+    """Normalized display name for dedup. Drops quality/format words and the
+    language/region qualifiers Samsung appends (e.g. "History TV18 - Hindi" and
+    "History TV18" must collide) so FAST channels don't duplicate iptv-org ones."""
+    s = s.lower()
+    s = re.sub(r"\b(hd|fhd|uhd|4k|sd|tv|channel|the|hindi|english|india|indian)\b",
+               " ", s)
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+def fast_candidates(existing_names: set[str], refresh: bool = False) -> list[dict]:
+    """Samsung TV Plus channels (IN + intl) not already covered by iptv-org,
+    curated with the same rules and shaped like build_candidates() rows."""
+    import gzip
+    cache = os.path.join(DATA, "samsung.channels.json.gz")
+    try:
+        if refresh and os.path.exists(cache):
+            os.remove(cache)
+        if not os.path.exists(cache):
+            os.makedirs(DATA, exist_ok=True)
+            req = urllib.request.Request(SAMSUNG_CHANNELS,
+                                         headers={"User-Agent": DEFAULT_UA})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                open(cache, "wb").write(r.read())
+        with gzip.open(cache, "rb") as fh:
+            data = json.load(fh)
+    except Exception as e:
+        print(f"  ! Samsung TV Plus source unavailable: {e}", file=sys.stderr)
+        return []
+
+    regions = data.get("regions", {})
+    seen = set(existing_names)
+    out = []
+    for reg in SAMSUNG_REGIONS:
+        for cid, c in regions.get(reg, {}).get("channels", {}).items():
+            name = (c.get("name") or "").strip()
+            nn = norm_name(name)
+            if not name or not nn or nn in seen:
+                continue
+            low = name.lower()
+            grp_raw = (c.get("group") or "").strip().lower()
+            cat = SAMSUNG_CAT.get(grp_raw)
+            theme = theme_of(name, {cat} if cat else set())
+
+            if any(k in low for k in ANIME_KW):
+                bucket, group = "anime", "Anime"
+            elif any(k in low for k in KOREAN_KW):
+                bucket, group = "eng_foreign", "Korean"
+            elif reg == "in":
+                if "regional" in grp_raw or any(k in low for k in REGIONAL_EXCLUDE_KW):
+                    continue
+                bucket = "hindi"
+                group = f"Hindi - {theme or (cat.capitalize() if cat else 'General')}"
+            else:  # intl -> English foreign, on-target categories only
+                if not (theme or (cat in FOREIGN_CATS)):
+                    continue
+                bucket = "eng_foreign"
+                group = f"English (Intl) - {theme or cat.capitalize()}"
+
+            seen.add(nn)
+            out.append({
+                "id": cid,
+                "name": name,
+                "bucket": bucket,
+                "group": group,
+                "logo": c.get("logo", ""),
+                "streams": [{"url": SAMSUNG_STREAM.format(id=cid),
+                             "quality": None, "feed": None}],
+            })
+    return out
 
 
 # ----------------------------------------------------------------------------- data
@@ -274,9 +390,15 @@ def probe(url: str, ua: str | None, ref: str | None, timeout: float) -> bool:
         if ".m3u8" in url.lower():
             return _probe_hls(url, headers, timeout)
         h = dict(headers)
-        h["Range"] = "bytes=0-2047"
-        code, _, chunk = _get(url, h, timeout, 2048)
-        return code in (200, 206) and bool(chunk)
+        h["Range"] = "bytes=0-4095"
+        code, _, chunk = _get(url, h, timeout, 4096)
+        if code not in (200, 206) or not chunk:
+            return False
+        # Extension-less URLs (e.g. jmp2.uk FAST redirectors) can still be HLS —
+        # deep-validate when the body sniffs as a manifest.
+        if b"#EXTM3U" in chunk[:256]:
+            return _probe_hls(url, headers, timeout)
+        return True
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError,
             ConnectionError, OSError, ValueError, http.client.HTTPException):
         return False
@@ -412,6 +534,8 @@ def main():
                     help="re-download source data from iptv-org")
     ap.add_argument("--no-validate", action="store_true",
                     help="skip stream reachability probing (faster, keeps dead/geo links)")
+    ap.add_argument("--no-fast", action="store_true",
+                    help="skip Samsung TV Plus (FAST) channels; use iptv-org only")
     ap.add_argument("--timeout", type=float, default=8.0)
     ap.add_argument("--workers", type=int, default=40)
     ap.add_argument("--max-try", type=int, default=4,
@@ -427,6 +551,12 @@ def main():
     db = load(args.refresh)
     cands = build_candidates(db)
     print(f"Candidates after curation rules: {len(cands)}", file=sys.stderr)
+
+    if not args.no_fast:
+        existing = {norm_name(c["name"]) for c in cands}
+        fast = fast_candidates(existing, refresh=args.refresh)
+        print(f"FAST (Samsung TV Plus) candidates: {len(fast)}", file=sys.stderr)
+        cands += fast
 
     rows = []
     if args.no_validate:

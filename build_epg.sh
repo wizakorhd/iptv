@@ -54,6 +54,9 @@ ls -lh "$HERE/guide.xml"
 echo "==> Filling EPG gaps from epgshare01 (name crosswalk) ..."
 python3 "$HERE/merge_epg.py" "$HERE/guide.xml" || echo "  (merge skipped/failed; keeping iptv-org guide)"
 
+echo "==> Adding Samsung TV Plus EPG for FAST channels ..."
+python3 "$HERE/merge_fast_epg.py" "$HERE/guide.xml" || echo "  (FAST EPG merge skipped/failed)"
+
 echo "==> Writing gzipped copy (guide.xml.gz) for faster loading ..."
 gzip -9 -k -f "$HERE/guide.xml"
 ls -lh "$HERE/guide.xml.gz"
