@@ -32,6 +32,11 @@ jobs:
           node-version: "20"
 
       - name: Build guide.xml.gz from epg.channels.xml
+        # The iptv-org grabber buffers all parsed programs before writing; Node's
+        # default ~4 GB heap OOMs on our ~2000 feeds. Runner has 16 GB, so lift the
+        # cap (inherited by the node child that npm spawns).
+        env:
+          NODE_OPTIONS: --max-old-space-size=12288
         run: ./build_epg.sh 20 3
 
       - name: Commit refreshed guide
