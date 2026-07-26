@@ -3,9 +3,9 @@
 
 PY ?= python3
 
-.PHONY: all data playlist epg-config epg clean-data clean
+.PHONY: all data playlist playlist-fast epg-config epg site health clean-data clean
 
-all: playlist epg-config epg
+all: playlist epg-config epg site
 
 ## Refresh source metadata from iptv-org
 data:
@@ -23,9 +23,17 @@ playlist-fast:
 epg-config:
 	$(PY) generate_epg_config.py
 
-## Grab guide.xml (XMLTV EPG) for the curated channels
+## Grab guide.xml (XMLTV EPG) for the curated channels (+ epgshare01 gap fill)
 epg:
-	./build_epg.sh 15 2
+	./build_epg.sh 15 3
+
+## Generate the GitHub Pages browse/status data (docs/channels.json)
+site:
+	$(PY) gen_site.py
+
+## Re-validate streams and write health-report.md (US-location caveat)
+health:
+	$(PY) check_health.py
 
 clean-data:
 	rm -rf data

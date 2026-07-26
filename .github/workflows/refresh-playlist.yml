@@ -1,0 +1,58 @@
+name: Refresh playlist (self-hosted, India)
+
+# Rebuilds the geo-validated playlist AND the EPG on a self-hosted runner located
+# in India, then commits everything — so you don't have to run it locally.
+#
+# WHY self-hosted: streams are validated by probing them from the runner's
+# network. GitHub's hosted runners are in the US, so they would drop India-only
+# channels and keep US-only ones (i.e. break the "no-VPN-from-India" guarantee).
+# A self-hosted runner in India reproduces your local result. See README
+# ("Fully automated playlist") for one-time runner setup.
+
+on:
+  schedule:
+    - cron: "45 0 * * *"      # 00:45 UTC daily (~06:15 IST); after the EPG job
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "EPG days to grab"
+        default: "3"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-playlist
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # runner must be registered with these labels (see README)
+    runs-on: [self-hosted, india]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build validated playlist (from India)
+        run: python3 generate_playlist.py
+
+      - name: Build EPG config
+        run: python3 generate_epg_config.py
+
+      - name: Grab EPG (+ epgshare merge + gzip)
+        run: ./build_epg.sh 15 "${{ github.event.inputs.days || '3' }}"
+
+      - name: Regenerate site data
+        run: python3 gen_site.py
+
+      - name: Commit results
+        run: |
+          git config user.name  "iptv-bot"
+          git config user.email "iptv-bot@users.noreply.github.com"
+          git add playlist*.m3u curated_ids.json epg.channels.xml \
+                  guide.xml guide.xml.gz REPORT.md docs/channels.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: auto-refresh playlist + EPG ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "nothing changed"
+          fi

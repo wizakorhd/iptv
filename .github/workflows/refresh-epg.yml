@@ -30,14 +30,17 @@ jobs:
       - name: Build guide.xml from epg.channels.xml
         run: ./build_epg.sh 15 3
 
+      - name: Regenerate site data (docs/channels.json)
+        run: python3 gen_site.py
+
       - name: Commit refreshed guide
         run: |
           git config user.name  "epg-bot"
           git config user.email "epg-bot@users.noreply.github.com"
-          if ! git diff --quiet -- guide.xml guide.xml.gz; then
-            git add guide.xml guide.xml.gz
+          git add guide.xml guide.xml.gz docs/channels.json
+          if ! git diff --cached --quiet; then
             git commit -m "chore: refresh EPG guide.xml ($(date -u +%Y-%m-%d))"
             git push
           else
-            echo "guide.xml unchanged"
+            echo "guide unchanged"
           fi

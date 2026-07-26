@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IPTV — curated channels</title>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --border: #30363d; --border-soft: #21262d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #388bfd; --accent-soft: #1f6feb33;
+    --ok: #2ea043; --ok-soft: #2ea04322; --warn: #d29922; --warn-soft: #d2992222;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  header {
+    position: sticky; top: 0; z-index: 5; background: rgba(13,17,23,.85);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+  }
+  .title { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 650; }
+  .title i { color: var(--accent); }
+  .sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .urls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .urlbtn {
+    display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+    background: var(--panel); border: 1px solid var(--border); color: var(--text);
+    border-radius: 999px; padding: 6px 13px; font-size: 13px; transition: .15s;
+  }
+  .urlbtn:hover { border-color: var(--accent); }
+  .urlbtn i { width: 15px; height: 15px; color: var(--muted); }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; align-items: center; }
+  #q {
+    flex: 1; min-width: 200px; background: var(--panel); border: 1px solid var(--border);
+    color: var(--text); border-radius: var(--radius); padding: 9px 13px; font-size: 14px;
+  }
+  #q:focus { outline: none; border-color: var(--accent); }
+  select {
+    background: var(--panel); border: 1px solid var(--border); color: var(--text);
+    border-radius: var(--radius); padding: 9px 12px; font-size: 14px;
+  }
+  main { padding: 20px; max-width: 1400px; margin: 0 auto; }
+  .grid {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .card {
+    background: var(--panel); border: 1px solid var(--border-soft);
+    border-radius: var(--radius); padding: 13px; display: flex; flex-direction: column;
+    gap: 9px; transition: .15s;
+  }
+  .card:hover { border-color: var(--border); }
+  .card.epg { border-color: var(--ok-soft); background: linear-gradient(0deg, var(--ok-soft), transparent 60%), var(--panel); }
+  .row { display: flex; align-items: center; gap: 10px; }
+  .logo {
+    width: 44px; height: 44px; border-radius: 9px; object-fit: contain;
+    background: #0d1117; border: 1px solid var(--border-soft); flex: none;
+  }
+  .logo.ph { display: flex; align-items: center; justify-content: center; color: var(--muted); }
+  .nm { font-weight: 600; font-size: 14px; line-height: 1.25; }
+  .grp { color: var(--muted); font-size: 12px; margin-top: 1px; }
+  .meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px; font-size: 11px;
+    padding: 3px 8px; border-radius: 999px; border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .badge i { width: 12px; height: 12px; }
+  .badge.on { color: var(--ok); border-color: var(--ok-soft); background: var(--ok-soft); }
+  .badge.no { color: var(--warn); border-color: var(--warn-soft); background: var(--warn-soft); }
+  .chno { font-variant-numeric: tabular-nums; }
+  .empty { color: var(--muted); text-align: center; padding: 40px; }
+  footer { color: var(--muted); font-size: 12px; text-align: center; padding: 24px; }
+  a { color: var(--accent); text-decoration: none; }
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: var(--ok); color: #fff; padding: 9px 16px; border-radius: 999px;
+    font-size: 13px; opacity: 0; pointer-events: none; transition: .2s; z-index: 10;
+  }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="title"><i data-lucide="tv"></i> Curated IPTV</div>
+  <div class="sub" id="sub">Loading…</div>
+  <div class="urls">
+    <span class="urlbtn" data-copy="https://raw.githubusercontent.com/wizakorhd/iptv/main/playlist.m3u">
+      <i data-lucide="list"></i> Copy full playlist URL</span>
+    <span class="urlbtn" data-copy="https://cdn.jsdelivr.net/gh/wizakorhd/iptv@main/playlist.m3u">
+      <i data-lucide="zap"></i> Copy CDN (jsDelivr) URL</span>
+    <span class="urlbtn" data-copy="https://raw.githubusercontent.com/wizakorhd/iptv/main/guide.xml">
+      <i data-lucide="calendar"></i> Copy EPG URL</span>
+  </div>
+  <div class="controls">
+    <input id="q" type="search" placeholder="Search channels…" autocomplete="off" />
+    <select id="grp"><option value="">All groups</option></select>
+    <select id="epgf">
+      <option value="">EPG: any</option>
+      <option value="1">With guide</option>
+      <option value="0">No guide</option>
+    </select>
+  </div>
+</header>
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>No channels match.</div>
+</main>
+<footer id="foot"></footer>
+<div class="toast" id="toast">Copied</div>
+
+<script>
+const $ = s => document.querySelector(s);
+let DATA = { channels: [], meta: {} };
+
+function toast(msg) {
+  const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 1200);
+}
+function copy(text) { navigator.clipboard.writeText(text).then(() => toast("Copied URL")); }
+
+function card(c) {
+  const el = document.createElement("div");
+  el.className = "card" + (c.epg ? " epg" : "");
+  const logo = c.logo
+    ? `<img class="logo" src="${c.logo}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo ph',innerHTML:'<i data-lucide=&quot;tv&quot;></i>'}))">`
+    : `<div class="logo ph"><i data-lucide="tv"></i></div>`;
+  el.innerHTML = `
+    <div class="row">
+      ${logo}
+      <div><div class="nm">${c.name}</div><div class="grp">${c.group}</div></div>
+    </div>
+    <div class="meta">
+      <span class="badge chno"><i data-lucide="hash"></i>${c.chno}</span>
+      <span class="badge ${c.epg ? "on" : "no"}">
+        <i data-lucide="${c.epg ? "calendar-check" : "calendar-off"}"></i>${c.epg ? "Guide" : "No guide"}</span>
+    </div>`;
+  return el;
+}
+
+function render() {
+  const q = $("#q").value.trim().toLowerCase();
+  const g = $("#grp").value, e = $("#epgf").value;
+  const rows = DATA.channels.filter(c =>
+    (!q || c.name.toLowerCase().includes(q)) &&
+    (!g || c.group === g) &&
+    (e === "" || String(c.epg ? 1 : 0) === e));
+  const grid = $("#grid"); grid.innerHTML = "";
+  const frag = document.createDocumentFragment();
+  rows.forEach(c => frag.appendChild(card(c)));
+  grid.appendChild(frag);
+  $("#empty").hidden = rows.length > 0;
+  lucide.createIcons();
+}
+
+fetch("channels.json").then(r => r.json()).then(d => {
+  DATA = d;
+  $("#sub").textContent =
+    `${d.meta.total} channels · ${d.meta.with_epg} with guide · built ${d.meta.generated}`;
+  const sel = $("#grp");
+  d.meta.groups.forEach(g => {
+    const o = document.createElement("option"); o.value = o.textContent = g; sel.appendChild(o);
+  });
+  $("#foot").innerHTML =
+    `Rebuilt from <a href="https://github.com/wizakorhd/iptv">wizakorhd/iptv</a> · ` +
+    `sources: iptv-org + Free-TV · EPG: iptv-org + epgshare01`;
+  render();
+});
+
+$("#q").addEventListener("input", render);
+$("#grp").addEventListener("change", render);
+$("#epgf").addEventListener("change", render);
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-copy]");
+  if (b) copy(b.getAttribute("data-copy"));
+});
+lucide.createIcons();
+</script>
+</body>
+</html>

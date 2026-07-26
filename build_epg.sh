@@ -33,6 +33,9 @@ echo "==> Grabbing guide for curated channels (maxConnections=$MAXCONN, days=$DA
 echo "==> Done. Wrote $HERE/guide.xml"
 ls -lh "$HERE/guide.xml"
 
+echo "==> Filling EPG gaps from epgshare01 (name crosswalk) ..."
+python3 "$HERE/merge_epg.py" "$HERE/guide.xml" || echo "  (merge skipped/failed; keeping iptv-org guide)"
+
 echo "==> Writing gzipped copy (guide.xml.gz) for faster loading ..."
 gzip -9 -k -f "$HERE/guide.xml"
 ls -lh "$HERE/guide.xml.gz"

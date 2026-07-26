@@ -18,3 +18,6 @@ secrets*
 
 # Do not publish pasted third-party/subscription playlists
 *.pdf
+
+# transient Action artifact
+health-report.md

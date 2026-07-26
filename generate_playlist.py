@@ -22,15 +22,18 @@ import argparse
 import concurrent.futures as cf
 import json
 import os
+import re
+import xml.etree.ElementTree as ET
 import sys
 import urllib.request
 import urllib.error
-from collections import defaultdict
+import urllib.parse
+from collections import Counter, defaultdict
 
 API = "https://iptv-org.github.io/api"
 FILES = ["channels", "streams", "feeds", "categories", "languages",
          "countries", "blocklist", "logos"]
-FOREIGN_CATS = {"movies", "entertainment", "sports", "news"}
+FOREIGN_CATS = {"movies", "entertainment", "sports", "news", "documentary"}
 # Anime is not a category in the dataset, so detect dedicated anime channels by name.
 ANIME_KW = ("anime", "animax", "ani-one", "ani one", "aniplus", "toonami",
             "crunchyroll", "one piece", "naruto", "pokemon", "dragon ball",
@@ -38,6 +41,64 @@ ANIME_KW = ("anime", "animax", "ani-one", "ani one", "aniplus", "toonami",
 # We accept anime as sub or dub, so English- or Japanese-audio anime only
 # (skips Spanish/Portuguese/German-only anime feeds).
 ANIME_LANGS = {"eng", "jpn", "jap"}
+
+# Themed sub-categories detected primarily by channel name (these aren't first-class
+# iptv-org categories). Applied on top of the bucket to refine the group label, and
+# they also let a foreign channel qualify even if its iptv-org category isn't in
+# FOREIGN_CATS (e.g. a Reality/Horror channel tagged only "lifestyle"/"family").
+# Keyword lists + exclusions are refined from a research pass (high precision).
+# NOTE: matched at a token start (see theme_of), so "fear " needs its trailing space
+# to avoid "Fearless"; bare risky tokens ("history", "id", "own", "wild", "turbo")
+# are deliberately avoided in favour of specific phrases.
+HORROR_KW = ("horror", "scream", "chiller", "screambox", "shudder",
+             "dark matter tv", "darkmatter", "haunttv", "haunt tv",
+             "fright", "terror", "macabre", "nightmare", "slasher", "thriller")
+REALITY_KW = ("tlc", "bravo", "slice", "real time", "realtime", "we tv", "wetv",
+              "own network", "hallmark", "lifetime", "reality", "real housewives",
+              "housewives", "keeping up", "kardashian", "big brother", "hgtv",
+              "love island", "bachelor", "e! ", "e! entertainment")
+DOC_KW = ("discovery", "nat geo", "national geographic", "natgeo",
+          "animal planet", "history tv", "history channel", "history hd",
+          "the history channel", "investigation discovery", "science channel",
+          "smithsonian", "curiosity", "curiositystream", "love nature",
+          "bbc earth", "travelxp", "travel xp", "magellan", "real wild",
+          "planet earth", "geographic", "pbs", "docubay", "epic drama",
+          "quest", "yesterday", "blaze")
+# skip theming when one of these appears (traps flagged by research)
+THEME_EXCLUDE = ("real madrid", "history of", "wild fm", "turbo gaming", "downtown")
+# iptv-org category slugs that reinforce the Documentary theme
+DOC_CATS = {"documentary", "science", "travel", "outdoor"}
+
+
+def _kw_re(words) -> "re.Pattern":
+    # match a keyword only at a token start (non-alphanumeric or string start
+    # before it), so "e!" doesn't match inside "Charge!" nor "we tv" in "Lolwe TV".
+    return re.compile(r"(?<![a-z0-9])(?:" +
+                      "|".join(re.escape(w.strip()) for w in words) + r")")
+
+
+_HORROR_RE = None
+_REALITY_RE = None
+_DOC_RE = None
+
+
+def theme_of(name: str, cats: set[str]) -> str | None:
+    """Return a themed sub-category (Horror/Reality/Documentary) or None."""
+    global _HORROR_RE, _REALITY_RE, _DOC_RE
+    if _HORROR_RE is None:
+        _HORROR_RE = _kw_re(HORROR_KW)
+        _REALITY_RE = _kw_re(REALITY_KW)
+        _DOC_RE = _kw_re(DOC_KW)
+    n = name.lower()
+    if any(x in n for x in THEME_EXCLUDE):
+        return None
+    if _HORROR_RE.search(n):
+        return "Horror"
+    if _REALITY_RE.search(n):
+        return "Reality"
+    if (cats & DOC_CATS) or _DOC_RE.search(n):
+        return "Documentary"
+    return None
 QUALITY_RANK = {"2160p": 6, "1440p": 5, "1080p": 4, "720p": 3,
                 "576p": 2, "480p": 1, "360p": 0, "240p": 0}
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -125,18 +186,26 @@ def build_candidates(db: dict) -> list[dict]:
         primary = mfl[0] if mfl else None
         is_anime = (any(k in c["name"].lower() for k in ANIME_KW)
                     and (langs & ANIME_LANGS))
+        theme = theme_of(c["name"], cats)
 
         if is_anime:
             bucket, group = "anime", "Anime"
         elif "hin" in langs:
-            bucket, group = "hindi", primary_group("Hindi", cats)
+            bucket = "hindi"
+            group = f"Hindi - {theme}" if theme else primary_group("Hindi", cats)
         elif country == "IN" and "eng" in langs:
-            bucket, group = "eng_in", primary_group("English (India)", cats)
-        elif primary == "eng" and country != "IN" and (cats & FOREIGN_CATS):
+            bucket = "eng_in"
+            group = (f"English (India) - {theme}" if theme
+                     else primary_group("English (India)", cats))
+        elif "eng" in langs and country != "IN" and ((cats & FOREIGN_CATS) or theme):
             bucket = "eng_foreign"
-            cat = next(c2 for c2 in ("movies", "sports", "news", "entertainment")
-                       if c2 in cats)
-            group = f"English (Intl) - {cat.capitalize()}"
+            if theme:
+                group = f"English (Intl) - {theme}"
+            else:
+                cat = next(c2 for c2 in ("movies", "sports", "news",
+                                         "documentary", "entertainment")
+                           if c2 in cats)
+                group = f"English (Intl) - {cat.capitalize()}"
         else:
             continue
 
@@ -158,19 +227,55 @@ def build_candidates(db: dict) -> list[dict]:
 
 
 # ----------------------------------------------------------------------- validation
+def _get(url: str, headers: dict, timeout: float, maxbytes: int):
+    req = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.getcode(), r.geturl(), r.read(maxbytes)
+
+
+def _probe_hls(url: str, headers: dict, timeout: float, depth: int = 0) -> bool:
+    """Validate an HLS stream by resolving to a media playlist and pulling a real
+    segment — a manifest returning 200 is not enough (segments can still be dead).
+    Relative URIs are resolved against the *final* URL after redirects (important
+    for redirector links like Pluto's jmp2.uk that point at another host)."""
+    code, final_url, body = _get(url, headers, timeout, 16384)
+    if code not in (200, 206) or not body:
+        return False
+    text = body.decode("utf-8", "replace")
+    if "#EXTM3U" not in text:
+        return False
+    uris = [ln.strip() for ln in text.splitlines()
+            if ln.strip() and not ln.startswith("#")]
+    if not uris:
+        return False
+    if "EXT-X-STREAM-INF" in text and depth < 2:      # master -> follow a variant
+        return _probe_hls(urllib.parse.urljoin(final_url, uris[0]), headers,
+                          timeout, depth + 1)
+    # media playlist: fetch a segment away from the live edge (the newest segment
+    # may not be flushed yet -> false 404s).
+    seg = urllib.parse.urljoin(final_url, uris[len(uris) // 2])
+    h = dict(headers)
+    h["Range"] = "bytes=0-65535"
+    try:
+        code, _, chunk = _get(seg, h, timeout, 65536)
+    except urllib.error.HTTPError:
+        return False                                  # explicit 4xx/5xx -> dead
+    except (urllib.error.URLError, TimeoutError, ConnectionError, OSError):
+        return True                                   # transient -> keep (manifest was live)
+    return code in (200, 206) and len(chunk) > 512
+
+
 def probe(url: str, ua: str | None, ref: str | None, timeout: float) -> bool:
     headers = {"User-Agent": ua or DEFAULT_UA}
     if ref:
         headers["Referer"] = ref
-    headers["Range"] = "bytes=0-2047"
     try:
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            code = r.getcode()
-            if code not in (200, 206):
-                return False
-            chunk = r.read(2048)
-            return bool(chunk)
+        if ".m3u8" in url.lower():
+            return _probe_hls(url, headers, timeout)
+        h = dict(headers)
+        h["Range"] = "bytes=0-2047"
+        code, _, chunk = _get(url, h, timeout, 2048)
+        return code in (200, 206) and bool(chunk)
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError,
             ConnectionError, OSError, ValueError):
         return False
@@ -191,6 +296,32 @@ BUCKET_LABEL = {"hindi": "Hindi", "eng_in": "English (India)",
 BUCKET_FILE = {"hindi": "playlist-hindi.m3u", "eng_in": "playlist-english-india.m3u",
                "eng_foreign": "playlist-english-intl.m3u", "anime": "playlist-anime.m3u"}
 
+# Popular channels for a quick-access "Top" playlist (matched case-insensitively
+# against the channel name; only working ones are included).
+TOP_NAMES = [
+    # India news
+    "aaj tak", "ndtv 24x7", "ndtv india", "republic", "india today", "times now",
+    "wion", "cnbc tv18", "dd news", "abp news", "india tv",
+    # India entertainment / movies
+    "colors", "sony entertainment", "star bharat", "star gold", "zee cinema",
+    "zee tv", "sony max", "sony pix", "set max", "&pictures", "sony wah",
+    # India GEC / kids / doc
+    "dd national", "national geographic", "history tv18", "food food",
+    # International news
+    "bbc news", "cnn", "al jazeera", "sky news", "france 24", "dw ", "cnbc",
+    "bloomberg", "cgtn", "euronews", "abc news", "cbs news", "nbc news",
+    # Documentary
+    "national geographic", "nat geo", "discovery", "animal planet",
+    "history tv18", "smithsonian", "pbs", "love nature", "travelxp", "bbc earth",
+    # Reality
+    "tlc", "bravo", "slice", "lifetime", "hallmark", "we tv", "hgtv",
+    # Horror
+    "haunttv", "dark matter tv", "screambox", "shudder",
+    # International entertainment / movies / sports
+    "pluto tv movies", "pluto tv action", "red bull", "fox sports", "dazn",
+    "sony ten", "star sports",
+]
+
 
 def quality_tag(q: str | None) -> str:
     score = quality_score(q)
@@ -204,10 +335,14 @@ def quality_tag(q: str | None) -> str:
 
 
 def finalize(rows: list[dict]) -> list[dict]:
-    """Sort rows and assign a stable sequential channel number (tvg-chno)."""
+    """Sort rows, assign a stable sequential channel number (tvg-chno), and bake a
+    global per-group channel count into the group title (Lume/other players don't
+    show per-category counts on their own, e.g. 'Hindi - News (23)')."""
     rows.sort(key=lambda r: (BUCKET_ORDER[r["bucket"]], r["group"], r["name"].lower()))
+    group_counts = Counter(r["group"] for r in rows)
     for i, r in enumerate(rows, start=1):
         r["chno"] = i
+        r["group_display"] = f'{r["group"]} ({group_counts[r["group"]]})'
         tag = quality_tag(r["stream"].get("quality"))
         # avoid doubling a tag if the name already ends with HD/4K
         base = r["name"]
@@ -222,8 +357,9 @@ def write_m3u(path: str, rows: list[dict], epg_url: str | None):
     lines = [header]
     for r in rows:
         s = r["stream"]
+        group = r.get("group_display", r["group"])
         attrs = (f'tvg-id="{r["id"]}" tvg-chno="{r["chno"]}" '
-                 f'tvg-logo="{r["logo"]}" group-title="{r["group"]}"')
+                 f'tvg-logo="{r["logo"]}" group-title="{group}"')
         lines.append(f'#EXTINF:-1 {attrs},{r["display"]}')
         if s.get("referrer"):
             lines.append(f'#EXTVLCOPT:http-referrer={s["referrer"]}')
@@ -328,15 +464,34 @@ def main():
             write_m3u(os.path.join(os.path.dirname(args.out) or ".", fname),
                       subset, args.epg_url)
 
-    # health report (epg coverage from guides.json if available locally)
+    # "Top" quick-access playlist of popular working channels
+    top = [r for r in rows
+           if any(k in r["name"].lower() for k in TOP_NAMES)]
+    if top:
+        write_m3u(os.path.join(os.path.dirname(args.out) or ".", "playlist-top.m3u"),
+                  top, args.epg_url)
+        print(f"  Top (popular) ........ {len(top)}", file=sys.stderr)
+
+    # health report: prefer the actual guide.xml (reflects the epgshare merge too);
+    # fall back to guides.json (iptv-org sources) when guide.xml isn't built yet.
     epg_ids = set()
-    gpath = os.path.join(DATA, "guides.json")
-    if os.path.exists(gpath):
+    guide_xml = os.path.join(os.path.dirname(args.out) or ".", "guide.xml")
+    if os.path.exists(guide_xml):
         try:
-            for g in json.load(open(gpath)):
-                epg_ids.add(g["channel"])
+            for _, el in ET.iterparse(guide_xml, events=("end",)):
+                if el.tag == "channel":
+                    epg_ids.add(el.get("id"))
+                    el.clear()
         except Exception:
-            pass
+            epg_ids = set()
+    if not epg_ids:
+        gpath = os.path.join(DATA, "guides.json")
+        if os.path.exists(gpath):
+            try:
+                for g in json.load(open(gpath)):
+                    epg_ids.add(g["channel"])
+            except Exception:
+                pass
     write_report(os.path.join(os.path.dirname(args.out) or ".", "REPORT.md"),
                  rows, len(cands), epg_ids)
 
