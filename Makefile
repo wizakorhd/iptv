@@ -12,8 +12,9 @@ data:
 	$(PY) generate_playlist.py --refresh --no-validate --out /dev/null --ids-out /dev/null || true
 
 ## Curate + geo-validate streams from THIS machine's location -> playlist.m3u
+## Pass REFRESH=--refresh to also re-download the iptv-org source snapshot.
 playlist:
-	$(PY) generate_playlist.py
+	$(PY) generate_playlist.py $(REFRESH)
 
 ## Same as playlist but skip validation (faster, keeps dead/geo-blocked links)
 playlist-fast:
@@ -40,3 +41,9 @@ clean-data:
 
 clean: clean-data
 	rm -rf .epg epg_build.log
+
+## Reclaim all reusable caches (source data + iptv-org/epg clone + node_modules).
+## Next build re-downloads/re-clones/re-installs (slower), so use sparingly.
+deepclean: clean
+	rm -f guide.xml .grab.out refresh.log health-report.md
+	@echo "Caches removed. Next build will be a cold start."

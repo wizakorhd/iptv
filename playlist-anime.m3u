@@ -1,23 +1,23 @@
 #EXTM3U x-tvg-url="https://raw.githubusercontent.com/wizakorhd/iptv/main/guide.xml.gz"
-#EXTINF:-1 tvg-id="AnimaxAsia.sg" tvg-chno="1024" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Animax.png/960px-Animax.png" group-title="Anime (11)",Animax Asia ᶠᴴᴰ
+#EXTINF:-1 tvg-id="AnimaxAsia.sg" tvg-chno="1023" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Animax.png/960px-Animax.png" group-title="Anime (11)",Animax Asia ᶠᴴᴰ
 https://amg02159-kcglobal-amg02159c1-samsung-in-521.playouts.now.amagi.tv/playlist/amg02159-kcglobal-animax-samsungin/playlist.m3u8
-#EXTINF:-1 tvg-id="AnimexHIDIVE.us" tvg-chno="1025" tvg-logo="https://i.imgur.com/v0BlxCa.png" group-title="Anime (11)",Anime x HIDIVE
+#EXTINF:-1 tvg-id="AnimexHIDIVE.us" tvg-chno="1024" tvg-logo="https://i.imgur.com/v0BlxCa.png" group-title="Anime (11)",Anime x HIDIVE
 https://jmp2.uk/plu-6793eaa4bc03978b9bc63db1.m3u8
-#EXTINF:-1 tvg-id="AniplusAsia.sg" tvg-chno="1026" tvg-logo="https://i.imgur.com/Im3MePy.png" group-title="Anime (11)",Aniplus Asia ᴴᴰ
+#EXTINF:-1 tvg-id="AniplusAsia.sg" tvg-chno="1025" tvg-logo="https://i.imgur.com/Im3MePy.png" group-title="Anime (11)",Aniplus Asia ᴴᴰ
 https://amg18481-amg18481c1-amgplt0352.playout.now3.amagi.tv/playlist/amg18481-amg18481c1-amgplt0352/playlist.m3u8
-#EXTINF:-1 tvg-id="Crunchyroll.us" tvg-chno="1027" tvg-logo="https://i.imgur.com/2FlIQUO.png" group-title="Anime (11)",Crunchyroll ᴴᴰ
+#EXTINF:-1 tvg-id="Crunchyroll.us" tvg-chno="1026" tvg-logo="https://i.imgur.com/2FlIQUO.png" group-title="Anime (11)",Crunchyroll ᴴᴰ
 https://jmp2.uk/plu-65652f7fc0fc88000883537a.m3u8
-#EXTINF:-1 tvg-id="FilmRiseAnime.us" tvg-chno="1028" tvg-logo="https://i.imgur.com/3wqeGXM.png" group-title="Anime (11)",FilmRise Anime ᴴᴰ
+#EXTINF:-1 tvg-id="FilmRiseAnime.us" tvg-chno="1027" tvg-logo="https://i.imgur.com/3wqeGXM.png" group-title="Anime (11)",FilmRise Anime ᴴᴰ
 https://dvu7aia8rjlfm.cloudfront.net/master.m3u8
-#EXTINF:-1 tvg-id="Naruto.us" tvg-chno="1029" tvg-logo="https://i.imgur.com/M8X3Kvc.png" group-title="Anime (11)",Naruto
+#EXTINF:-1 tvg-id="Naruto.us" tvg-chno="1028" tvg-logo="https://i.imgur.com/M8X3Kvc.png" group-title="Anime (11)",Naruto
 https://jmp2.uk/plu-5da0c85bd2c9c10009370984.m3u8
-#EXTINF:-1 tvg-id="OnePiece.us" tvg-chno="1030" tvg-logo="https://images.pluto.tv/channels/5f7790b3ed0c88000720b241/colorLogoPNG_1731837233662.png" group-title="Anime (11)",One Piece
+#EXTINF:-1 tvg-id="OnePiece.us" tvg-chno="1029" tvg-logo="https://images.pluto.tv/channels/5f7790b3ed0c88000720b241/colorLogoPNG_1731837233662.png" group-title="Anime (11)",One Piece
 https://jmp2.uk/plu-69affcad8940750a23a7231a.m3u8
-#EXTINF:-1 tvg-id="PlutoTVAnime.us" tvg-chno="1031" tvg-logo="https://images.pluto.tv/channels/62a2e8d8a1c8650007e95bac/colorLogoPNG.png" group-title="Anime (11)",Pluto TV Anime
+#EXTINF:-1 tvg-id="PlutoTVAnime.us" tvg-chno="1030" tvg-logo="https://images.pluto.tv/channels/62a2e8d8a1c8650007e95bac/colorLogoPNG.png" group-title="Anime (11)",Pluto TV Anime
 https://jmp2.uk/plu-5812b7d3249444e05d09cc49.m3u8
-#EXTINF:-1 tvg-id="PlutoTVAnimeMovies.us" tvg-chno="1032" tvg-logo="https://images.pluto.tv/channels/67ed8f7e443f0671bc2b2368/colorLogoPNG.png" group-title="Anime (11)",Pluto TV Anime Movies
+#EXTINF:-1 tvg-id="PlutoTVAnimeMovies.us" tvg-chno="1031" tvg-logo="https://images.pluto.tv/channels/67ed8f7e443f0671bc2b2368/colorLogoPNG.png" group-title="Anime (11)",Pluto TV Anime Movies
 https://jmp2.uk/plu-67ed8f7e443f0671bc2b2368.m3u8
-#EXTINF:-1 tvg-id="PlutoTVPokemon.us" tvg-chno="1033" tvg-logo="https://i.imgur.com/GEbRABE.png" group-title="Anime (11)",Pluto TV Pokemon
+#EXTINF:-1 tvg-id="PlutoTVPokemon.us" tvg-chno="1032" tvg-logo="https://i.imgur.com/GEbRABE.png" group-title="Anime (11)",Pluto TV Pokemon
 https://jmp2.uk/plu-687007a8ee4155e89a8f6d67.m3u8
-#EXTINF:-1 tvg-id="ToonamiAftermath.us" tvg-chno="1034" tvg-logo="https://i.imgur.com/aSjhZK7.png" group-title="Anime (11)",Toonami Aftermath
+#EXTINF:-1 tvg-id="ToonamiAftermath.us" tvg-chno="1033" tvg-logo="https://i.imgur.com/aSjhZK7.png" group-title="Anime (11)",Toonami Aftermath
 http://api.toonamiaftermath.com:3000/est/playlist.m3u8

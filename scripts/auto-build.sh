@@ -56,11 +56,42 @@ fi
 echo "==> git pull --ff-only"
 git pull --ff-only origin main || echo "!! pull failed (continuing with local state)"
 
-echo "==> make all (playlist + epg + site)"
-if ! make all; then
-  echo "!! build failed; leaving repo untouched"
+# --- Refresh the iptv-org source snapshot weekly so newly added / removed
+#     channels + streams are picked up (a plain build reuses the cached data/). ---
+DATA_MAX_AGE=$((7 * 24 * 3600))
+REFRESH=""
+if [ ! -f data/streams.json ]; then
+  REFRESH="--refresh"
+else
+  DAGE=$(( $(date +%s) - $(stat -f %m data/streams.json) ))
+  [ "$DAGE" -ge "$DATA_MAX_AGE" ] && REFRESH="--refresh"
+fi
+echo "==> Rebuild playlist (geo-validated from India)${REFRESH:+ [refreshing source data]}"
+if ! make playlist REFRESH="$REFRESH"; then
+  echo "!! playlist build failed; leaving repo untouched"
   exit 1
 fi
+make epg-config || { echo "!! epg-config failed"; exit 1; }
+
+# --- The EPG grab is the slow part (~40 min). We fetch a 3-day guide, so only
+#     re-grab once the current guide has <=1 day of runway left (>=2 days old);
+#     otherwise reuse it. This turns most daily runs into a ~3-min playlist
+#     revalidation instead of a 44-min full build. ---
+EPG_MAX_AGE=$((2 * 24 * 3600))
+if [ -f guide.xml.gz ]; then
+  EAGE=$(( $(date +%s) - $(stat -f %m guide.xml.gz) ))
+else
+  EAGE=$((EPG_MAX_AGE + 1))
+fi
+if [ "$EAGE" -ge "$EPG_MAX_AGE" ]; then
+  echo "==> EPG is $((EAGE / 3600))h old; re-grabbing 3-day guide"
+  make epg || echo "!! EPG grab failed (keeping previous guide.xml.gz)"
+else
+  echo "==> EPG is $((EAGE / 3600))h old (<2 days); reusing current guide"
+fi
+
+echo "==> Regenerate site data"
+make site || echo "!! site generation failed (continuing)"
 
 if git diff --quiet && git diff --cached --quiet; then
   echo "==> no changes after rebuild; nothing to commit"

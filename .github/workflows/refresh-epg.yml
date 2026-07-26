@@ -4,10 +4,13 @@ name: Refresh EPG (guide.xml)
 # epg.channels.xml. This is location-independent, so a GitHub runner is fine.
 # NOTE: playlist.m3u is curated + geo-validated locally (from your location) and
 # is not rebuilt here — see README.
+#
+# The local macOS launchd job (scripts/auto-build.sh) is the PRIMARY builder and
+# already produces the EPG from India. This workflow is a manual-only failsafe
+# for when that Mac is offline for a while; its daily schedule is disabled to
+# avoid double-push churn. Trigger it from the Actions tab when needed.
 
 on:
-  schedule:
-    - cron: "30 0 * * *"   # 00:30 UTC daily (~06:00 IST)
   workflow_dispatch: {}
 
 permissions:

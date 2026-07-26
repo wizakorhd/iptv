@@ -32,11 +32,21 @@ else
 fi
 
 echo "==> Grabbing guide for curated channels (maxConnections=$MAXCONN, days=$DAYS) ..."
+# Keep the log readable: drop the ~2000 per-channel progress lines but keep any
+# errors and the final summary. Preserve the grabber's real exit code (pipefail).
+set +e
 ( cd "$EPG_DIR" && npm run grab -- \
     --channels="$HERE/epg.channels.xml" \
     --output="$HERE/guide.xml" \
     --days="$DAYS" \
-    --maxConnections="$MAXCONN" )
+    --maxConnections="$MAXCONN" ) 2>&1 \
+  | grep -vE '^ℹ[[:space:]]+\[[0-9]+/[0-9]+\]'
+GRAB_RC=${PIPESTATUS[0]}
+set -e
+if [ "$GRAB_RC" -ne 0 ]; then
+  echo "!! grab exited with code $GRAB_RC"
+  exit "$GRAB_RC"
+fi
 
 echo "==> Done. Wrote $HERE/guide.xml"
 ls -lh "$HERE/guide.xml"

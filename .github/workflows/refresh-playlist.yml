@@ -1,17 +1,19 @@
 name: Refresh playlist (self-hosted, India)
 
 # Rebuilds the geo-validated playlist AND the EPG on a self-hosted runner located
-# in India, then commits everything — so you don't have to run it locally.
+# in India, then commits everything.
 #
 # WHY self-hosted: streams are validated by probing them from the runner's
 # network. GitHub's hosted runners are in the US, so they would drop India-only
 # channels and keep US-only ones (i.e. break the "no-VPN-from-India" guarantee).
-# A self-hosted runner in India reproduces your local result. See README
-# ("Fully automated playlist") for one-time runner setup.
+#
+# NOTE: the local macOS launchd job (scripts/auto-build.sh) already does this
+# from your India-connected Mac and is the PRIMARY builder. This workflow is an
+# alternative for people who prefer an Actions-driven flow with a registered
+# self-hosted India runner; its daily schedule is disabled to avoid double-push
+# churn with the launchd job. Trigger manually from the Actions tab if desired.
 
 on:
-  schedule:
-    - cron: "45 0 * * *"      # 00:45 UTC daily (~06:15 IST); after the EPG job
   workflow_dispatch:
     inputs:
       days:

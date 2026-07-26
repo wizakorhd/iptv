@@ -198,7 +198,6 @@
   <channel site="tataplay.com" lang="en" xmltv_id="FatehTV.in" site_id="791">Fateh TV</channel>
   <channel site="programetv.ro" lang="en" xmltv_id="FightBox.nl" site_id="fight-box-hd">Fight Box HD</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="FightNetwork.ca" site_id="Plex/au#697140a85d851f5e69414688-606605549dbfca002d2ae877">Fight Network</channel>
-  <channel site="tvgids.nl" lang="nl" xmltv_id="Film1Action.nl" site_id="film1action">Film1 Action</channel>
   <channel site="horizon.tv" lang="cs" xmltv_id="FilmBox.nl" site_id="10044">FilmBox HD</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="FilmRiseAnime.us" site_id="Plex/gb#64305451fc3be5947773c339-65ec577b07060fb76a3916bf">FilmRise Anime</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="FilmRiseWestern.us" site_id="Plex/ca#647f8d22a2fc3fadb4721685-6627ab12580825e8a7bc4f05">FilmRise Western</channel>
@@ -266,7 +265,6 @@
   <channel site="i.mjh.nz" lang="en" xmltv_id="IONTV.us" site_id="Plex/us#5e20b730f2f8d5003d739db7-624c37af6281708eabbbe26b">ION</channel>
   <channel site="watch.whaletvplus.com" lang="en" xmltv_id="InTrouble.nl" site_id="878087694210044785">INTROUBLE</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="InWonder.nl" site_id="Plex/us#5e20b730f2f8d5003d739db7-6668b2b5e4f56766e556a413">INWONDER</channel>
-  <channel site="airtelxstream.in" lang="en" xmltv_id="IndiaAhead.in" site_id="LIVETV_LIVETVCHANNEL_INDIA_AHEAD">INDIA AHEAD</channel>
   <channel site="tataplay.com" lang="en" xmltv_id="IndiaDailyLive.in" site_id="1084">India Daily 24x7</channel>
   <channel site="airtelxstream.in" lang="en" xmltv_id="IndiaTV.in" site_id="LIVETV_LIVETVCHANNEL_INDIA_TV">India TV</channel>
   <channel site="airtelxstream.in" lang="en" xmltv_id="IndiaTVSpeedNews.in" site_id="LIVETV_LIVETVCHANNEL_INDIA_TV_SPEED_NEWS">INDIA TV SPEED NEWS</channel>
@@ -382,6 +380,7 @@
   <channel site="airtelxstream.in" lang="en" xmltv_id="NortheastLive.in" site_id="LIVETV_LIVETVCHANNEL_NORTH_EAST_LIVE">North East Live</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="OANPlus.us" site_id="PlutoTV/us#5e7cf6c7b156d500078c5f44">OAN Plus</channel>
   <channel site="epg.iptvx.one" lang="ru" xmltv_id="Okhotairybalka.ru" site_id="oxota-i-rybalka">Охота и рыбалка</channel>
+  <channel site="ayn.om" lang="ar" xmltv_id="OmanSportsTV.om" site_id="159/قناة-عمان-الرياضية">قناة عمان الرياضية</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="OnTheCase.us" site_id="PlutoTV/gb#615af74dfe3d8e0007524511">On The Case</channel>
   <channel site="tvpassport.com" lang="en" xmltv_id="OneAmericaNewsNetwork.us" site_id="one-america-news-network/12614">One America News Network</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="OnePiece.us" site_id="PlutoTV/us#5f7790b3ed0c88000720b241">One Piece</channel>
@@ -526,7 +525,6 @@
   <channel site="sky.com" lang="en" xmltv_id="SkyNews.ie" site_id="1406">Sky News</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="SkyRacing1.au" site_id="Foxtel/epg#SRA">Sky Racing 1</channel>
   <channel site="i.mjh.nz" lang="en" xmltv_id="SkyRacing2.au" site_id="Foxtel/epg#SR2">Sky Racing 2</channel>
-  <channel site="sky.com" lang="en" xmltv_id="SkySportsCricket.uk" site_id="4081">SkySpCricket HD</channel>
   <channel site="sky.com" lang="en" xmltv_id="SkySportsF1.ie" site_id="1306">SkySp F1</channel>
   <channel site="sky.com" lang="en" xmltv_id="SkySportsGolf.uk" site_id="4026">SkySp Golf HD</channel>
   <channel site="sky.com" lang="en" xmltv_id="SkySportsMainEvent.ie" site_id="1309">SkySpMainEv</channel>

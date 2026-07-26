@@ -42,44 +42,42 @@ https://zainabia.livebox.co.in/ZainabiaChannelhls/channel.m3u8
 http://116.90.120.157:8000/play/a0i3/index.m3u8
 #EXTINF:-1 tvg-id="IndywoodTV.in" tvg-chno="226" tvg-logo="https://i.ibb.co/jT3NCPp/logo-tv.png" group-title="English (India) - Movies (1)",Indywood TV ᴴᴰ
 https://43wrzjnpqoxe-hls-live.wmncdn.net/indywood/indywoodtv/index.m3u8
-#EXTINF:-1 tvg-id="BharatExpress.in" tvg-chno="227" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_BHARAT_EXPRESS/images/LOGO_HD/image.png" group-title="English (India) - News (16)",Bharat Express ᶠᴴᴰ
+#EXTINF:-1 tvg-id="BharatExpress.in" tvg-chno="227" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_BHARAT_EXPRESS/images/LOGO_HD/image.png" group-title="English (India) - News (15)",Bharat Express ᶠᴴᴰ
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0
 https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/bharat-express/index.m3u8?ads.vf=rc4w_mtwL4W
-#EXTINF:-1 tvg-id="BTTV.in" tvg-chno="228" tvg-logo="https://akm-img-a-in.tosshub.com/businesstoday/resource/img/best-bank-new.png" group-title="English (India) - News (16)",BT TV ᴴᴰ
+#EXTINF:-1 tvg-id="BTTV.in" tvg-chno="228" tvg-logo="https://akm-img-a-in.tosshub.com/businesstoday/resource/img/best-bank-new.png" group-title="English (India) - News (15)",BT TV ᴴᴰ
 https://feeds.intoday.in/bttv/itgd.m3u8
-#EXTINF:-1 tvg-id="CVREnglish.in" tvg-chno="229" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/CVR_English.png" group-title="English (India) - News (16)",CVR English ᴴᴰ
+#EXTINF:-1 tvg-id="CVREnglish.in" tvg-chno="229" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/CVR_English.png" group-title="English (India) - News (15)",CVR English ᴴᴰ
 https://cdn-2.pishow.tv/live/425/master.m3u8
-#EXTINF:-1 tvg-id="DDMizoram.in" tvg-chno="230" tvg-logo="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/DD-Mizoram_2000_X_1125_transpharent.png" group-title="English (India) - News (16)",DD Mizoram
+#EXTINF:-1 tvg-id="DDMizoram.in" tvg-chno="230" tvg-logo="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/DD-Mizoram_2000_X_1125_transpharent.png" group-title="English (India) - News (15)",DD Mizoram
 https://d2lk5u59tns74c.cloudfront.net/out/v1/eea48c6b61074052a2fa8532ff795ff1/index.m3u8
-#EXTINF:-1 tvg-id="HornbillTV.in" tvg-chno="231" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_HORNBILL/images/LOGO_HD/image.png" group-title="English (India) - News (16)",Hornbill TV
+#EXTINF:-1 tvg-id="HornbillTV.in" tvg-chno="231" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_HORNBILL/images/LOGO_HD/image.png" group-title="English (India) - News (15)",Hornbill TV
 https://cdn-2.pishow.tv/live/1463/master.m3u8
-#EXTINF:-1 tvg-id="IndiaAhead.in" tvg-chno="232" tvg-logo="https://i.imgur.com/hBkTmf9.png" group-title="English (India) - News (16)",India Ahead
-https://mumt05.tangotv.in/87NeALx2INDIAAHEAD/index.m3u8
-#EXTINF:-1 tvg-id="IndiaToday.in" tvg-chno="233" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_INDIA_TODAY/images/LOGO_HD/image.png" group-title="English (India) - News (16)",India Today ᴴᴰ
+#EXTINF:-1 tvg-id="IndiaToday.in" tvg-chno="232" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_INDIA_TODAY/images/LOGO_HD/image.png" group-title="English (India) - News (15)",India Today ᴴᴰ
 https://amg00644-amg00644c1-ondemandkorea-amesia-10266.playouts.now.amagi.tv/playlist/amg00644-tvtodaynetworkltdfast-indiatoday-ondemandkoreaamesia/playlist.m3u8
-#EXTINF:-1 tvg-id="MirrorNow.in" tvg-chno="234" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/TIMESPLAY/LIVECHANNEL/6904ba4139f3b175376a61df/images/LOGO_HD/LOGO_HD_urHxV45Q__MirrorNow1_1.png" group-title="English (India) - News (16)",Mirror Now ᴴᴰ
+#EXTINF:-1 tvg-id="MirrorNow.in" tvg-chno="233" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/TIMESPLAY/LIVECHANNEL/6904ba4139f3b175376a61df/images/LOGO_HD/LOGO_HD_urHxV45Q__MirrorNow1_1.png" group-title="English (India) - News (15)",Mirror Now ᴴᴰ
 #EXTVLCOPT:http-referrer=https://www.timesnownews.com/
 https://dai.google.com/linear/hls/event/ClPOullTQky5vGPf7fMZ8g/master.m3u8
-#EXTINF:-1 tvg-id="NDTV24x7.in" tvg-chno="235" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NDTV_24X7/images/LOGO_HD/image.png" group-title="English (India) - News (16)",NDTV 24x7 ᴴᴰ
+#EXTINF:-1 tvg-id="NDTV24x7.in" tvg-chno="234" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NDTV_24X7/images/LOGO_HD/image.png" group-title="English (India) - News (15)",NDTV 24x7 ᴴᴰ
 https://raw.githubusercontent.com/amazeyourself/adaptive-streams/refs/heads/main/streams/in/YuppTV/NDTV24x7.m3u8
-#EXTINF:-1 tvg-id="News18AssamNorthEast.in" tvg-chno="236" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NEWS18_ASSAM_NORTHSYMHYPEAST/images/LOGO_HD/image.png" group-title="English (India) - News (16)",News18 Assam North-East ᶠᴴᴰ
+#EXTINF:-1 tvg-id="News18AssamNorthEast.in" tvg-chno="235" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NEWS18_ASSAM_NORTHSYMHYPEAST/images/LOGO_HD/image.png" group-title="English (India) - News (15)",News18 Assam North-East ᶠᴴᴰ
 https://n18syndication.akamaized.net/bpk-tv/News18_Assam_North_East_NW18_MOB/output01/master.m3u8
-#EXTINF:-1 tvg-id="News9Live.in" tvg-chno="237" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NEWS9/images/LOGO_HD/image.png" group-title="English (India) - News (16)",News9Live ᶠᴴᴰ
+#EXTINF:-1 tvg-id="News9Live.in" tvg-chno="236" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_NEWS9/images/LOGO_HD/image.png" group-title="English (India) - News (15)",News9Live ᶠᴴᴰ
 https://amg01106-amg01106c3-amgplt0844.playout.now3.amagi.tv/ts-ap-s1-n1/playlist/amg01106-amg01106c3-amgplt0844/playlist.m3u8
-#EXTINF:-1 tvg-id="PrudentMedia.in" tvg-chno="238" tvg-logo="https://i.imgur.com/DG0x4UD.png" group-title="English (India) - News (16)",Prudent Media ᶠᴴᴰ
+#EXTINF:-1 tvg-id="PrudentMedia.in" tvg-chno="237" tvg-logo="https://i.imgur.com/DG0x4UD.png" group-title="English (India) - News (15)",Prudent Media ᶠᴴᴰ
 https://prudentmcdn.rixcast.com/prudentm.m3u8
-#EXTINF:-1 tvg-id="RepublicTV.in" tvg-chno="239" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_REPUBLIC_TV/images/LOGO_HD/image.png" group-title="English (India) - News (16)",Republic TV ᶠᴴᴰ
+#EXTINF:-1 tvg-id="RepublicTV.in" tvg-chno="238" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_REPUBLIC_TV/images/LOGO_HD/image.png" group-title="English (India) - News (15)",Republic TV ᶠᴴᴰ
 https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/2e31d831f08640ff92f65003bdc89991/index.m3u8
-#EXTINF:-1 tvg-id="RTIndia.in" tvg-chno="240" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/a0/Russia-today-logo.svg" group-title="English (India) - News (16)",RT India ᶠᴴᴰ
+#EXTINF:-1 tvg-id="RTIndia.in" tvg-chno="239" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/a/a0/Russia-today-logo.svg" group-title="English (India) - News (15)",RT India ᶠᴴᴰ
 https://rt-india.rttv.com/dvr/rtindia/playlist.m3u8
-#EXTINF:-1 tvg-id="TOIGlobal.in" tvg-chno="241" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/npnhm84gz9.png" group-title="English (India) - News (16)",TOI Global ᶠᴴᴰ
+#EXTINF:-1 tvg-id="TOIGlobal.in" tvg-chno="240" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/npnhm84gz9.png" group-title="English (India) - News (15)",TOI Global ᶠᴴᴰ
 https://live.sli.ke/live/npnhm84gz9/master.m3u8
-#EXTINF:-1 tvg-id="WION.in" tvg-chno="242" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/ZEEDIGITAL/LIVECHANNEL/67ed357bd88a5f7a856b6fbb/images/LOGO/LOGO_14l9kmNae_WION-(2).png" group-title="English (India) - News (16)",WION ᶠᴴᴰ
+#EXTINF:-1 tvg-id="WION.in" tvg-chno="241" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/ZEEDIGITAL/LIVECHANNEL/67ed357bd88a5f7a856b6fbb/images/LOGO/LOGO_14l9kmNae_WION-(2).png" group-title="English (India) - News (15)",WION ᶠᴴᴰ
 https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
-#EXTINF:-1 tvg-id="StarSports1.in" tvg-chno="243" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_1/images/LOGO_HD/image.png" group-title="English (India) - Sports (3)",Star Sports 1 ᶠᴴᴰ
+#EXTINF:-1 tvg-id="StarSports1.in" tvg-chno="242" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_1/images/LOGO_HD/image.png" group-title="English (India) - Sports (3)",Star Sports 1 ᶠᴴᴰ
 http://103.253.18.58:8000/play/a00m
-#EXTINF:-1 tvg-id="StarSportsSelect2.in" tvg-chno="244" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_SELECT_2/images/LOGO_HD/image.png" group-title="English (India) - Sports (3)",Star Sports Select 2 ᴴᴰ
+#EXTINF:-1 tvg-id="StarSportsSelect2.in" tvg-chno="243" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_SELECT_2/images/LOGO_HD/image.png" group-title="English (India) - Sports (3)",Star Sports Select 2 ᴴᴰ
 http://tvsen7.aynascope.net/ssport2hd/index.m3u8
-#EXTINF:-1 tvg-id="Unite8Sports2.in" tvg-chno="245" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SYMANDFLIX/images/LOGO_HD/LOGO_HD_BvXTgRk6Y_UNITE8-SPORTS-2_264X144.webp" group-title="English (India) - Sports (3)",Unite8 Sports 2
+#EXTINF:-1 tvg-id="Unite8Sports2.in" tvg-chno="244" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_SYMANDFLIX/images/LOGO_HD/LOGO_HD_BvXTgRk6Y_UNITE8-SPORTS-2_264X144.webp" group-title="English (India) - Sports (3)",Unite8 Sports 2
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
 http://59.103.38.46:8000/play/a126/index.m3u8
