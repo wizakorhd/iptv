@@ -28,3 +28,6 @@ guide.xml
 *.plist
 refresh-local.sh
 refresh.log
+
+# local-only Copilot context (contains ops details; never publish)
+.github/copilot-instructions.md
