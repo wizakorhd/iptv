@@ -472,16 +472,25 @@ def main():
                   top, args.epg_url)
         print(f"  Top (popular) ........ {len(top)}", file=sys.stderr)
 
-    # health report: prefer the actual guide.xml (reflects the epgshare merge too);
-    # fall back to guides.json (iptv-org sources) when guide.xml isn't built yet.
+    # health report: prefer the actual guide (reflects the epgshare merge too);
+    # fall back to guides.json (iptv-org sources) when the guide isn't built yet.
     epg_ids = set()
-    guide_xml = os.path.join(os.path.dirname(args.out) or ".", "guide.xml")
+    base_dir = os.path.dirname(args.out) or "."
+    guide_xml = os.path.join(base_dir, "guide.xml")
+    guide_gz = os.path.join(base_dir, "guide.xml.gz")
+    guide_fh = None
     if os.path.exists(guide_xml):
+        guide_fh = open(guide_xml, "rb")
+    elif os.path.exists(guide_gz):
+        import gzip
+        guide_fh = gzip.open(guide_gz, "rb")
+    if guide_fh is not None:
         try:
-            for _, el in ET.iterparse(guide_xml, events=("end",)):
-                if el.tag == "channel":
-                    epg_ids.add(el.get("id"))
-                    el.clear()
+            with guide_fh:
+                for _, el in ET.iterparse(guide_fh, events=("end",)):
+                    if el.tag == "channel":
+                        epg_ids.add(el.get("id"))
+                        el.clear()
         except Exception:
             epg_ids = set()
     if not epg_ids:

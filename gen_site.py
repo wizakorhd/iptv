@@ -2,8 +2,9 @@
 """Generate docs/channels.json (+ meta) for the GitHub Pages browse/status page.
 
 Parses the built playlist.m3u so the site data always matches what devices load.
-EPG availability is derived from guide.xml channel ids.
+EPG availability is derived from the guide channel ids (guide.xml or guide.xml.gz).
 """
+import gzip
 import json
 import os
 import re
@@ -14,20 +15,28 @@ from datetime import datetime, timezone
 HERE = os.path.dirname(os.path.abspath(__file__))
 PLAYLIST = os.path.join(HERE, "playlist.m3u")
 GUIDE = os.path.join(HERE, "guide.xml")
+GUIDE_GZ = os.path.join(HERE, "guide.xml.gz")
 OUT = os.path.join(HERE, "docs", "channels.json")
 
 ATTR = re.compile(r'(\S+?)="(.*?)"')
 
 
 def epg_ids() -> set:
-    if not os.path.exists(GUIDE):
+    # Prefer the uncompressed guide if present, else read the gzipped one
+    # (we publish only guide.xml.gz to keep the repo small).
+    if os.path.exists(GUIDE):
+        opener = lambda: open(GUIDE, "rb")
+    elif os.path.exists(GUIDE_GZ):
+        opener = lambda: gzip.open(GUIDE_GZ, "rb")
+    else:
         return set()
     ids = set()
     try:
-        for _, el in ET.iterparse(GUIDE, events=("end",)):
-            if el.tag == "channel":
-                ids.add(el.get("id"))
-                el.clear()
+        with opener() as fh:
+            for _, el in ET.iterparse(fh, events=("end",)):
+                if el.tag == "channel":
+                    ids.add(el.get("id"))
+                    el.clear()
     except Exception:
         pass
     return ids
