@@ -31,6 +31,13 @@ API = "https://iptv-org.github.io/api"
 FILES = ["channels", "streams", "feeds", "categories", "languages",
          "countries", "blocklist", "logos"]
 FOREIGN_CATS = {"movies", "entertainment", "sports", "news"}
+# Anime is not a category in the dataset, so detect dedicated anime channels by name.
+ANIME_KW = ("anime", "animax", "ani-one", "ani one", "aniplus", "toonami",
+            "crunchyroll", "one piece", "naruto", "pokemon", "dragon ball",
+            "gundam", "hidive", "filmrise anime", "kanade")
+# We accept anime as sub or dub, so English- or Japanese-audio anime only
+# (skips Spanish/Portuguese/German-only anime feeds).
+ANIME_LANGS = {"eng", "jpn", "jap"}
 QUALITY_RANK = {"2160p": 6, "1440p": 5, "1080p": 4, "720p": 3,
                 "576p": 2, "480p": 1, "360p": 0, "240p": 0}
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -72,15 +79,22 @@ def build_candidates(db: dict) -> list[dict]:
     channels = {c["id"]: c for c in db["channels"]}
     block = {b["channel"] for b in db["blocklist"]}
 
-    # languages live on feeds now -> collapse to per-channel language set
+    # languages live on feeds now -> collapse to per-channel language set,
+    # and keep the ORDERED languages of the main feed (first = primary).
     ch_langs: dict[str, set] = defaultdict(set)
     main_feed: dict[str, str] = {}
+    main_feed_langs: dict[str, list] = {}
     for f in db["feeds"]:
         cid = f["channel"]
-        for lang in f.get("languages") or []:
+        flangs = f.get("languages") or []
+        for lang in flangs:
             ch_langs[cid].add(lang)
-        if f.get("is_main"):
-            main_feed[cid] = f["id"]
+        if f.get("is_main") or cid not in main_feed_langs:
+            if f.get("is_main"):
+                main_feed[cid] = f["id"]
+            main_feed_langs.setdefault(cid, flangs)
+            if f.get("is_main"):
+                main_feed_langs[cid] = flangs
 
     # streams grouped by channel
     ch_streams: dict[str, list] = defaultdict(list)
@@ -107,12 +121,18 @@ def build_candidates(db: dict) -> list[dict]:
         langs = ch_langs.get(cid, set())
         cats = set(c.get("categories") or [])
         country = c.get("country")
+        mfl = main_feed_langs.get(cid, [])
+        primary = mfl[0] if mfl else None
+        is_anime = (any(k in c["name"].lower() for k in ANIME_KW)
+                    and (langs & ANIME_LANGS))
 
-        if "hin" in langs:
+        if is_anime:
+            bucket, group = "anime", "Anime"
+        elif "hin" in langs:
             bucket, group = "hindi", primary_group("Hindi", cats)
         elif country == "IN" and "eng" in langs:
             bucket, group = "eng_in", primary_group("English (India)", cats)
-        elif "eng" in langs and country != "IN" and (cats & FOREIGN_CATS):
+        elif primary == "eng" and country != "IN" and (cats & FOREIGN_CATS):
             bucket = "eng_foreign"
             cat = next(c2 for c2 in ("movies", "sports", "news", "entertainment")
                        if c2 in cats)
@@ -165,7 +185,7 @@ def pick_working_stream(chan: dict, timeout: float, max_try: int) -> dict | None
 
 
 # ---------------------------------------------------------------------------- output
-BUCKET_ORDER = {"hindi": 0, "eng_in": 1, "eng_foreign": 2}
+BUCKET_ORDER = {"hindi": 0, "eng_in": 1, "eng_foreign": 2, "anime": 3}
 
 
 def write_m3u(path: str, rows: list[dict], epg_url: str | None):
@@ -239,6 +259,7 @@ def main():
     print(f"  Hindi ................. {by_bucket['hindi']}", file=sys.stderr)
     print(f"  English (India) ...... {by_bucket['eng_in']}", file=sys.stderr)
     print(f"  English (Intl) ....... {by_bucket['eng_foreign']}", file=sys.stderr)
+    print(f"  Anime ................ {by_bucket['anime']}", file=sys.stderr)
     print(f"  TOTAL channels ....... {len(rows)}", file=sys.stderr)
 
     write_m3u(args.out, rows, args.epg_url)
