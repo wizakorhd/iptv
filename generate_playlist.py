@@ -29,6 +29,7 @@ import os
 import re
 import xml.etree.ElementTree as ET
 import sys
+import time
 import urllib.request
 import urllib.error
 import urllib.parse
@@ -323,6 +324,159 @@ def roku_candidates(existing_names: set[str], refresh: bool = False) -> list[dic
                          "quality": None, "feed": None}],
         })
     return out
+
+
+# Pluto TV (US + GB FAST). Streams via jmp2.uk/plu-{id}.m3u8 -> Pluto's stitcher.
+# Pluto serves a frozen promo-slate loop for content it can't licence in the
+# request region, which passes ordinary liveness; drop_pluto_slates() removes
+# those after validation (see below).
+PLUTO_CHANNELS = "https://i.mjh.nz/PlutoTV/.channels.json.gz"
+PLUTO_STREAM = "https://jmp2.uk/plu-{id}.m3u8"
+PLUTO_REGIONS = ("us", "gb")
+PLUTO_EXCLUDE_GROUPS = {"en español", "en espanol", "kids en français",
+                        "kids en francais"}
+PLUTO_CAT = {
+    "reality": "entertainment", "competition reality": "entertainment",
+    "big brother live": "entertainment", "drama": "entertainment",
+    "bingeable drama": "entertainment", "crime drama": "entertainment",
+    "true crime": "entertainment", "paranormal": "entertainment",
+    "sci-fi": "entertainment", "sci-fi & fantasy": "entertainment",
+    "sci-fi + fantasy": "entertainment", "entertainment": "entertainment",
+    "daytime + game shows": "entertainment", "daytime & talk shows": "entertainment",
+    "game shows": "entertainment", "new on pluto tv": "entertainment",
+    "anime": "entertainment", "south park": "comedy",
+    "movies": "movies", "christmas in july": "movies",
+    "sports": "sports",
+    "comedy": "comedy", "classic tv comedy": "comedy",
+    "kids": "kids",
+    "classic tv": "classic", "westerns": "classic",
+    "local news": "news", "news + opinion": "news", "news": "news",
+    "home + food": "cooking",
+    "music videos": "music", "music": "music",
+    "real life adventure": "outdoor", "animals + nature": "documentary",
+    "documentaries": "documentary", "history + science": "documentary",
+    "documentary + science": "documentary",
+    "living": "lifestyle",
+}
+
+
+def pluto_candidates(existing_names: set[str], refresh: bool = False) -> list[dict]:
+    """Pluto TV (US+GB) FAST channels not already covered, shaped like rows.
+    Slate channels are pruned later by drop_pluto_slates()."""
+    import gzip
+    cache = os.path.join(DATA, "pluto.channels.json.gz")
+    try:
+        if refresh and os.path.exists(cache):
+            os.remove(cache)
+        if not os.path.exists(cache):
+            os.makedirs(DATA, exist_ok=True)
+            req = urllib.request.Request(PLUTO_CHANNELS,
+                                         headers={"User-Agent": DEFAULT_UA})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                open(cache, "wb").write(r.read())
+        with gzip.open(cache, "rb") as fh:
+            data = json.load(fh)
+    except Exception as e:
+        print(f"  ! Pluto TV source unavailable: {e}", file=sys.stderr)
+        return []
+
+    regions = data.get("regions", {})
+    seen = set(existing_names)
+    out = []
+    for reg in PLUTO_REGIONS:
+        for cid, c in regions.get(reg, {}).get("channels", {}).items():
+            name = (c.get("name") or "").strip()
+            nn = norm_name(name)
+            if not name or not nn or nn in seen:
+                continue
+            grp_raw = (c.get("group") or "").strip().lower()
+            if grp_raw in PLUTO_EXCLUDE_GROUPS:
+                continue
+            low = name.lower()
+            cat = PLUTO_CAT.get(grp_raw)
+            theme = theme_of(name, {cat} if cat else set())
+            if any(k in low for k in ANIME_KW):
+                bucket, group = "anime", "Anime"
+            elif any(k in low for k in KOREAN_KW):
+                bucket, group = "eng_foreign", "Korean"
+            else:
+                if not (theme or (cat in FOREIGN_CATS)):
+                    continue
+                bucket = "eng_foreign"
+                group = f"English (Intl) - {theme or cat.capitalize()}"
+            seen.add(nn)
+            out.append({
+                "id": cid,
+                "name": name,
+                "bucket": bucket,
+                "group": group,
+                "logo": c.get("logo", ""),
+                "streams": [{"url": PLUTO_STREAM.format(id=cid),
+                             "quality": None, "feed": None}],
+            })
+    return out
+
+
+def _stream_content_hash(url: str, timeout: float) -> str | None:
+    """md5 of the first media segment's leading bytes (master->media->segment).
+    Used to detect Pluto slate loops: a live stream advances so the hash changes
+    between two samples; a frozen slate returns the same hash."""
+    import hashlib
+    try:
+        master, base = _fetch(url, timeout)
+        media = next((l for l in master.decode("utf-8", "ignore").splitlines()
+                      if l and not l.startswith("#")), None)
+        if not media:
+            return None
+        mabs = urllib.parse.urljoin(base, media)
+        mp, mbase = _fetch(mabs, timeout)
+        seg = next((l for l in mp.decode("utf-8", "ignore").splitlines()
+                    if l and not l.startswith("#")), None)
+        if not seg:
+            return None
+        data, _ = _fetch(urllib.parse.urljoin(mbase, seg), timeout, cap=196608)
+        return hashlib.md5(data).hexdigest() if data else None
+    except Exception:
+        return None
+
+
+def _fetch(url: str, timeout: float, cap: int | None = None) -> tuple[bytes, str]:
+    req = urllib.request.Request(url, headers={"User-Agent": DEFAULT_UA})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return (r.read(cap) if cap else r.read()), r.geturl()
+
+
+def drop_pluto_slates(rows: list[dict], workers: int, timeout: float,
+                      delay: float = 30.0) -> list[dict]:
+    """Remove Pluto channels stuck on a frozen slate/promo loop. A real live
+    stream advances between two samples ~`delay`s apart (content hash changes);
+    a slate stays byte-identical, so we drop channels whose hash doesn't move."""
+    pluto = [r for r in rows if "jmp2.uk/plu-" in r["stream"]["url"]]
+    if not pluto:
+        return rows
+    urls = [r["stream"]["url"] for r in pluto]
+
+    def sample() -> dict:
+        res = {}
+        with cf.ThreadPoolExecutor(max_workers=workers) as ex:
+            for u, h in zip(urls, ex.map(
+                    lambda x: _stream_content_hash(x, timeout), urls)):
+                res[u] = h
+        return res
+
+    print(f"Pluto slate check: sampling {len(urls)} channels "
+          f"(2 passes, {delay:.0f}s apart) ...", file=sys.stderr)
+    h1 = sample()
+    time.sleep(delay)
+    h2 = sample()
+    slate = {u for u in urls
+             if h1.get(u) and h2.get(u) and h1[u] == h2[u]}
+    kept = [r for r in rows
+            if "jmp2.uk/plu-" not in r["stream"]["url"]
+            or r["stream"]["url"] not in slate]
+    print(f"  dropped {len(slate)}/{len(pluto)} Pluto slate/frozen channels",
+          file=sys.stderr)
+    return kept
 
 
 # ----------------------------------------------------------------------------- data
@@ -637,6 +791,10 @@ def main():
                     help="skip stream reachability probing (faster, keeps dead/geo links)")
     ap.add_argument("--no-fast", action="store_true",
                     help="skip Samsung TV Plus (FAST) channels; use iptv-org only")
+    ap.add_argument("--no-slate-check", action="store_true",
+                    help="skip the Pluto slate-loop detection pass")
+    ap.add_argument("--slate-delay", type=float, default=30.0,
+                    help="seconds between the two Pluto slate-detection samples")
     ap.add_argument("--timeout", type=float, default=8.0)
     ap.add_argument("--workers", type=int, default=40)
     ap.add_argument("--max-try", type=int, default=4,
@@ -662,6 +820,10 @@ def main():
         roku = roku_candidates(existing, refresh=args.refresh)
         print(f"FAST (Roku) candidates: {len(roku)}", file=sys.stderr)
         cands += roku
+        existing = {norm_name(c["name"]) for c in cands}
+        pluto = pluto_candidates(existing, refresh=args.refresh)
+        print(f"FAST (Pluto TV) candidates: {len(pluto)}", file=sys.stderr)
+        cands += pluto
 
     rows = []
     if args.no_validate:
@@ -685,6 +847,10 @@ def main():
                 if s:
                     c = futs[fut]
                     rows.append({**c, "stream": s})
+
+        if not args.no_slate_check:
+            rows = drop_pluto_slates(rows, args.workers, args.timeout,
+                                     delay=args.slate_delay)
 
     # summary
     by_bucket = defaultdict(int)

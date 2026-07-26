@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Append Samsung TV Plus + Roku EPG (from i.mjh.nz) for FAST channels.
+"""Append Samsung TV Plus + Roku + Pluto TV EPG (from i.mjh.nz) for FAST channels.
 
 generate_playlist.py adds Samsung TV Plus channels whose tvg-id is the Samsung
 channel id (e.g. "IN38000072R"). Their guide isn't produced by the iptv-org grab,
@@ -27,6 +27,8 @@ CURATED = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "curated_ids.
 SOURCES = [("samsung " + r, "https://i.mjh.nz/SamsungTVPlus/%s.xml.gz" % r)
            for r in ("in", "us", "gb", "ca")]
 SOURCES.append(("roku", "https://i.mjh.nz/Roku/all.xml.gz"))
+SOURCES += [("pluto " + r, "https://i.mjh.nz/PlutoTV/%s.xml.gz" % r)
+            for r in ("us", "gb")]
 
 
 def fetch(url: str) -> bytes | None:
