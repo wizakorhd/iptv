@@ -44,6 +44,12 @@ SOURCES = [
     ("pbs",     "https://i.mjh.nz/PBS/all.xml.gz"),
     ("tubi",    "https://raw.githubusercontent.com/BuddyChewChew/"
                 "app-m3u-generator/main/playlists/tubi_epg.xml"),
+    # epgshare01 FAST guides (name-matched). These cover DistroTV / Rakuten
+    # channels that i.mjh.nz doesn't publish (many of our apsat-* FAST ids). Use
+    # http:// (epgshare blocks VPN on https); the site is occasionally down (520),
+    # in which case fetch() returns None and we simply skip — coverage is additive.
+    ("distrotv", "http://epgshare01.online/epgshare01/epg_ripper_DISTROTV1.xml.gz"),
+    ("rakuten",  "http://epgshare01.online/epgshare01/epg_ripper_RAKUTEN1.xml.gz"),
 ]
 
 # Generic one-word names that collide across unrelated channels; skip name-only
