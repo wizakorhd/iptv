@@ -1,4 +1,4 @@
-# Curated IPTV — Hindi + Indian/Foreign English
+# WizakorHD's Curated IPTV — Hindi + Indian/Foreign English
 
 A self‑curated IPTV playlist and program guide (EPG), generated from the free
 community [iptv-org](https://github.com/iptv-org) dataset. It hosts no video — it
