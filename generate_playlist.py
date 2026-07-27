@@ -479,6 +479,252 @@ def drop_pluto_slates(rows: list[dict], workers: int, timeout: float,
     return kept
 
 
+# --------------------------------------------------------------------- apsattv
+# apsattv.com publishes flat M3U playlists of official FAST-service stream URLs
+# (LG / TCL / Vidaa / Xiaomi / DistroTV / Tubi / Vizio / XUMO / Samsung regions ...)
+# that iptv-org and the i.mjh.nz feeds don't fully index. They carry almost no
+# category metadata (mostly group-title="Undefined") and frequently need a browser
+# User-Agent, so we classify by name, keep only India + English channels (curation),
+# drop devotional/adult/shopping/US-local, keep only recognisable genres (single-show
+# "Uncategorized" noise is dropped, but acclaimed shows are rescued via the genre
+# rules below), and let the India geo-validator prune anything that won't play.
+APSAT_PAGE = "https://www.apsattv.com/streams.html"
+APSAT_BASE = "https://www.apsattv.com/"
+# Confirmed dead/blocked from India in a geo-viability sample, or fully redundant
+# with feeds we already ingest via i.mjh.nz (rok/roku_all == our Roku adapter).
+APSAT_DEAD = {"veely", "klowd", "rok", "roku_all", "rewardedtv", "ssungire",
+              "zeasn", "freemoviesplus", "ssungth", "freetv"}
+# Non-English-language markets: we only rescue India-language channels from these;
+# their local content is out of scope (curation = English + Indian languages only).
+APSAT_NONEN_SRC = {"ssungbra", "ssungbelg", "ssungden", "ssungfin", "ssungnor",
+                   "ssungpor", "ssungswe", "ssungmex", "ssungneth", "ssunglux",
+                   "ssungph", "rakuten-jp", "rakutentv-fr", "moviearkbr",
+                   "olhosnatv", "redeitv", "soultv", "brlg", "delg", "dklg",
+                   "eslg", "filg", "frlg", "itlg", "jplg", "krlg", "nllg", "nolg",
+                   "pllg", "ptlg", "selg", "pelg", "cllg", "arlg", "mxlg", "lulg",
+                   "belg", "chlg", "atlg", "tclbr"}
+APSAT_IND_RE = re.compile(
+    r"\b(india|hindi|bharat|desi|bollywood|zee (?!mundo|nung|one)|zee|colors|"
+    r"sony ?(?:sab|max|pal|wah|aath)|aaj tak|ndtv|republic|wion|dd |doordarshan|"
+    r"gujarat|tamil|telugu|telegu|punjab|marathi|bengali|bangla|kannada|malayalam|"
+    r"shemaroo|times now|abp|news ?18|tv9|sansad|goldmines|manoranjan|ptc|ghaint|"
+    r"ishara)\b", re.I)
+# Indian channels that broadcast in English -> English-India bucket.
+APSAT_IND_EN_RE = re.compile(
+    r"\b(india today|wion|republic (?:tv|world|bharat)?|cnn news ?18|"
+    r"ndtv (?:profit|24|prime|world)|times now|mirror now|et now|news ?18 india)\b",
+    re.I)
+# Zee variants for non-Indian markets that the broad "zee" match would wrongly grab.
+APSAT_IND_FALSE = re.compile(r"\bzee (mundo|nung|world|bolly ?movies? \(|one)", re.I)
+# Devotional / adult / shopping / US-local -> always dropped.
+APSAT_DROP_RE = re.compile(
+    r"\b(gospel|church|worship|jesus|christ\b|bible|god ?tv|daystar|ewtn|hillsong|"
+    r"faith tv|quran|bhajan|bhakti|devotion|gurbani|mandir|temple tv|aastha|"
+    r"sanskar|catholic|hillsong|shalom|"
+    r"xxx|porn|erotic|playboy|brazzers|adult\b|"
+    r"teleshop|shop ?lc|homeshop|naaptol|qvc|hsn\b|jewelry tv|"
+    r"localnow|igocast|by wisn|by wthr|kwyb|ktvb|madison wi|milwaukee)\b", re.I)
+# US-local TV-station feeds (LocalNow platform + callsign-named stations) -> dropped.
+APSAT_LOCAL_HOSTS = ("localnow", "amdvids.com", "fuelmedia.io")
+APSAT_CALLSIGN_RE = re.compile(r"^[WK][A-Z]{2,4}\d?\b")      # WCPO, KULR, WSMV4 (case-sensitive)
+APSAT_LOCAL_RE = re.compile(
+    r"\b(?:abc|cbs|nbc|fox|pbs|cw|univision|telemundo|noticias) ?\d{1,2}\b"
+    r"|\bnews ?(?:channel )?\d{1,2}\b|\beyewitness news\b"
+    r"|\b(?:nashville|connecticut|san diego|sacramento|cincinnati|minneapolis|"
+    r"seattle|tulsa|billings|yakima|\bbend\b|idaho|palm springs|los angeles|"
+    r"washington d\.?c|st\.? paul|rochester|cleveland|columbus|indianapolis|"
+    r"milwaukee|st\.? louis|kansas city|san antonio|oklahoma|albuquerque) news\b",
+    re.I)
+
+
+def _apsat_islocal(name: str, url: str) -> bool:
+    if any(h in url for h in APSAT_LOCAL_HOSTS):
+        return True
+    return bool(APSAT_CALLSIGN_RE.search(name) or APSAT_LOCAL_RE.search(name))
+
+
+# Broken/placeholder channel labels seen in the raw feeds (e.g. LG's "c1 to id").
+APSAT_JUNK_RE = re.compile(r"\bc\d+ to id\b|^\W*$|^untitled", re.I)
+
+# Ordered genre rules (first match wins). Acclaimed single-show channels are baked
+# in so they survive the "drop Uncategorized" cut. cat slug -> group word.
+_APSAT_GENRE_SRC = [
+    ("news", "News",
+     r"\b(news|noticias|cnn|bbc news|fox news|msnbc|cnbc|bloomberg|al jazeera|"
+     r"euronews|sky news|newsmax|wion|ndtv|aaj tak|abp|republic|times now|weather|"
+     r"africanews|france 24|dw news|dateline|opinion)\b"),
+    ("sports", "Sports",
+     r"\b(sports?|espn|nfl|nba|nhl|mlb|soccer|football|cricket|golf|tennis|ufc|wwe|"
+     r"racing|fifa|rugby|boxing|motogp|\bf1\b|olympic|surf league|poker|darts|"
+     r"wrestling|dazn|motorvision|strongman)\b"),
+    ("horror", "Horror",
+     r"\b(horror|scream|chiller|screambox|shudder|dark matter|haunt|fright|terror|"
+     r"macabre|nightmare|slasher|paranormal|ghost hunters|alter)\b"),
+    ("scifi", "Sci-Fi",
+     r"\b(sci-?fi|science fiction|star trek|star wars|doctor who|stargate|"
+     r"battlestar|alien nation|outer limits|twilight zone|\bdust\b|cyberpunk)\b"),
+    ("kids", "Kids",
+     r"\b(kids|cartoon|nick|disney|junior|toon|baby|pokemon|pbs kids|boomerang|"
+     r"mr bean|dino)\b"),
+    ("movies", "Movies",
+     r"\b(movies?|cine|cinema|films?|hollywood|bollywood|filmrise|grindhouse|flix|"
+     r"flixfling|moviesphere)\b"),
+    ("music", "Music",
+     r"\b(music|mtv|vevo|\bhits\b|classical|jazz|k-pop|country music|rock\b|"
+     r"hip ?hop|dance)\b"),
+    ("documentary", "Documentary",
+     r"\b(documentary|docu|nature|wildlife|history|science|space|planet|discovery|"
+     r"nat geo|geographic|smithsonian|curiosity|magellan|docsville)\b"),
+    ("comedy", "Comedy",
+     r"\b(comedy|sitcom|laugh|funny|seinfeld|frasier|cheers|blackadder|red dwarf)\b"),
+    ("crime", "Crime",
+     r"\b(crime|forensic|investigation|murder|true crime|cops\b|court tv|law ?&)\b"),
+    ("reality", "Reality",
+     r"\b(reality|tlc|bravo|slice|masterchef|hell.?s kitchen|top gear|"
+     r"kitchen nightmares|housewives|kardashian|big brother|hgtv|love island|"
+     r"bachelor|american ninja)\b"),
+    ("cooking", "Food & Travel",
+     r"\b(food|cook|recipe|kitchen\b|travel|lifestyle|home ?&|garden|fashion|diy|"
+     r"craft|bob ross|tastemade|pets?)\b"),
+    ("entertainment", "Entertainment",
+     r"\b(entertain|drama|series|classic tv|xena|sherlock|walking dead|quantum leap|"
+     r"comet|western|hercules|highlander|game show|variety|telenovela)\b"),
+]
+_APSAT_GENRE = None
+
+
+def _apsat_genre(name: str):
+    global _APSAT_GENRE
+    if _APSAT_GENRE is None:
+        _APSAT_GENRE = [(slug, word, re.compile(pat, re.I))
+                        for slug, word, pat in _APSAT_GENRE_SRC]
+    for slug, word, rx in _APSAT_GENRE:
+        if rx.search(name):
+            return slug, word
+    return None, None
+
+
+def _apsat_clean(name: str) -> str:
+    """Strip channel-number prefixes, provider tags and geo/format suffixes so the
+    display name and dedup key are clean (e.g. '277 bollywood-masala-tv' -> 'Bollywood Masala',
+    'Hells Kitchen US (Australia)' -> 'Hells Kitchen US')."""
+    n = re.sub(r"^\s*\d{1,4}\s+", "", name)               # leading channel number
+    n = re.sub(r"\s*-?\s*tcl\b", "", n, flags=re.I)       # "-TCL" provider tag
+    n = re.sub(r"\s*\((?:geo|asia|hi|us|usa|uk|gb|in|au|ca|fr|it|de|dk|co|fi|cl|mx|"
+               r"eu|pa|sp|pt|nz|ar|se|no|nl|be|at|ch|lu|north america|australia)\)",
+               "", n, flags=re.I)
+    n = re.sub(r"\bgeo\b|\bnot listed\b|\bwrong c\b|\balt\b", "", n, flags=re.I)
+    n = n.replace("-", " ") if n.count("-") >= 2 else n   # "bollywood-masala-tv"
+    return re.sub(r"\s{2,}", " ", n).strip(" -")
+
+
+def apsattv_candidates(existing_names: set[str], refresh: bool = False) -> list[dict]:
+    """Ingest apsattv.com's FAST playlists, curated to India + English channels in
+    recognised genres, with per-channel User-Agent preserved (many CDNs 403 without
+    one). Category labels are provisional (name-based); the geo-validator prunes
+    channels that don't play from India."""
+    cdir = os.path.join(DATA, "apsattv")
+    os.makedirs(cdir, exist_ok=True)
+    # discover the list of playlists from the streams page (resilient to changes)
+    try:
+        lpath = os.path.join(cdir, "_lists.txt")
+        if refresh or not os.path.exists(lpath):
+            req = urllib.request.Request(APSAT_PAGE, headers={"User-Agent": DEFAULT_UA})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                html = r.read().decode("utf-8", "ignore")
+            names = sorted(set(re.findall(r"([A-Za-z0-9_.-]+\.m3u)", html)))
+            open(lpath, "w").write("\n".join(names))
+        lists = [x for x in open(lpath).read().splitlines() if x]
+    except Exception as e:
+        print(f"  ! apsattv source unavailable: {e}", file=sys.stderr)
+        return []
+
+    extinf = re.compile(r"#EXTINF:.*?,(.*)$")
+    attr = lambda k, l: (re.search(k + r'="([^"]*)"', l) or [None, ""])[1]
+    seen = set(existing_names)
+    seen_url = set()
+    bynn = {}
+    out = []
+    for fname in lists:
+        src = fname[:-4]
+        if src in APSAT_DEAD:
+            continue
+        path = os.path.join(cdir, fname)
+        try:
+            if refresh or not os.path.exists(path):
+                req = urllib.request.Request(APSAT_BASE + fname,
+                                             headers={"User-Agent": DEFAULT_UA})
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    open(path, "wb").write(r.read())
+            lines = open(path, encoding="utf-8", errors="ignore").read().splitlines()
+        except Exception:
+            continue
+        i = 0
+        while i < len(lines):
+            if not lines[i].startswith("#EXTINF"):
+                i += 1
+                continue
+            ext = lines[i]
+            raw = (extinf.search(ext) or [None, ""])[1].strip()
+            if raw.startswith("tvg") or '="' in raw:      # malformed EXTINF attrs
+                raw = raw.split(",")[-1].strip()
+            logo = attr("tvg-logo", ext)
+            ua = attr("http-user-agent", ext)
+            url = ""
+            for j in range(i + 1, min(i + 4, len(lines))):
+                if lines[j] and not lines[j].startswith("#"):
+                    url = lines[j].strip()
+                    i = j
+                    break
+            i += 1
+            if not raw or not url or url in seen_url:
+                continue
+            name = _apsat_clean(raw)
+            if not name or APSAT_JUNK_RE.search(name) or APSAT_DROP_RE.search(name):
+                continue
+            is_india = bool(APSAT_IND_RE.search(name)) and not APSAT_IND_FALSE.search(name)
+            slug, word = _apsat_genre(name)
+            if is_india and src not in APSAT_NONEN_SRC:
+                bucket = "eng_in" if APSAT_IND_EN_RE.search(name) else "hindi"
+                group = f"India - {word or 'General'}"
+            else:
+                # English foreign: english-market list + ascii name + known genre,
+                # excluding US-local station feeds.
+                if src in APSAT_NONEN_SRC or _apsat_islocal(name, url):
+                    continue
+                letters = [c for c in name if c.isalpha()]
+                if not letters or sum(c.isascii() for c in letters) / len(letters) < 0.85:
+                    continue
+                if not slug:                              # Uncategorized noise -> skip
+                    continue
+                bucket = "anime" if slug == "kids" and any(
+                    k in name.lower() for k in ANIME_KW) else "eng_foreign"
+                group = "Anime" if bucket == "anime" else f"English (Intl) - {word}"
+            nn = norm_name(name)
+            if not nn or nn in seen:
+                # backfill a logo onto an already-kept apsattv channel that lacked
+                # one (LG/Xiaomi feeds ship no logo; the same channel on DistroTV
+                # etc. does), so duplicates across lists still contribute a logo.
+                prev = bynn.get(nn)
+                if prev is not None and logo and not prev["logo"]:
+                    prev["logo"] = logo
+                continue
+            seen.add(nn)
+            seen_url.add(url)
+            cand = {
+                "id": attr("tvg-id", ext) or f"apsat-{src}-{nn}",
+                "name": name,
+                "bucket": bucket,
+                "group": group,
+                "logo": logo,
+                "streams": [{"url": url, "quality": None, "feed": None,
+                             "user_agent": ua or DEFAULT_UA}],
+            }
+            bynn[nn] = cand
+            out.append(cand)
+    return out
+
+
 # ----------------------------------------------------------------------------- data
 def load(refresh: bool) -> dict:
     os.makedirs(DATA, exist_ok=True)
@@ -782,6 +1028,29 @@ def write_report(path: str, rows: list[dict], n_candidates: int, epg_ids: set):
 
 
 # ------------------------------------------------------------------------------ main
+def logo_by_name(db: dict) -> dict:
+    """Map normalized channel name -> best logo URL from the iptv-org registry, so
+    channels ingested from logo-less feeds (LG/Xiaomi apsattv lists) can still get a
+    logo when the same channel exists in iptv-org's channel registry."""
+    ch_logo: dict[str, str] = {}
+    for lg in db["logos"]:
+        cid = lg.get("channel")
+        if not cid:
+            continue
+        if cid not in ch_logo or lg.get("in_use"):
+            ch_logo[cid] = lg["url"]
+    idx: dict[str, str] = {}
+    for c in db["channels"]:
+        url = ch_logo.get(c["id"])
+        if not url:
+            continue
+        for nm in [c["name"]] + (c.get("alt_names") or []):
+            k = norm_name(nm)
+            if k and k not in idx:
+                idx[k] = url
+    return idx
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -791,6 +1060,8 @@ def main():
                     help="skip stream reachability probing (faster, keeps dead/geo links)")
     ap.add_argument("--no-fast", action="store_true",
                     help="skip Samsung TV Plus (FAST) channels; use iptv-org only")
+    ap.add_argument("--no-apsattv", action="store_true",
+                    help="skip apsattv.com FAST playlists (LG/TCL/Vidaa/Distro/...)")
     ap.add_argument("--no-slate-check", action="store_true",
                     help="skip the Pluto slate-loop detection pass")
     ap.add_argument("--slate-delay", type=float, default=30.0,
@@ -824,6 +1095,24 @@ def main():
         pluto = pluto_candidates(existing, refresh=args.refresh)
         print(f"FAST (Pluto TV) candidates: {len(pluto)}", file=sys.stderr)
         cands += pluto
+
+    if not args.no_apsattv:
+        existing = {norm_name(c["name"]) for c in cands}
+        apsat = apsattv_candidates(existing, refresh=args.refresh)
+        print(f"FAST (apsattv) candidates: {len(apsat)}", file=sys.stderr)
+        cands += apsat
+
+    # backfill logos from the iptv-org registry for logo-less candidates (many
+    # apsattv LG/Xiaomi feeds ship no tvg-logo).
+    logo_idx = logo_by_name(db)
+    filled = 0
+    for c in cands:
+        if not c.get("logo"):
+            u = logo_idx.get(norm_name(c["name"]))
+            if u:
+                c["logo"] = u
+                filled += 1
+    print(f"Backfilled {filled} logos from iptv-org registry", file=sys.stderr)
 
     rows = []
     if args.no_validate:

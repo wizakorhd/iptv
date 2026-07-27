@@ -1,19 +1,19 @@
 # Playlist health report
 
-_Last built: 2026-07-26 23:32 UTC_
+_Last built: 2026-07-27 09:34 UTC_
 
-- **Total channels:** 2198
-- **Candidates before validation:** 3021 (dropped 823 dead/geo-blocked from build location)
-- **Channels without EPG guide:** 1538
-- **Channels without a logo:** 20
+- **Total channels:** 2758
+- **Candidates before validation:** 3844 (dropped 1086 dead/geo-blocked from build location)
+- **Channels without EPG guide:** 1212
+- **Channels without a logo:** 310
 
 ## By group
 
 | Group | Channels | File |
 |---|---:|---|
-| Hindi | 244 | `playlist-hindi.m3u` |
-| English (India) | 33 | `playlist-english-india.m3u` |
-| English (Intl) | 1908 | `playlist-english-intl.m3u` |
+| Hindi | 279 | `playlist-hindi.m3u` |
+| English (India) | 37 | `playlist-english-india.m3u` |
+| English (Intl) | 2429 | `playlist-english-intl.m3u` |
 | Anime | 13 | `playlist-anime.m3u` |
 
 ## Sub-groups
@@ -28,30 +28,33 @@ _Last built: 2026-07-26 23:32 UTC_
 | English (India) - General | 5 |
 | English (India) - Kids | 1 |
 | English (India) - Movies | 1 |
-| English (India) - News | 15 |
+| English (India) - News | 16 |
 | English (India) - Sports | 2 |
 | English (Intl) - Animation | 6 |
 | English (Intl) - Auto | 9 |
 | English (Intl) - Business | 15 |
-| English (Intl) - Classic | 49 |
-| English (Intl) - Comedy | 80 |
+| English (Intl) - Classic | 51 |
+| English (Intl) - Comedy | 95 |
 | English (Intl) - Cooking | 26 |
-| English (Intl) - Culture | 25 |
-| English (Intl) - Documentary | 161 |
+| English (Intl) - Crime | 32 |
+| English (Intl) - Culture | 23 |
+| English (Intl) - Documentary | 214 |
 | English (Intl) - Education | 42 |
-| English (Intl) - Entertainment | 265 |
+| English (Intl) - Entertainment | 294 |
 | English (Intl) - Family | 12 |
-| English (Intl) - General | 249 |
-| English (Intl) - Horror | 17 |
-| English (Intl) - Kids | 116 |
+| English (Intl) - Food & Travel | 40 |
+| English (Intl) - General | 247 |
+| English (Intl) - Horror | 34 |
+| English (Intl) - Kids | 139 |
 | English (Intl) - Lifestyle | 33 |
-| English (Intl) - Movies | 172 |
-| English (Intl) - Music | 154 |
-| English (Intl) - News | 148 |
-| English (Intl) - Reality | 26 |
+| English (Intl) - Movies | 289 |
+| English (Intl) - Music | 183 |
+| English (Intl) - News | 232 |
+| English (Intl) - Reality | 40 |
 | English (Intl) - Relax | 2 |
-| English (Intl) - Series | 146 |
-| English (Intl) - Sports | 151 |
+| English (Intl) - Sci-Fi | 8 |
+| English (Intl) - Series | 144 |
+| English (Intl) - Sports | 215 |
 | English (Intl) - Travel | 1 |
 | Hindi - Business | 2 |
 | Hindi - Classic | 1 |
@@ -67,7 +70,10 @@ _Last built: 2026-07-26 23:32 UTC_
 | Hindi - Lifestyle | 14 |
 | Hindi - Movies | 36 |
 | Hindi - Music | 19 |
-| Hindi - News | 68 |
+| Hindi - News | 69 |
 | Hindi - Sports | 11 |
+| India - General | 24 |
+| India - Movies | 2 |
+| India - News | 11 |
 | Korean | 3 |
 
