@@ -370,10 +370,12 @@ function buildTree() {
   for (const c of DATA.channels) {
     const [region, genre] = splitGroup(c.group);
     if (!map.has(region)) map.set(region, { count: 0, genres: new Map() });
-    const r = map.get(region); r.count++;
+    const r = map.get(region);
+    const inc = baseMatch(c) ? 1 : 0;   // counts reflect the active filters/search
+    r.count += inc;
     if (genre) {
       if (!r.genres.has(genre)) r.genres.set(genre, 0);
-      r.genres.set(genre, r.genres.get(genre) + 1);
+      r.genres.set(genre, r.genres.get(genre) + inc);
     }
   }
   const regions = [...map.keys()].sort((a, b) => {
@@ -403,7 +405,7 @@ function catRow({ cls, ico, dot, label, count, active, onClick }) {
 function renderSidebar() {
   const nav = $("#cats"); nav.innerHTML = "";
   const tree = buildTree();
-  const total = DATA.channels.length;
+  const total = DATA.channels.filter(baseMatch).length;
   // All
   nav.appendChild(catRow({
     ico: "layout-grid", label: "All channels", count: total,
@@ -447,16 +449,26 @@ function afterSelect() {
   render();
 }
 
-function currentRows() {
+// re-run for filter/search changes: sidebar counts + grid both reflect filters
+function refresh() { renderSidebar(); render(); }
+
+// attribute filters + search that also drive the sidebar counts (category
+// selection is applied on top of this in currentRows()).
+function baseMatch(c) {
   const q = $("#q").value.trim().toLowerCase();
+  if (guideOnly && !c.epg) return false;
+  if (subsOnly && !c.subs) return false;
+  if (audioOnly && !(c.audio > 1)) return false;
+  if (resMin && (RES_RANK[c.res] || 0) < RES_RANK[resMin]) return false;
+  if (q && !c.name.toLowerCase().includes(q)) return false;
+  return true;
+}
+
+function currentRows() {
   return DATA.channels.filter(c => {
-    if (guideOnly && !c.epg) return false;
-    if (subsOnly && !c.subs) return false;
-    if (audioOnly && !(c.audio > 1)) return false;
-    if (resMin && (RES_RANK[c.res] || 0) < RES_RANK[resMin]) return false;
-    if (sel.group) { if (c.group !== sel.group) return false; }
-    else if (sel.region) { if (splitGroup(c.group)[0] !== sel.region) return false; }
-    if (q && !c.name.toLowerCase().includes(q)) return false;
+    if (!baseMatch(c)) return false;
+    if (sel.group) return c.group === sel.group;
+    if (sel.region) return splitGroup(c.group)[0] === sel.region;
     return true;
   });
 }
@@ -515,26 +527,26 @@ fetch("channels.json").then(r => r.json()).then(d => {
   render();
 });
 
-$("#q").addEventListener("input", render);
+$("#q").addEventListener("input", refresh);
 $("#guideToggle").addEventListener("click", () => {
   guideOnly = !guideOnly;
   $("#guideToggle").classList.toggle("on", guideOnly);
-  render();
+  refresh();
 });
 $("#subsToggle").addEventListener("click", () => {
   subsOnly = !subsOnly;
   $("#subsToggle").classList.toggle("on", subsOnly);
-  render();
+  refresh();
 });
 $("#audioToggle").addEventListener("click", () => {
   audioOnly = !audioOnly;
   $("#audioToggle").classList.toggle("on", audioOnly);
-  render();
+  refresh();
 });
 $("#resFilter").addEventListener("change", () => {
   resMin = $("#resFilter").value;
   $("#resFilter").classList.toggle("on", !!resMin);
-  render();
+  refresh();
 });
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-copy]");
