@@ -963,10 +963,45 @@ def quality_tag(q: str | None) -> str:
     return ""
 
 
+# Region prefixes are consolidated to three (+ top-level Anime); the granular
+# genre tail is merged into a canonical set so we don't end up with 50+ tiny
+# groups. Keeps the genres the user explicitly cares about (Horror/Sci-Fi/Crime).
+GENRE_CANON = {
+    "business": "News",
+    "classic": "Movies",
+    "general": "Entertainment",
+    "reality": "Entertainment",
+    "auto": "Entertainment",
+    "education": "Documentary",
+    "culture": "Documentary",
+    "relax": "Music",
+    "animation": "Kids",
+    "family": "Kids",
+    "cooking": "Food & Travel",
+    "travel": "Food & Travel",
+    "lifestyle": "Food & Travel",
+}
+REGION_CANON = {"india": "English (India)"}
+
+
+def canonical_group(group: str) -> str:
+    """Fold stray region prefixes and granular genres into the consolidated
+    scheme: '{Region} - {Genre}' (or a bare top-level label like 'Anime')."""
+    if " - " not in group:
+        return group
+    region, _, genre = group.partition(" - ")
+    region = REGION_CANON.get(region.strip().lower(), region.strip())
+    genre = genre.strip()
+    genre = GENRE_CANON.get(genre.lower(), genre)
+    return f"{region} - {genre}"
+
+
 def finalize(rows: list[dict]) -> list[dict]:
     """Sort rows, assign a stable sequential channel number (tvg-chno), and bake a
     global per-group channel count into the group title (Lume/other players don't
     show per-category counts on their own, e.g. 'Hindi - News (23)')."""
+    for r in rows:
+        r["group"] = canonical_group(r["group"])
     rows.sort(key=lambda r: (BUCKET_ORDER[r["bucket"]], r["group"], r["name"].lower()))
     group_counts = Counter(r["group"] for r in rows)
     for i, r in enumerate(rows, start=1):
