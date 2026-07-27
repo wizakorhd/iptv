@@ -30,6 +30,13 @@ echo "==> Build started: $(date '+%Y-%m-%d %H:%M:%S %Z')"
 
 cd "$REPO" || { echo "!! repo not found: $REPO"; exit 1; }
 
+# macOS toast notification (best-effort). Runs from a LaunchAgent, so it has a
+# GUI session; a no-op on headless/non-mac boxes. notify "title" "message".
+notify() {
+  command -v osascript >/dev/null 2>&1 || return 0
+  /usr/bin/osascript -e "display notification \"${2//\"/\'}\" with title \"${1//\"/\'}\"" >/dev/null 2>&1 || true
+}
+
 FORCE="${1:-}"
 MARKER="$LOG_DIR/.last-success"
 MIN_SECONDS=$((20 * 3600))   # build at most once per ~day, but retry if a run was skipped/failed
@@ -54,6 +61,7 @@ if ! /usr/bin/curl -fsS -m 15 -o /dev/null https://raw.githubusercontent.com; th
 fi
 
 echo "==> git pull --ff-only"
+notify "IPTV build" "Rebuilding playlist…"
 git pull --ff-only origin main || echo "!! pull failed (continuing with local state)"
 
 # --- Refresh the iptv-org source snapshot weekly so newly added / removed
@@ -61,14 +69,15 @@ git pull --ff-only origin main || echo "!! pull failed (continuing with local st
 DATA_MAX_AGE=$((7 * 24 * 3600))
 REFRESH=""
 if [ ! -f data/streams.json ]; then
-  REFRESH="--refresh"
+  REFRESH="--refresh --no-cache"
 else
   DAGE=$(( $(date +%s) - $(stat -f %m data/streams.json) ))
-  [ "$DAGE" -ge "$DATA_MAX_AGE" ] && REFRESH="--refresh"
+  [ "$DAGE" -ge "$DATA_MAX_AGE" ] && REFRESH="--refresh --no-cache"
 fi
 echo "==> Rebuild playlist (geo-validated)${REFRESH:+ [refreshing source data]}"
 if ! make playlist REFRESH="$REFRESH"; then
   echo "!! playlist build failed; leaving repo untouched"
+  notify "IPTV build ✗" "Playlist build failed"
   exit 1
 fi
 # Regenerate the EPG channel list so the GitHub Actions EPG builder grabs the
@@ -85,6 +94,7 @@ if git diff --quiet && git diff --cached --quiet; then
   echo "==> no changes after rebuild; nothing to commit"
   date +%s > "$MARKER"
   echo "==> Build finished (no-op): $(date '+%H:%M:%S')"
+  notify "IPTV build ✓" "No changes — already up to date"
   exit 0
 fi
 
@@ -107,8 +117,10 @@ for attempt in 1 2 3; do
 done
 if [ -n "$pushed" ]; then
   echo "==> pushed OK"
+  notify "IPTV build ✓" "Published ${N} channels"
 else
   echo "!! push failed. Commit is saved locally; will retry next run."
+  notify "IPTV build ⚠︎" "Built ${N} channels — push failed, will retry"
 fi
 
 echo "==> Build finished: $(date '+%Y-%m-%d %H:%M:%S %Z')"

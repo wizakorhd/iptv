@@ -26,7 +26,9 @@ import concurrent.futures as cf
 import http.client
 import json
 import os
+import random
 import re
+import threading
 import xml.etree.ElementTree as ET
 import sys
 import time
@@ -851,11 +853,49 @@ def _get(url: str, headers: dict, timeout: float, maxbytes: int):
         return r.getcode(), r.geturl(), r.read(maxbytes)
 
 
-def _probe_hls(url: str, headers: dict, timeout: float, depth: int = 0) -> bool:
+_RES_RE = re.compile(r"RESOLUTION=(\d+)x(\d+)", re.I)
+
+
+def _res_tier(height: int) -> str:
+    if height >= 2160:
+        return "4k"
+    if height >= 1080:
+        return "fhd"
+    if height >= 720:
+        return "hd"
+    return "sd"
+
+
+def _parse_master_features(text: str) -> dict:
+    """Extract display-worthy media features from an HLS *master* manifest:
+    best resolution tier, subtitle availability and the number of selectable
+    audio renditions (for a multi-audio badge). Absent tags -> feature omitted."""
+    feat: dict = {}
+    heights = [int(m.group(2)) for m in _RES_RE.finditer(text)]
+    if heights:
+        feat["res"] = _res_tier(max(heights))
+    if re.search(r"#EXT-X-MEDIA:[^\n]*TYPE=SUBTITLES", text, re.I):
+        feat["subs"] = True
+    audio_langs, audio_n = set(), 0
+    for m in re.finditer(r"#EXT-X-MEDIA:([^\n]*TYPE=AUDIO[^\n]*)", text, re.I):
+        audio_n += 1
+        lm = re.search(r'LANGUAGE="([^"]*)"', m.group(1), re.I)
+        if lm:
+            audio_langs.add(lm.group(1).lower())
+    tracks = max(len(audio_langs), audio_n)
+    if tracks > 1:
+        feat["audio"] = tracks
+    return feat
+
+
+def _probe_hls(url: str, headers: dict, timeout: float, depth: int = 0,
+               feat_out: dict | None = None) -> bool:
     """Validate an HLS stream by resolving to a media playlist and pulling a real
     segment — a manifest returning 200 is not enough (segments can still be dead).
     Relative URIs are resolved against the *final* URL after redirects (important
-    for redirector links like Pluto's jmp2.uk that point at another host)."""
+    for redirector links like Pluto's jmp2.uk that point at another host).
+    When ``feat_out`` is given, media features parsed from the master manifest
+    (resolution/subtitles/audio) are written into it."""
     code, final_url, body = _get(url, headers, timeout, 16384)
     if code not in (200, 206) or not body:
         return False
@@ -867,8 +907,10 @@ def _probe_hls(url: str, headers: dict, timeout: float, depth: int = 0) -> bool:
     if not uris:
         return False
     if "EXT-X-STREAM-INF" in text and depth < 2:      # master -> follow a variant
+        if feat_out is not None:
+            feat_out.update(_parse_master_features(text))
         return _probe_hls(urllib.parse.urljoin(final_url, uris[0]), headers,
-                          timeout, depth + 1)
+                          timeout, depth + 1, feat_out)
     # media playlist: fetch a segment away from the live edge (the newest segment
     # may not be flushed yet -> false 404s).
     seg = urllib.parse.urljoin(final_url, uris[len(uris) // 2])
@@ -883,13 +925,14 @@ def _probe_hls(url: str, headers: dict, timeout: float, depth: int = 0) -> bool:
     return code in (200, 206) and len(chunk) > 512
 
 
-def probe(url: str, ua: str | None, ref: str | None, timeout: float) -> bool:
+def probe(url: str, ua: str | None, ref: str | None, timeout: float,
+          feat_out: dict | None = None) -> bool:
     headers = {"User-Agent": ua or DEFAULT_UA}
     if ref:
         headers["Referer"] = ref
     try:
         if ".m3u8" in url.lower():
-            return _probe_hls(url, headers, timeout)
+            return _probe_hls(url, headers, timeout, feat_out=feat_out)
         h = dict(headers)
         h["Range"] = "bytes=0-4095"
         code, _, chunk = _get(url, h, timeout, 4096)
@@ -898,7 +941,7 @@ def probe(url: str, ua: str | None, ref: str | None, timeout: float) -> bool:
         # Extension-less URLs (e.g. jmp2.uk FAST redirectors) can still be HLS —
         # deep-validate when the body sniffs as a manifest.
         if b"#EXTM3U" in chunk[:256]:
-            return _probe_hls(url, headers, timeout)
+            return _probe_hls(url, headers, timeout, feat_out=feat_out)
         return True
     except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError,
             ConnectionError, OSError, ValueError, http.client.HTTPException):
@@ -910,12 +953,88 @@ def probe(url: str, ua: str | None, ref: str | None, timeout: float) -> bool:
         return False
 
 
-def pick_working_stream(chan: dict, timeout: float, max_try: int) -> dict | None:
-    """Return the first reachable stream (early-stop over quality-ranked list)."""
+def pick_working_stream(chan: dict, timeout: float, max_try: int,
+                        cache: "ProbeCache | None" = None) -> dict | None:
+    """Return the first reachable stream (early-stop over quality-ranked list).
+
+    When a ``cache`` is supplied, a stream URL that probed OK recently (within
+    the cache TTL and not selected for a rotating re-check) is accepted without
+    a network call — this is what makes incremental daily builds fast."""
     for s in chan["streams"][:max_try]:
-        if probe(s["url"], s.get("user_agent"), s.get("referrer"), timeout):
-            return s
+        url = s["url"]
+        if cache is not None and cache.should_skip_probe(url):
+            return {**s, "feat": cache.feat_for(url)}  # trusted from cache; no probe
+        feat: dict = {}
+        if probe(url, s.get("user_agent"), s.get("referrer"), timeout, feat):
+            if cache is not None:
+                cache.record_live_ok(url, feat)        # refresh TTL only on a real probe
+            return {**s, "feat": feat}
     return None
+
+
+class ProbeCache:
+    """Known-good stream cache: skip re-probing URLs that worked recently.
+
+    Only *live* successful probes refresh an entry's timestamp, so the TTL is a
+    hard ceiling on staleness: a stream that silently dies is trusted for at most
+    ``ttl`` hours. A rotating fraction (``recheck``) of otherwise-fresh entries is
+    re-probed every run, so the whole set is naturally re-validated within a few
+    runs even when builds are more frequent than the TTL. Failures are never
+    cached, so a recovered channel is rescued on the very next run."""
+
+    def __init__(self, path: str, ttl_hours: float, recheck: float):
+        self.path = path
+        self.ttl = ttl_hours * 3600.0
+        self.recheck = recheck
+        self.now = time.time()
+        self._lock = threading.Lock()
+        self.skipped = 0
+        self.live = 0
+        try:
+            with open(path) as fh:
+                raw = json.load(fh)
+            # value is {"ts": float, "feat": {...}}; tolerate a legacy bare float.
+            self.data: dict[str, dict] = {}
+            for k, v in raw.items():
+                if isinstance(v, dict):
+                    self.data[k] = {"ts": float(v.get("ts", 0)),
+                                    "feat": v.get("feat") or {}}
+                else:
+                    self.data[k] = {"ts": float(v), "feat": {}}
+        except (OSError, ValueError, json.JSONDecodeError):
+            self.data = {}
+
+    def should_skip_probe(self, url: str) -> bool:
+        e = self.data.get(url)
+        if e is None or (self.now - e["ts"]) > self.ttl:
+            return False                              # unknown or stale -> must probe
+        if random.random() < self.recheck:
+            return False                              # rotating re-validation -> probe
+        with self._lock:
+            self.skipped += 1
+        return True
+
+    def feat_for(self, url: str) -> dict:
+        e = self.data.get(url)
+        return dict(e["feat"]) if e else {}
+
+    def record_live_ok(self, url: str, feat: dict | None = None) -> None:
+        with self._lock:
+            self.data[url] = {"ts": self.now, "feat": feat or {}}
+            self.live += 1
+
+    def save(self) -> None:
+        # Prune entries older than the TTL so the file can't grow unbounded as
+        # channels/streams churn, then persist atomically.
+        cutoff = self.now - self.ttl
+        pruned = {u: e for u, e in self.data.items() if e["ts"] >= cutoff}
+        tmp = self.path + ".tmp"
+        try:
+            with open(tmp, "w") as fh:
+                json.dump(pruned, fh)
+            os.replace(tmp, self.path)
+        except OSError:
+            pass
 
 
 # ---------------------------------------------------------------------------- output
@@ -1076,6 +1195,13 @@ def write_m3u(path: str, rows: list[dict], epg_url: str | None):
         group = r.get("group_display", r["group"])
         attrs = (f'tvg-id="{r["id"]}" tvg-chno="{r["chno"]}" '
                  f'tvg-logo="{r["logo"]}" group-title="{group}"')
+        feat = s.get("feat") or {}
+        if feat.get("res"):
+            attrs += f' resolution="{feat["res"]}"'
+        if feat.get("subs"):
+            attrs += ' subs="1"'
+        if feat.get("audio"):
+            attrs += f' audio-tracks="{feat["audio"]}"'
         lines.append(f'#EXTINF:-1 {attrs},{r["display"]}')
         if s.get("referrer"):
             lines.append(f'#EXTVLCOPT:http-referrer={s["referrer"]}')
@@ -1157,6 +1283,15 @@ def main():
     ap.add_argument("--workers", type=int, default=40)
     ap.add_argument("--max-try", type=int, default=4,
                     help="max streams to probe per channel before giving up")
+    ap.add_argument("--no-cache", action="store_true",
+                    help="ignore the known-good stream cache and probe everything "
+                         "live (used for the weekly full re-validation)")
+    ap.add_argument("--cache-ttl", type=float, default=72.0,
+                    help="hours a live-verified stream is trusted before it must "
+                         "be re-probed (hard staleness ceiling)")
+    ap.add_argument("--recheck-frac", type=float, default=0.34,
+                    help="fraction of otherwise-fresh cached streams to re-probe "
+                         "each run so the set is re-validated within a few runs")
     ap.add_argument("--out", default=os.path.join(HERE, "playlist.m3u"))
     ap.add_argument("--epg-url", default="https://raw.githubusercontent.com/wizakorhd/iptv/main/guide.xml.gz",
                     help="value for x-tvg-url in the playlist header")
@@ -1214,11 +1349,18 @@ def main():
         for c in cands:
             rows.append({**c, "stream": c["streams"][0]})
     else:
+        cache = None
+        if not args.no_cache:
+            cache = ProbeCache(os.path.join(DATA, "probe_cache.json"),
+                               args.cache_ttl, args.recheck_frac)
         print(f"Validating streams (workers={args.workers}, "
-              f"timeout={args.timeout}s) ...", file=sys.stderr)
+              f"timeout={args.timeout}s"
+              f"{'' if cache is None else f', cache ttl={args.cache_ttl:g}h'}) ...",
+              file=sys.stderr)
         done = 0
         with cf.ThreadPoolExecutor(max_workers=args.workers) as ex:
-            futs = {ex.submit(pick_working_stream, c, args.timeout, args.max_try): c
+            futs = {ex.submit(pick_working_stream, c, args.timeout, args.max_try,
+                              cache): c
                     for c in cands}
             for fut in cf.as_completed(futs):
                 done += 1
@@ -1231,6 +1373,11 @@ def main():
                 if s:
                     c = futs[fut]
                     rows.append({**c, "stream": s})
+
+        if cache is not None:
+            cache.save()
+            print(f"  cache: {cache.skipped} trusted from cache, "
+                  f"{cache.live} live-probed OK", file=sys.stderr)
 
         if not args.no_slate_check:
             rows = drop_pluto_slates(rows, args.workers, args.timeout,

@@ -4,6 +4,30 @@ A self‑curated IPTV playlist and program guide (EPG), generated from the free
 community [iptv-org](https://github.com/iptv-org) dataset. It hosts no video — it
 only re‑arranges public metadata and links to publicly listed streams.
 
+## Legal & usage
+
+- All stream URLs listed are **legal**. Nothing is restreamed, decrypted, or
+  bypassed — they are the original stream URLs as produced by their official
+  free services (Samsung TV Plus, Roku, Pluto TV, DistroTV, Tubi, etc.).
+- All ownership and rights for the content streamed by the URLs are held by the
+  service they are from (e.g. Samsung). There is no intention for this list to
+  replace any official app or service.
+- Streams are updated often — set your player/device to the playlist URL and hit
+  refresh to be sure you have the latest.
+- The playlist is kept fairly basic in structure, so it is compatible with most
+  devices and players.
+- These lists are **free** to use and access. No donations are accepted for any
+  content offered here.
+- **No permission is given to anyone to use these lists for any type of paid
+  service.** Please don't abuse this free offering.
+- This is a list of public internet URLs of legally offered free content,
+  provided for the IPTV community for people's own **personal** usage.
+  Publishing such a list does not require permission from the rights holder.
+- If you repost or edit this list, please acknowledge the source. Stream sources
+  are aggregated from [iptv-org](https://github.com/iptv-org),
+  [Free-TV](https://github.com/Free-TV/IPTV), and
+  [apsattv.com](https://www.apsattv.com).
+
 ## What's inside
 
 | File | Purpose |
@@ -142,26 +166,3 @@ auto‑load the EPG from the playlist pick it up automatically.
 - Stream availability is community‑maintained and changes often — re‑run
   `make playlist` if channels stop working.
 
-## Legal & usage
-
-- All stream URLs listed are **legal**. Nothing is restreamed, decrypted, or
-  bypassed — they are the original stream URLs as produced by their official
-  free services (Samsung TV Plus, Roku, Pluto TV, DistroTV, Tubi, etc.).
-- All ownership and rights for the content streamed by the URLs are held by the
-  service they are from (e.g. Samsung). There is no intention for this list to
-  replace any official app or service.
-- Streams are updated often — set your player/device to the playlist URL and hit
-  refresh to be sure you have the latest.
-- The playlist is kept fairly basic in structure, so it is compatible with most
-  devices and players.
-- These lists are **free** to use and access. No donations are accepted for any
-  content offered here.
-- **No permission is given to anyone to use these lists for any type of paid
-  service.** Please don't abuse this free offering.
-- This is a list of public internet URLs of legally offered free content,
-  provided for the IPTV community for people's own **personal** usage.
-  Publishing such a list does not require permission from the rights holder.
-- If you repost or edit this list, please acknowledge the source. Stream sources
-  are aggregated from [iptv-org](https://github.com/iptv-org),
-  [Free-TV](https://github.com/Free-TV/IPTV), and
-  [apsattv.com](https://www.apsattv.com).

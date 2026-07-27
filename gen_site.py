@@ -68,6 +68,9 @@ def main():
                 "chno": int(attrs.get("tvg-chno", "0") or 0),
                 "logo": attrs.get("tvg-logo", ""),
                 "epg": cid in have_epg,
+                "res": attrs.get("resolution", ""),
+                "subs": attrs.get("subs", "") == "1",
+                "audio": int(attrs.get("audio-tracks", "0") or 0),
             })
             i = j + 1
         else:

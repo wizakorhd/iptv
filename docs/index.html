@@ -133,6 +133,11 @@
   .badge.on { color: var(--ok); border-color: var(--ok-soft); background: var(--ok-soft); }
   .badge.no { color: var(--warn); border-color: var(--warn-soft); background: var(--warn-soft); }
   .chno { font-variant-numeric: tabular-nums; }
+  .badge.res {
+    color: var(--text); border-color: var(--accent-soft); background: var(--accent-soft);
+    font-weight: 700; letter-spacing: .3px;
+  }
+  .badge.cc, .badge.aud { color: var(--muted); border-color: var(--border-soft); }
   .empty { color: var(--muted); text-align: center; padding: 60px 20px; }
 
   /* ---------- how-to (modal) ---------- */
@@ -173,6 +178,24 @@
     margin: 0 auto; padding: 12px 20px 28px;
   }
   .legal p { margin: 6px 0; }
+
+  /* prominent legal notice pinned at the top of the channel view */
+  .notice {
+    margin: 14px 16px 2px; padding: 12px 15px;
+    background: var(--accent-soft); border: 1px solid var(--accent);
+    border-radius: var(--radius); color: var(--muted);
+    font-size: 12.5px; line-height: 1.55;
+  }
+  .notice-h {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13.5px; color: var(--text); font-weight: 600; margin-bottom: 6px;
+  }
+  .notice-h i { width: 16px; height: 16px; color: var(--accent); }
+  .notice p { margin: 6px 0; }
+  .notice b { color: var(--text); }
+  .notice details { margin-top: 4px; }
+  .notice summary { cursor: pointer; color: var(--accent); font-size: 12px; width: fit-content; }
+  .notice details[open] summary { margin-bottom: 4px; }
 
   .toast {
     position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
@@ -219,6 +242,24 @@
   </aside>
 
   <main>
+    <section class="notice">
+      <div class="notice-h"><i data-lucide="scale"></i>Legal &amp; usage</div>
+      <p>All stream URLs listed are <b>legal</b> — nothing is restreamed, decrypted, or
+      bypassed. They are the original stream URLs as produced by their official free services
+      (Samsung TV Plus, Roku, Pluto TV, DistroTV, Tubi, etc.); all ownership and content rights
+      remain with those services. This site hosts no video and only links to publicly listed streams.</p>
+      <details>
+        <summary>Full notice</summary>
+        <p>There is no intention to replace any official app or service. Streams update often —
+        point your player at the playlist URL and hit refresh for the latest. The playlist is kept
+        basic in structure, so it works with most devices and players.</p>
+        <p>These lists are <b>free</b> to use and access; no donations are accepted. <b>No permission
+        is given to anyone to use these lists for any type of paid service</b> — please don't abuse
+        this free offering. This is a list of public internet URLs of legally offered free content,
+        provided for the IPTV community for personal usage; publishing such a list does not require
+        permission from the rights holder. If you repost or edit, please acknowledge the source.</p>
+      </details>
+    </section>
     <div class="toolbar">
       <input id="q" type="search" placeholder="Search channels…" autocomplete="off" />
       <span class="toggle" id="guideToggle"><i data-lucide="calendar-check"></i> Guide only</span>
@@ -229,20 +270,6 @@
       <div class="empty" id="empty" hidden>No channels match.</div>
     </div>
     <footer id="foot"></footer>
-    <section class="legal">
-      <p><strong>Legal &amp; usage.</strong> All stream URLs listed are legal — nothing is
-      restreamed, decrypted, or bypassed. They are the original stream URLs as produced by
-      their official free services (Samsung TV Plus, Roku, Pluto TV, DistroTV, Tubi, etc.).</p>
-      <p>All ownership and rights for the streamed content are held by the service they come
-      from (e.g. Samsung). There is no intention to replace any official app or service.
-      Streams update often — point your player at the playlist URL and hit refresh for the
-      latest. The playlist is kept basic in structure, so it works with most devices and players.</p>
-      <p>These lists are free to use and access; no donations are accepted. No permission is
-      given to anyone to use these lists for any type of paid service — please don't abuse this
-      free offering. This is a list of public internet URLs of legally offered free content,
-      provided for the IPTV community for personal usage; publishing such a list does not require
-      permission from the rights holder. If you repost or edit, please acknowledge the source.</p>
-    </section>
   </main>
 </div>
 
@@ -421,6 +448,9 @@ function card(c) {
     </div>
     <div class="meta">
       <span class="badge chno"><i data-lucide="hash"></i>${c.chno}</span>
+      ${c.res ? `<span class="badge res">${c.res === "4k" ? "4K" : c.res.toUpperCase()}</span>` : ""}
+      ${c.subs ? `<span class="badge cc" title="Subtitles available"><i data-lucide="captions"></i>CC</span>` : ""}
+      ${c.audio > 1 ? `<span class="badge aud" title="${c.audio} audio tracks"><i data-lucide="languages"></i>${c.audio}</span>` : ""}
       <span class="badge ${c.epg ? "on" : "no"}">
         <i data-lucide="${c.epg ? "calendar-check" : "calendar-off"}"></i>${c.epg ? "Guide" : "No guide"}</span>
     </div>`;
