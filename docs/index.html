@@ -109,6 +109,13 @@
   }
   .toggle.on { color: var(--ok); border-color: var(--ok-soft); background: var(--ok-soft); }
   .toggle i { width: 15px; height: 15px; }
+  .toggle.sel {
+    color: var(--text); appearance: none; -webkit-appearance: none; padding-right: 28px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%238b949e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>');
+    background-repeat: no-repeat; background-position: right 9px center;
+  }
+  .toggle.sel.on { color: var(--accent); border-color: var(--accent-soft); background-color: var(--accent-soft); }
+  .toggle.sel option { color: var(--text); background: var(--panel); }
   .crumb { color: var(--muted); font-size: 13px; padding: 10px 16px 0; }
   .crumb b { color: var(--text); }
   .gridwrap { padding: 14px 16px 24px; }
@@ -236,7 +243,7 @@
       <i data-lucide="calendar"></i> EPG</span>
     <span class="urlbtn" id="howtoBtn"><i data-lucide="circle-help"></i> How to watch</span>
     <a class="urlbtn" href="https://github.com/wizakorhd/iptv" target="_blank" rel="noopener"
-       title="View the project on GitHub"><i data-lucide="github"></i> GitHub</a>
+       title="View the project on GitHub"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 .1.8 1.2 2.6 1 .1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg> GitHub</a>
   </div>
 </header>
 
@@ -269,6 +276,14 @@
     <div class="toolbar">
       <input id="q" type="search" placeholder="Search channels…" autocomplete="off" />
       <span class="toggle" id="guideToggle"><i data-lucide="calendar-check"></i> Guide only</span>
+      <span class="toggle" id="subsToggle"><i data-lucide="captions"></i> Subtitles</span>
+      <span class="toggle" id="audioToggle"><i data-lucide="languages"></i> Multi-audio</span>
+      <select class="toggle sel" id="resFilter" aria-label="Minimum resolution">
+        <option value="">Any resolution</option>
+        <option value="hd">HD &amp; up</option>
+        <option value="fhd">Full HD &amp; up</option>
+        <option value="4k">4K only</option>
+      </select>
     </div>
     <div class="crumb" id="crumb"></div>
     <div class="gridwrap">
@@ -334,6 +349,8 @@ const REGION_ICON = {
 // filter state
 let sel = { region: "", group: "" };   // "" region = all
 let guideOnly = false;
+let subsOnly = false, audioOnly = false, resMin = "";
+const RES_RANK = { sd: 1, hd: 2, fhd: 3, "4k": 4 };
 const expanded = new Set();
 
 function toast(msg) {
@@ -434,6 +451,9 @@ function currentRows() {
   const q = $("#q").value.trim().toLowerCase();
   return DATA.channels.filter(c => {
     if (guideOnly && !c.epg) return false;
+    if (subsOnly && !c.subs) return false;
+    if (audioOnly && !(c.audio > 1)) return false;
+    if (resMin && (RES_RANK[c.res] || 0) < RES_RANK[resMin]) return false;
     if (sel.group) { if (c.group !== sel.group) return false; }
     else if (sel.region) { if (splitGroup(c.group)[0] !== sel.region) return false; }
     if (q && !c.name.toLowerCase().includes(q)) return false;
@@ -499,6 +519,21 @@ $("#q").addEventListener("input", render);
 $("#guideToggle").addEventListener("click", () => {
   guideOnly = !guideOnly;
   $("#guideToggle").classList.toggle("on", guideOnly);
+  render();
+});
+$("#subsToggle").addEventListener("click", () => {
+  subsOnly = !subsOnly;
+  $("#subsToggle").classList.toggle("on", subsOnly);
+  render();
+});
+$("#audioToggle").addEventListener("click", () => {
+  audioOnly = !audioOnly;
+  $("#audioToggle").classList.toggle("on", audioOnly);
+  render();
+});
+$("#resFilter").addEventListener("change", () => {
+  resMin = $("#resFilter").value;
+  $("#resFilter").classList.toggle("on", !!resMin);
   render();
 });
 document.addEventListener("click", e => {
