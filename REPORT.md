@@ -1,19 +1,19 @@
 # Playlist health report
 
-_Last built: 2026-08-01 14:34 UTC_
+_Last built: 2026-08-02 14:37 UTC_
 
-- **Total channels:** 2702
-- **Candidates before validation:** 3793 (dropped 1091 dead/geo-blocked from build location)
-- **Channels without EPG guide:** 889
+- **Total channels:** 2692
+- **Candidates before validation:** 3773 (dropped 1081 dead/geo-blocked from build location)
+- **Channels without EPG guide:** 988
 - **Channels without a logo:** 0
 
 ## By group
 
 | Group | Channels | File |
 |---|---:|---|
-| Hindi | 240 | `playlist-hindi.m3u` |
+| Hindi | 237 | `playlist-hindi.m3u` |
 | English (India) | 27 | `playlist-english-india.m3u` |
-| English (Intl) | 2421 | `playlist-english-intl.m3u` |
+| English (Intl) | 2414 | `playlist-english-intl.m3u` |
 | Anime | 14 | `playlist-anime.m3u` |
 
 ## Sub-groups
@@ -27,21 +27,21 @@ _Last built: 2026-08-01 14:34 UTC_
 | English (India) - Movies | 3 |
 | English (India) - News | 22 |
 | English (India) - Sports | 2 |
-| English (Intl) - Comedy | 94 |
+| English (Intl) - Comedy | 98 |
 | English (Intl) - Crime | 32 |
-| English (Intl) - Documentary | 279 |
+| English (Intl) - Documentary | 281 |
 | English (Intl) - Entertainment | 299 |
-| English (Intl) - Food & Travel | 101 |
-| English (Intl) - General | 250 |
-| English (Intl) - Horror | 33 |
-| English (Intl) - Kids | 153 |
-| English (Intl) - Movies | 339 |
+| English (Intl) - Food & Travel | 99 |
+| English (Intl) - General | 248 |
+| English (Intl) - Horror | 35 |
+| English (Intl) - Kids | 156 |
+| English (Intl) - Movies | 324 |
 | English (Intl) - Music | 187 |
-| English (Intl) - News | 248 |
-| English (Intl) - Reality | 41 |
+| English (Intl) - News | 250 |
+| English (Intl) - Reality | 40 |
 | English (Intl) - Sci-Fi | 8 |
-| English (Intl) - Series | 146 |
-| English (Intl) - Sports | 208 |
+| English (Intl) - Series | 142 |
+| English (Intl) - Sports | 212 |
 | Hindi - Documentary | 18 |
 | Hindi - Entertainment | 30 |
 | Hindi - Food & Travel | 15 |
@@ -49,7 +49,7 @@ _Last built: 2026-08-01 14:34 UTC_
 | Hindi - Kids | 8 |
 | Hindi - Movies | 33 |
 | Hindi - Music | 16 |
-| Hindi - News | 70 |
+| Hindi - News | 67 |
 | Hindi - Sports | 11 |
 | Korean | 3 |
 
