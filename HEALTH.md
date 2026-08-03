@@ -1,83 +1,93 @@
-_Checked 2026-07-27 15:56 UTC · 2709 channels · 2649 reachable · **60 unreachable**_
+_Checked 2026-08-03 15:59 UTC · 2696 channels · 2627 reachable · **69 unreachable**_
 
 > Probed from the GitHub runner (US region). Geo-restricted streams may appear dead here but still work from the intended region — verify before removing.
 
 ## Unreachable channels
 
-### English (India) - News (23) (2)
+### English (India) - News (22) (2)
+- Bharat Express ᶠᴴᴰ
 - ET Now ᴴᴰ
-- India Ahead
-
-### English (Intl) - Comedy (94) (1)
-- Novo Comedy
 
 ### English (Intl) - Crime (32) (1)
 - REAL CRIME APLHA
 
-### English (Intl) - Documentary (281) (4)
+### English (Intl) - Documentary (277) (6)
 - Docsville
+- DroneTV ᶠᴴᴰ
+- Law & Crime ᴴᴰ
 - Love The Planet [DE]
 - Love The Planet [IT]
-- National Geographic
+- PBS Kids 24/7 ᶠᴴᴰ
 
-### English (Intl) - Entertainment (303) (2)
+### English (Intl) - Entertainment (301) (7)
+- FX ᶠᴴᴰ
+- FXX ᶠᴴᴰ
+- Logo ᴴᴰ
+- M Entertainment Channel ᴴᴰ
+- MeTV+ ᴴᴰ
 - Real Crime
 - Western Time
 
-### English (Intl) - Food & Travel (99) (3)
+### English (Intl) - Food & Travel (100) (3)
 - Pet Club TV
 - The Design Network ᶠᴴᴰ
 - Travel & More",Gusto TV
 
-### English (Intl) - General (246) (9)
-- American Gladiators
-- Azteca Deportes Network LITE 3
-- Bridezillas
-- HSN HD
-- MBTV ᴴᴰ
-- POWERNATION en Español
-- QVC
-- QVC2 HD
-- ViX Lo Mejor de Liga MX
+### English (Intl) - General (249) (2)
+- Chaos on Cam by A&E
+- Storage Wars by A&E
 
-### English (Intl) - Kids (157) (4)
+### English (Intl) - Horror (35) (2)
+- Hell's Kitchen | Kitchen Nightmares
+- Scares by Shudder ᴴᴰ
+
+### English (Intl) - Kids (153) (5)
 - 100% Kids
 - Cartoon
-- Nick Jr. Latin America ᶠᴴᴰ
+- Freeform ᶠᴴᴰ
+- Nicktoons ᶠᴴᴰ
 - Pop Up ᶠᴴᴰ
 
-### English (Intl) - Movies (337) (9)
+### English (Intl) - Movies (325) (10)
 - 100% Cinema
-- AXN Asia ᴴᴰ
 - Cine Paura
 - Cine Thriller
 - GREAT! Mystery
+- Great American Faith & Living ᶠᴴᴰ
+- NOST ᶠᴴᴰ
 - Wedo Movies Italy
 - wedotv Movies [FI]
 - wedotv Movies [NO]
 - wedotv Movies [SE]
 
-### English (Intl) - Music (187) (2)
+### English (Intl) - Music (187) (4)
 - Metal.Rocks
+- Stingray Exitos del Momento ᶠᴴᴰ
+- Stingray Remember the 80s ᶠᴴᴰ
 - V2BEAT TV ᴴᴰ
 
-### English (Intl) - News (247) (1)
+### English (Intl) - News (252) (2)
+- DeFiance Media ᶠᴴᴰ
 - NW Info 2
 
 ### English (Intl) - Reality (40) (1)
 - Hells Kitchen Germany
 
-### English (Intl) - Series (145) (1)
+### English (Intl) - Series (146) (1)
 - Rookie Blue
 
-### English (Intl) - Sports (214) (7)
+### English (Intl) - Sports (212) (11)
 - DAZN Fast
 - DAZN Rise
 - DP World Tour Golf UK
 - Dude Perfect
-- Motorvision Español
+- FanDuel Racing ᴴᴰ
+- Game+ ᴴᴰ
+- Lacrosse TV ᴴᴰ
+- NBC Sports Bay Area ᶠᴴᴰ
+- NBC Sports Chicago ᴴᴰ
 - Stadium ᴴᴰ
-- beIN SPORTS XTRA ᶠᴴᴰ
+- TSN2 ᶠᴴᴰ
 
 ### Hindi - Documentary (18) (1)
 - Travelxp 4K
@@ -87,19 +97,14 @@ _Checked 2026-07-27 15:56 UTC · 2709 channels · 2649 reachable · **60 unreach
 - Zee Dil Se ᶠᴴᴰ
 - Zee Horror Nights ᶠᴴᴰ
 
-### Hindi - General (28) (1)
-- Shubh TV ᶠᴴᴰ
-
-### Hindi - Movies (34) (3)
+### Hindi - Movies (33) (2)
 - Shemaroo Filmi Gaane ᶠᴴᴰ
-- Shubh Cinema TV ᴴᴰ
 - Zee Cine Classic ᶠᴴᴰ
 
-### Hindi - Music (16) (1)
-- Andy Haryana
-
-### Hindi - News (70) (4)
+### Hindi - News (69) (6)
+- Argus News ᶠᴴᴰ
 - Bansal News ᴴᴰ
 - Janta TV ᶠᴴᴰ
+- Samay National
 - Times Now Navbharat ᶠᴴᴰ
 - Times Now ᴴᴰ
