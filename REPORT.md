@@ -1,19 +1,19 @@
 # Playlist health report
 
-_Last built: 2026-08-03 14:34 UTC_
+_Last built: 2026-08-04 15:44 UTC_
 
-- **Total channels:** 2696
-- **Candidates before validation:** 3773 (dropped 1077 dead/geo-blocked from build location)
-- **Channels without EPG guide:** 897
+- **Total channels:** 2592
+- **Candidates before validation:** 3773 (dropped 1181 dead/geo-blocked from build location)
+- **Channels without EPG guide:** 856
 - **Channels without a logo:** 0
 
 ## By group
 
 | Group | Channels | File |
 |---|---:|---|
-| Hindi | 240 | `playlist-hindi.m3u` |
+| Hindi | 236 | `playlist-hindi.m3u` |
 | English (India) | 27 | `playlist-english-india.m3u` |
-| English (Intl) | 2416 | `playlist-english-intl.m3u` |
+| English (Intl) | 2316 | `playlist-english-intl.m3u` |
 | Anime | 13 | `playlist-anime.m3u` |
 
 ## Sub-groups
@@ -27,29 +27,29 @@ _Last built: 2026-08-03 14:34 UTC_
 | English (India) - Movies | 3 |
 | English (India) - News | 22 |
 | English (India) - Sports | 2 |
-| English (Intl) - Comedy | 96 |
+| English (Intl) - Comedy | 92 |
 | English (Intl) - Crime | 32 |
-| English (Intl) - Documentary | 277 |
-| English (Intl) - Entertainment | 301 |
-| English (Intl) - Food & Travel | 100 |
-| English (Intl) - General | 249 |
-| English (Intl) - Horror | 35 |
-| English (Intl) - Kids | 153 |
-| English (Intl) - Movies | 325 |
-| English (Intl) - Music | 187 |
-| English (Intl) - News | 252 |
-| English (Intl) - Reality | 40 |
+| English (Intl) - Documentary | 263 |
+| English (Intl) - Entertainment | 295 |
+| English (Intl) - Food & Travel | 96 |
+| English (Intl) - General | 241 |
+| English (Intl) - Horror | 31 |
+| English (Intl) - Kids | 144 |
+| English (Intl) - Movies | 308 |
+| English (Intl) - Music | 180 |
+| English (Intl) - News | 243 |
+| English (Intl) - Reality | 39 |
 | English (Intl) - Sci-Fi | 8 |
-| English (Intl) - Series | 146 |
-| English (Intl) - Sports | 212 |
+| English (Intl) - Series | 135 |
+| English (Intl) - Sports | 206 |
 | Hindi - Documentary | 18 |
-| Hindi - Entertainment | 30 |
-| Hindi - Food & Travel | 15 |
+| Hindi - Entertainment | 31 |
+| Hindi - Food & Travel | 14 |
 | Hindi - General | 28 |
 | Hindi - Kids | 8 |
-| Hindi - Movies | 33 |
-| Hindi - Music | 17 |
-| Hindi - News | 69 |
+| Hindi - Movies | 32 |
+| Hindi - Music | 16 |
+| Hindi - News | 67 |
 | Hindi - Sports | 11 |
 | Korean | 3 |
 
