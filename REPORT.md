@@ -1,19 +1,19 @@
 # Playlist health report
 
-_Last built: 2026-08-06 14:34 UTC_
+_Last built: 2026-08-07 14:34 UTC_
 
-- **Total channels:** 2687
-- **Candidates before validation:** 3773 (dropped 1086 dead/geo-blocked from build location)
-- **Channels without EPG guide:** 884
+- **Total channels:** 2665
+- **Candidates before validation:** 3773 (dropped 1108 dead/geo-blocked from build location)
+- **Channels without EPG guide:** 881
 - **Channels without a logo:** 0
 
 ## By group
 
 | Group | Channels | File |
 |---|---:|---|
-| Hindi | 239 | `playlist-hindi.m3u` |
+| Hindi | 236 | `playlist-hindi.m3u` |
 | English (India) | 27 | `playlist-english-india.m3u` |
-| English (Intl) | 2407 | `playlist-english-intl.m3u` |
+| English (Intl) | 2388 | `playlist-english-intl.m3u` |
 | Anime | 14 | `playlist-anime.m3u` |
 
 ## Sub-groups
@@ -30,26 +30,26 @@ _Last built: 2026-08-06 14:34 UTC_
 | English (Intl) - Comedy | 97 |
 | English (Intl) - Crime | 32 |
 | English (Intl) - Documentary | 276 |
-| English (Intl) - Entertainment | 303 |
-| English (Intl) - Food & Travel | 100 |
-| English (Intl) - General | 247 |
-| English (Intl) - Horror | 32 |
-| English (Intl) - Kids | 155 |
-| English (Intl) - Movies | 326 |
-| English (Intl) - Music | 184 |
-| English (Intl) - News | 248 |
-| English (Intl) - Reality | 40 |
+| English (Intl) - Entertainment | 298 |
+| English (Intl) - Food & Travel | 99 |
+| English (Intl) - General | 244 |
+| English (Intl) - Horror | 34 |
+| English (Intl) - Kids | 151 |
+| English (Intl) - Movies | 324 |
+| English (Intl) - Music | 185 |
+| English (Intl) - News | 247 |
+| English (Intl) - Reality | 41 |
 | English (Intl) - Sci-Fi | 8 |
-| English (Intl) - Series | 147 |
-| English (Intl) - Sports | 209 |
+| English (Intl) - Series | 145 |
+| English (Intl) - Sports | 204 |
 | Hindi - Documentary | 18 |
 | Hindi - Entertainment | 31 |
 | Hindi - Food & Travel | 15 |
 | Hindi - General | 28 |
 | Hindi - Kids | 8 |
 | Hindi - Movies | 33 |
-| Hindi - Music | 17 |
-| Hindi - News | 67 |
+| Hindi - Music | 16 |
+| Hindi - News | 65 |
 | Hindi - Sports | 11 |
 | Korean | 3 |
 
