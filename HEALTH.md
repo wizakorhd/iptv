@@ -1,116 +1,98 @@
-_Checked 2026-08-10 10:40 UTC · 2548 channels · 2473 reachable · **75 unreachable**_
+_Checked 2026-08-17 08:07 UTC · 2458 channels · 2403 reachable · **55 unreachable**_
 
 > Probed from the GitHub runner (US region). Geo-restricted streams may appear dead here but still work from the intended region — verify before removing.
 
 ## Unreachable channels
 
-### Anime (15) (1)
-- Animax ᴴᴰ
+### English (India) - Entertainment (3) (1)
+- Star Sports 1 ᶠᴴᴰ
 
-### English (India) - News (21) (1)
+### English (India) - News (22) (1)
 - ET Now ᴴᴰ
 
-### English (Intl) - Crime (31) (1)
+### English (Intl) - Crime (26) (1)
 - REAL CRIME APLHA
 
-### English (Intl) - Documentary (275) (5)
-- Discovery Turbo ᴴᴰ
+### English (Intl) - Documentary (261) (6)
 - Docsville
+- H2
 - Love The Planet [DE]
 - Love The Planet [IT]
-- National Geographic ᴴᴰ
+- Monroe Community Media Education Channel
+- National Geographic
 
-### English (Intl) - Entertainment (278) (11)
-- CTV Speed Channel ᴴᴰ
-- Game Show Network ᶠᴴᴰ
-- Great Entertainment Television ᶠᴴᴰ
-- Grit ᶠᴴᴰ
-- Heartland ᴴᴰ
-- INSP ᴴᴰ
-- Island Luck TV
-- Logo ᴴᴰ
+### English (Intl) - Entertainment (295) (2)
 - Real Crime
-- TV Today Janakpur
 - Western Time
 
-### English (Intl) - Food & Travel (96) (3)
+### English (Intl) - Food & Travel (99) (3)
 - Pet Club TV
 - The Design Network ᶠᴴᴰ
 - Travel & More",Gusto TV
 
-### English (Intl) - General (209) (1)
-- GARDEN with Monty Don
+### English (Intl) - General (197) (3)
+- Cinépolis Channel
+- City of Monroe Government Channel
+- FreeTV Estelar
 
-### English (Intl) - Kids (152) (7)
+### English (Intl) - Kids (148) (5)
 - Cartoon
-- Disney Channel ᴴᴰ
-- Disney Junior ᴴᴰ
-- Disney XD ᴴᴰ
-- FETV ᴴᴰ
-- Freeform ᶠᴴᴰ
+- Disney Channel
+- Little Angel's Playroom
+- Little Angel's Playroom en Español
 - Pop Up ᶠᴴᴰ
 
-### English (Intl) - Movies (315) (10)
+### English (Intl) - Movies (297) (8)
 - Cine Paura
 - Cine Thriller
-- FX Movie Channel ᴴᴰ
-- FXM ᴴᴰ
 - GREAT! Mystery
-- MGM+ Drive-In ᴴᴰ
+- Star Channel
 - Wedo Movies Italy
 - wedotv Movies [FI]
 - wedotv Movies [NO]
 - wedotv Movies [SE]
 
-### English (Intl) - Music (178) (3)
-- MTV Live ᶠᴴᴰ
+### English (Intl) - Music (168) (3)
 - Metal.Rocks
+- Mezzo Live
 - V2BEAT TV ᴴᴰ
 
-### English (Intl) - News (233) (4)
+### English (Intl) - News (230) (3)
+- Advocate Broadcasting Network
+- LN24SA ᶠᴴᴰ
 - NW Info 2
-- News12 Brooklyn
-- News12 New Jersey
-- NewsNation ᴴᴰ
 
-### English (Intl) - Reality (36) (2)
-- E! ᶠᴴᴰ
+### English (Intl) - Reality (38) (1)
 - Hells Kitchen Germany
 
-### English (Intl) - Series (142) (2)
+### English (Intl) - Series (145) (1)
 - Rookie Blue
-- Start TV ᴴᴰ
 
-### English (Intl) - Sports (182) (14)
-- CBS Sports Network USA ᶠᴴᴰ
+### English (Intl) - Sports (163) (5)
 - DAZN Fast
 - DAZN Rise
 - DP World Tour Golf UK
 - Dude Perfect
-- ESPNU ᴴᴰ
-- ESPNews ᴴᴰ
-- Golf Channel ᶠᴴᴰ
-- MLB Network ᶠᴴᴰ
-- MSG Plus ᴴᴰ
-- MSG ᴴᴰ
-- Marquee Sports Network ᶠᴴᴰ
 - Stadium ᴴᴰ
-- beIN Sports USA
 
-### Hindi - Documentary (19) (1)
+### Hindi - Documentary (18) (1)
 - Travelxp 4K
 
-### Hindi - Entertainment (33) (5)
-- Colors
-- StarPlus
+### Hindi - Entertainment (30) (3)
 - Zee Comedy Nation ᶠᴴᴰ
 - Zee Dil Se ᶠᴴᴰ
 - Zee Horror Nights ᶠᴴᴰ
 
-### Hindi - Movies (32) (2)
+### Hindi - Movies (31) (4)
 - Shemaroo Filmi Gaane ᶠᴴᴰ
+- Star Gold Select ᶠᴴᴰ
+- Star Gold ᶠᴴᴰ
 - Zee Cine Classic ᶠᴴᴰ
 
-### Hindi - News (64) (2)
-- Bansal News ᴴᴰ
+### Hindi - News (62) (3)
+- Star Bharat
 - Times Now Navbharat ᶠᴴᴰ
+- Times Now ᴴᴰ
+
+### Hindi - Sports (7) (1)
+- Star Sports 1 Hindi
