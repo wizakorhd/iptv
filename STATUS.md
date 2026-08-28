@@ -1,8 +1,8 @@
 # Status
 
-_Updated: 2026-08-27 14:24 UTC_
+_Updated: 2026-08-28 15:32 UTC_
 
-- **Playlist last refreshed:** 2026-08-24 (2 day(s) ago)
+- **Playlist last refreshed:** 2026-08-28 (0 day(s) ago)
 - Playlist is up to date.
 
 The program guide (`guide.xml.gz`) refreshes daily and is independent of the playlist.
