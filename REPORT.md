@@ -1,19 +1,19 @@
 # Playlist health report
 
-_Last built: 2026-09-12 04:05 UTC_
+_Last built: 2026-09-13 07:55 UTC_
 
-- **Total channels:** 2613
-- **Candidates before validation:** 3675 (dropped 1062 dead/geo-blocked from build location)
-- **Channels without EPG guide:** 899
+- **Total channels:** 2493
+- **Candidates before validation:** 3675 (dropped 1182 dead/geo-blocked from build location)
+- **Channels without EPG guide:** 830
 - **Channels without a logo:** 0
 
 ## By group
 
 | Group | Channels | File |
 |---|---:|---|
-| Hindi | 277 | `playlist-hindi.m3u` |
-| English (India) | 34 | `playlist-english-india.m3u` |
-| English (Intl) | 2288 | `playlist-english-intl.m3u` |
+| Hindi | 270 | `playlist-hindi.m3u` |
+| English (India) | 35 | `playlist-english-india.m3u` |
+| English (Intl) | 2174 | `playlist-english-intl.m3u` |
 | Anime | 14 | `playlist-anime.m3u` |
 
 ## Sub-groups
@@ -26,30 +26,30 @@ _Last built: 2026-09-12 04:05 UTC_
 | English (India) - General | 9 |
 | English (India) - Movies | 5 |
 | English (India) - News | 24 |
-| English (India) - Sports | 3 |
-| English (Intl) - Comedy | 97 |
-| English (Intl) - Crime | 33 |
-| English (Intl) - Documentary | 275 |
-| English (Intl) - Entertainment | 293 |
-| English (Intl) - Food & Travel | 98 |
-| English (Intl) - General | 204 |
-| English (Intl) - Horror | 37 |
-| English (Intl) - Kids | 154 |
-| English (Intl) - Movies | 327 |
-| English (Intl) - Music | 174 |
-| English (Intl) - News | 223 |
+| English (India) - Sports | 4 |
+| English (Intl) - Comedy | 89 |
+| English (Intl) - Crime | 31 |
+| English (Intl) - Documentary | 259 |
+| English (Intl) - Entertainment | 287 |
+| English (Intl) - Food & Travel | 90 |
+| English (Intl) - General | 190 |
+| English (Intl) - Horror | 35 |
+| English (Intl) - Kids | 153 |
+| English (Intl) - Movies | 306 |
+| English (Intl) - Music | 164 |
+| English (Intl) - News | 211 |
 | English (Intl) - Reality | 34 |
 | English (Intl) - Sci-Fi | 8 |
-| English (Intl) - Series | 145 |
-| English (Intl) - Sports | 183 |
-| Hindi - Documentary | 21 |
+| English (Intl) - Series | 139 |
+| English (Intl) - Sports | 175 |
+| Hindi - Documentary | 20 |
 | Hindi - Entertainment | 40 |
 | Hindi - Food & Travel | 16 |
-| Hindi - General | 32 |
+| Hindi - General | 30 |
 | Hindi - Kids | 17 |
-| Hindi - Movies | 32 |
+| Hindi - Movies | 31 |
 | Hindi - Music | 17 |
-| Hindi - News | 76 |
+| Hindi - News | 73 |
 | Hindi - Sports | 13 |
 | Korean | 3 |
 
