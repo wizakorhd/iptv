@@ -1,106 +1,78 @@
-_Checked 2026-09-14 11:13 UTC · 2546 channels · 2483 reachable · **63 unreachable**_
+_Checked 2026-09-21 11:24 UTC · 1560 channels · 1515 reachable · **45 unreachable**_
 
 > Probed from the GitHub runner (US region). Geo-restricted streams may appear dead here but still work from the intended region — verify before removing.
 
 ## Unreachable channels
 
-### English (India) - News (24) (1)
-- ET Now ᴴᴰ
-
-### English (Intl) - Crime (33) (1)
+### English (Intl) - Crime (20) (1)
 - REAL CRIME APLHA
 
-### English (Intl) - Documentary (266) (5)
+### English (Intl) - Documentary (139) (9)
+- BX Arts ᴴᴰ
 - CreaTV Channel 28 ᴴᴰ
 - Docsville
-- Love The Planet [DE]
+- HCTV Educational Access Channel
+- LA36 ᶠᴴᴰ
 - Love The Planet [IT]
-- Travel+Adventure
+- Monroe Community Media Education Channel
+- National Geographic ᴴᴰ
+- Reelz ᴴᴰ
 
-### English (Intl) - Entertainment (299) (6)
-- OTV ᴴᴰ
-- ROCK Action ᶠᴴᴰ
+### English (Intl) - Entertainment (184) (4)
+- MTV ᴴᴰ
 - Real Crime
-- Roar ᶠᴴᴰ
+- Turismo HD
 - Western Time
-- XPTV2 ᴴᴰ
 
-### English (Intl) - Food & Travel (96) (3)
+### English (Intl) - Food & Travel (64) (3)
 - Pet Club TV
 - The Design Network ᶠᴴᴰ
 - Travel & More",Gusto TV
 
-### English (Intl) - General (178) (2)
-- N+ Univision 24/7
-- Revolt Mixtape
+### English (Intl) - General (99) (4)
+- BPTV
+- Capital City Connection Montgomery
+- HCTV Government Channel
+- Xena
 
-### English (Intl) - Kids (150) (4)
+### English (Intl) - Kids (90) (3)
 - Cartoon
-- Nick Jr. Asia ᴴᴰ
-- Nickelodeon Asia ᶠᴴᴰ
-- Pop Up ᶠᴴᴰ
+- Disney Junior ᴴᴰ
+- Nickelodeon ᴴᴰ
 
-### English (Intl) - Movies (327) (9)
-- 30A Tv Movies
+### English (Intl) - Movies (191) (3)
 - Cine Paura
-- Cine Thriller
-- CinemaWorld ᴴᴰ
-- GREAT! Mystery
 - Wedo Movies Italy
-- wedotv Movies [FI]
 - wedotv Movies [NO]
-- wedotv Movies [SE]
 
-### English (Intl) - Music (165) (2)
-- Metal.Rocks
-- V2BEAT TV ᴴᴰ
+### English (Intl) - News (127) (2)
+- BX Inform ᶠᴴᴰ
+- News12 Westchester
 
-### English (Intl) - News (213) (4)
-- CNBC Asia ᴴᴰ
-- Estrella News
-- Le Monde en 24h
-- NW Info 2
-
-### English (Intl) - Reality (33) (3)
-- Hells Kitchen Germany
-- Lifetime Asia ᶠᴴᴰ
-- We TV ᴴᴰ
-
-### English (Intl) - Series (143) (2)
+### English (Intl) - Series (99) (3)
+- Baywatch ᶠᴴᴰ
+- Hell's Kitchen ᶠᴴᴰ
 - Rookie Blue
-- XPTV US ᴴᴰ
 
-### English (Intl) - Sports (180) (6)
+### English (Intl) - Sports (112) (4)
 - DAZN Fast
 - DAZN Rise
-- DP World Tour Golf UK
 - Dude Perfect
-- MLB Network ᶠᴴᴰ
 - Stadium ᴴᴰ
 
-### Hindi - Documentary (19) (1)
-- Travelxp 4K
-
-### Hindi - Entertainment (41) (3)
+### Hindi - Entertainment (26) (2)
 - Zee Comedy Nation ᶠᴴᴰ
 - Zee Dil Se ᶠᴴᴰ
-- Zee Horror Nights ᶠᴴᴰ
 
-### Hindi - Kids (17) (1)
-- Disney Channel
+### Hindi - General (26) (1)
+- Taaza TV ᴴᴰ
 
-### Hindi - Movies (31) (4)
-- All Time Movies
-- Manoranjan Grand
+### Hindi - Movies (22) (3)
+- &xplor HD
 - Shemaroo Filmi Gaane ᶠᴴᴰ
 - Zee Cine Classic ᶠᴴᴰ
 
-### Hindi - News (76) (4)
+### Hindi - News (65) (3)
 - Bansal News ᴴᴰ
 - Times Now Navbharat ᶠᴴᴰ
 - Times Now ᴴᴰ
-- VIP News
-
-### Hindi - Sports (10) (2)
-- Kabaddi 24x7
-- Sports Squad Haryana
