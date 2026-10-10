@@ -1,9 +1,9 @@
 # Status
 
-_Updated: 2026-10-09 10:47 UTC_
+_Updated: 2026-10-10 10:02 UTC_
 
-- **Playlist last refreshed:** 2026-09-27 (11 day(s) ago)
-- **Playlist may be stale** — not rebuilt in 11 days (threshold 7). Streams still play, but channels that died recently may not have been pruned yet.
+- **Playlist last refreshed:** 2026-09-27 (12 day(s) ago)
+- **Playlist may be stale** — not rebuilt in 12 days (threshold 7). Streams still play, but channels that died recently may not have been pruned yet.
 
 The program guide (`guide.xml.gz`) refreshes daily and is independent of the playlist.
 
