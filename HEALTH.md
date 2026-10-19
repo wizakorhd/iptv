@@ -1,14 +1,8 @@
-_Checked 2026-10-12 13:51 UTC · 2574 channels · 2039 reachable · **535 unreachable**_
+_Checked 2026-10-19 11:32 UTC · 2574 channels · 2404 reachable · **170 unreachable**_
 
 > Probed from the GitHub runner (US region). Geo-restricted streams may appear dead here but still work from the intended region — verify before removing.
 
 ## Unreachable channels
-
-### Anime (11) (4)
-- Anime x HIDIVE
-- Naruto
-- Pluto TV Anime
-- Pluto TV Anime Movies
 
 ### English (India) - Entertainment (3) (1)
 - Disney International HD
@@ -25,80 +19,28 @@ _Checked 2026-10-12 13:51 UTC · 2574 channels · 2039 reachable · **535 unreac
 - Sony Sports Ten 5 ᶠᴴᴰ
 - Unite8 Sports 2
 
-### English (Intl) - Comedy (94) (53)
-- Awkward
-- BET Throwbacks
-- Beavis and Butt-Head
-- Black Family Sitcoms
-- British Comedy
-- Broad City
-- Caroline in the City
-- Chappelle's Show
-- Cheers
-- Cheers + Frasier
-- Classic TV Comedy
-- Comedy Central
-- Comedy Central
-- Comedy Central Animation
-- Comedy Central Pluto TV
-- Comedy Central en español
-- Everybody Hates Chris
-- Family Ties
-- Funny AF
-- I Love Lucy
-- Klovn
-- Man with a Plan
-- More Pluto TV Comedy
-- More TV Sitcoms
-- Pluto TV Animation
-- Pluto TV Comedy
-- Pluto TV Sitcoms
-- Reno 911
-- Ridiculousness
-- Sabrina The Teenage Witch
-- Sabrina the Teenage Witch
-- Sitcom Legends
-- Sketchy AF
-- South Park
-- South Park
-- South Park
-- South Park Armageddon
-- South Park En Francais
-- South Park Rockin' Out
-- South Park: Butters Collection
-- South Park: Cartman Collection
-- South Park: Cartman Collection
-- South Park: Into the Stars
-- South Park: Kenny Collection
-- South Park: Kenny Collection
-- South Park: Kyle Collection
-- South Park: Kyle Collection
-- South Park: Stan Collection
-- South Park: Stan Collection
-- South Park: Welcome to Canada!
-- TV Land Sitcoms
-- The Beverly Hillbillies
-- Tosh.0
+### English (Intl) - Comedy (94) (1)
+- Distrito Comedia ᶠᴴᴰ
 
-### English (Intl) - Crime (40) (5)
+### English (Intl) - Crime (40) (7)
 - Cops (PE)
 - Cops .Au
 - Cops .CA
 - Crime Beat TV
+- Free Crime TV
 - REAL CRIME APLHA
+- True Crime Now C8 not fully identified
 
-### English (Intl) - Documentary (262) (41)
+### English (Intl) - Documentary (262) (20)
 - BTB Info ᶠᴴᴰ
 - BX Arts ᴴᴰ
 - BX Culture ᴴᴰ
-- Beyond History
 - CMAC 2 ᴴᴰ
+- Channel S
 - CreaTV Channel 28 ᴴᴰ
 - Detroit Channel 22
 - Docsville
-- FBI Files
 - GZT ᶠᴴᴰ
-- Ink Master
 - Jail
 - LA36 ᶠᴴᴰ
 - Love The Planet [DE]
@@ -106,125 +48,32 @@ _Checked 2026-10-12 13:51 UTC · 2574 channels · 2039 reachable · **535 unreac
 - Maldives TV ᴴᴰ
 - Monroe Community Media Education Channel
 - Natural TV ᴴᴰ
-- On The Case
-- Pluto TV Adventure
-- Pluto TV Alien Invasion
-- Pluto TV American True Crime
-- Pluto TV Backcountry
-- Pluto TV Britain at War
-- Pluto TV History
-- Pluto TV Paranormal
-- Pluto TV PetrolHeads
-- Pluto TV Science
-- Pluto TV Space
-- Pluto TV Tough Jobs
-- Pluto TV True Crime
-- Pluto TV Verdenskrigene
-- Sensing Murder
-- Smithsonian Channel Pluto TV
-- Smithsonian Channel Selects
-- Smithsonian Channel Selects
-- Spike Outdoors
-- Spike Pluto TV
 - St Lucie Public Schools
 - Travel+Adventure ᶠᴴᴰ
+- Tu Discovery
 - Viasat Epic Drama
 
-### English (Intl) - Entertainment (262) (77)
+### English (Intl) - Entertainment (262) (12)
 - AP TV
 - AXN White
-- America's Next Top Model
-- Are You The One?
 - ArubaTV +
-- Auction Hunters
-- Best of MTV
-- Best of Paradise Hotel: Finalveckan
-- Best of Paradise Hotel: Kyssar & karlek
-- Best of Paradise Hotel: Pandoras Ask
-- Beyond the Gates
-- Boligjakten
-- CBS en espanol
-- CSI: Miami en espanol
-- CSI: NY en espanol
-- Camp Kulinaris
-- Car Chase ᴴᴰ
-- Charterfeber
-- Cine aventura
-- Cine en espanol
+- Canal Motor ᴴᴰ
 - Crime + Investigation CEE
-- Dating Disasters
-- Den gule sofa med Allan Sindberg
 - Det sene show med Christian Fuhlendorff
-- Eventyrlig Oppussing
-- Familien fra Bryggen
-- For laekker til love
-- Forsidefruer
-- Frusna Vagar
-- Geordie Shore
-- Geordie Shore
-- Hogspanning
-- Hot Bench ᴴᴰ
-- Judge Judy
-- Langt fra Bryggen
-- Live Music
-- Logo Pluto TV
-- Luksusfaelden
-- Luksusfellen
-- Lyxfallan
-- Lyxfallan Danmark
-- Lyxfallan Norge
+- KC2 ᴴᴰ
 - MTV Global
-- MTV Jersey Shore
-- MTV Ridiculousness ᴴᴰ
-- MTV Ridiculousness ᴴᴰ
-- MTV The Hills
-- Mas adrenalina
-- Mit plastikmareridt
-- More TV Drama
-- Paradise
-- Paradise Hotel
-- Paradise Hotel: Under lagnerne
-- Paranormal State
-- Pimp My Ride
-- Pluto TV Cars
-- Pluto TV Game Shows
-- Pluto TV Inside
-- Pluto TV Motor
-- Pluto TV Motor
-- Pluto TV Series Latinas
+- MTV ᶠᴴᴰ
+- Public 4K TV
 - Real Crime
-- Ridiculousness: Nya avsnitt
-- Ridiculousness: Nye afsnit
-- Ridiculousness: Nye episoder
-- Robinson Ekspeditionen
-- Skonhetsfallan Danmark
-- Svenska Hollywoodfruar
-- Svenska Truckers
-- The Daily Show
-- The Price Is Right
-- The Yellow Couch with Jeremy Lynch
-- Til julefrokost hos r8Dio
-- Tough Jobs
-- Vive Kanal D Drama
 - Western Time
-- r8Dio TV
 
-### English (Intl) - Food & Travel (94) (13)
-- Boligkjop i blinde
-- Boligkob i blinde
-- Buying Blind Denmark
-- Home Refresh
-- Kitchen Battles
-- Koch'en pa toppen
-- MasterChef Danmarks storste madtalenter
+### English (Intl) - Food & Travel (94) (4)
 - Pet Club TV
-- Skonne ombygninger
-- Stugfixarna Norge
 - Tastemade Hogar
 - The Design Network ᶠᴴᴰ
 - Travel & More",Gusto TV
 
-### English (Intl) - General (201) (14)
+### English (Intl) - General (201) (12)
 - BPTV
 - CGTV ᴴᴰ
 - CMAC 3 ᴴᴰ
@@ -236,164 +85,53 @@ _Checked 2026-10-12 13:51 UTC · 2574 channels · 2039 reachable · **535 unreac
 - Community 12TV ᴴᴰ
 - Detroit Channel 10
 - Dr. Phil's Merit TV
-- Joel Osteen Network
-- Penn & Teller: Fool Us
-- The Masked Singer
+- Noticias Telemundo AHORA
 
-### English (Intl) - Horror (35) (7)
-- Pluto TV Cine Terror
-- Pluto TV Fantasy & Horror
-- Pluto TV Horror
-- Pluto TV Horror
-- Pluto TV Terror
-- Pluto TV Thrillers
-- Pluto TV Thrillers
-
-### English (Intl) - Kids (142) (33)
-- 90's Kids
-- 90s Kids TV 2
-- Avatar
-- Avatar
+### English (Intl) - Kids (142) (18)
 - Cartoon
 - Disney Junior
 - Disney XD ᴴᴰ
-- Dora TV
-- Forever Kids
-- Garfield and Friends
+- Free Kids TV
 - JimJam
 - JimJam Europe
-- LEGO Kids TV
-- Little Stars Universe
 - Minimax
 - Minimax CEE
 - New Channel
 - New Channel Pop!
 - Nick Jr.
-- Nick Jr. Pluto TV ᴴᴰ
 - Nick Jr. ᶠᴴᴰ
 - Nicktoons
 - Nicktoons ᶠᴴᴰ
-- Peppa Pig
-- Pluto TV Junior
-- Pluto TV Retro Kid
-- Pluto TV Retro Toons
 - Pop Up ᶠᴴᴰ
 - S KPop!
 - S Tom Sings ᶠᴴᴰ
 - TeenNick
-- Tortues Ninja TV ᴴᴰ
-- Totally Turtles ᴴᴰ
 
-### English (Intl) - Movies (328) (102)
-- 00s Replay
-- 30A Tv Movies
-- 70s Cinema
-- 80s Rewind
-- 90s Throwback
+### English (Intl) - Movies (328) (20)
 - AXN CEE
 - AXN Crime
-- BET Cinema
-- BET Comedy Movies
-- Battlestar Galactica
-- Beverly Hillbillies
-- Bonanza
 - Cine Paura
 - Cine Thriller
 - Cinemax Action ᶠᴴᴰ
-- Classic Movies Channel
-- Classic TV Crime Drama
-- Classic TV: Families
-- Diagnosis Murder
 - FILMBOX+ Comedy
 - FILMBOX+ Emotion ᶠᴴᴰ
 - FILMBOX+ Love & Crime
-- Flicks of Fury
 - GREAT! Mystery
-- Girlfriends Films
 - HBO Drama ᶠᴴᴰ
 - HBO Movies ᴴᴰ
-- Happy Days
-- Hogan's Heroes
-- IFC ᶠᴴᴰ
-- JAG
-- Kids Movie Club
-- MacGyver
-- Matlock
-- Merry Christmas from Viafree
-- Mission Impossible
+- HER Free Movies
 - More TV Sci-fi
-- NonStop Kung Fu
-- Paramount+ Picks
-- Pluto Classic Movie Westerns
-- Pluto TV Action
-- Pluto TV Action Movies
-- Pluto TV Bud & Terence
-- Pluto TV Cine Clásico
-- Pluto TV Cine Comedia
-- Pluto TV Cine Crimen
-- Pluto TV Cine Drama
-- Pluto TV Cine Familia
-- Pluto TV Cine Romance
-- Pluto TV Cine Suspenso
-- Pluto TV Classic TV Variety
-- Pluto TV Comedy Movies
-- Pluto TV Crime Drama
-- Pluto TV Cult Films
-- Pluto TV Cult Films
-- Pluto TV Drama
-- Pluto TV Drama Movies
-- Pluto TV Family Movie Club
-- Pluto TV Franchise Favorites
-- Pluto TV Icons
-- Pluto TV John Wayne
-- Pluto TV Nuestro Cine
-- Pluto TV Paranormal
-- Pluto TV Reaction
-- Pluto TV Retro Action Movies
-- Pluto TV Retro Crime Action
-- Pluto TV Retro Crime Drama
-- Pluto TV Romance
-- Pluto TV Romance
-- Pluto TV Romantik
-- Pluto TV Sci-Fi
-- Pluto TV Sci-Fi
-- Pluto TV Sherlock
-- Pluto TV Spotlight
-- Pluto TV Staff Picks
-- Pluto TV The Twilight Zone
-- Pluto TV Trending Now
-- Pluto TV Westerns
-- Pluto TV Westerns
-- Pluto TV Wild West
-- Puto TV Classic TV Crime Drama
-- Rawhide
-- Rawhide
-- Star Trek Movies
-- Star Trek: Deep Space Nine
-- Star Trek: The Next Generation
-- Star Trek: The Original Series
-- Star Trek: Voyager
+- SYFY ᴴᴰ
 - Starz Cinema ᴴᴰ
-- TV Land Drama
-- The Andy Griffith Show
 - The Film Detective ᴴᴰ
-- The Love Boat
-- The Twilight Zone
-- The Wild Wild West
-- The Wild Wild West
-- Viafree Movies
 - Wedo Movies Italy
-- Western TV
 - wedotv Movies [FI]
 - wedotv Movies [NO]
 - wedotv Movies [SE]
 
-### English (Intl) - Music (186) (25)
-- BOKTV ᴴᴰ
-- CMT Equal Play ᴴᴰ
-- MTV Biggest Pop ᶠᴴᴰ
-- MTV Con Mi Ex
-- MTV Flow Latino ᴴᴰ
+### English (Intl) - Music (186) (16)
+- CMT ᴴᴰ
+- MTV Live ᴴᴰ
 - Metal.Rocks
 - Music Box Classic
 - Music Box Dance
@@ -408,154 +146,41 @@ _Checked 2026-10-12 13:51 UTC · 2574 channels · 2039 reachable · **535 unreac
 - Vantage Classic ᴴᴰ
 - Vantage Dance ᴴᴰ
 - Vantage Music ᴴᴰ
-- Vevo '70s
-- Vevo '80s
-- Vevo '90s
-- Vevo 2K
-- Vevo Country
-- Vevo R&B
 
-### English (Intl) - News (222) (15)
-- AL24 News
+### English (Intl) - News (222) (6)
+- Afrique Media ᴴᴰ
 - BBC News ᶠᴴᴰ
 - BX Inform ᶠᴴᴰ
-- CBS News 24/7 ᴴᴰ
-- CBS News Bay Area ᴴᴰ
-- CBS News Chicago ᴴᴰ
-- CBS News Colorado ᴴᴰ
-- CBS News Detroit ᴴᴰ
-- CBS News Los Angeles ᴴᴰ
-- CBS News Minnesota ᴴᴰ
-- CBS News New York ᴴᴰ
-- CBS News Pittsburgh ᴴᴰ
+- CP24 ᴴᴰ
 - NW Info 2
 - News of the World ᴴᴰ
-- Sky News
 
-### English (Intl) - Reality (36) (7)
-- All Reality by WE tv ᴴᴰ
-- Big Brother
+### English (Intl) - Reality (36) (3)
+- Bachelor Nation
 - E! Keeping Up ᶠᴴᴰ
 - Hells Kitchen Germany
-- MasterChef México
-- Pluto TV Reality
-- VH1 Queens of Reality
 
-### English (Intl) - Sci-Fi (8) (1)
-- Pluto TV Series de Sci-Fi
-
-### English (Intl) - Series (134) (78)
-- 2900 Happiness
-- 7th Heaven
-- Acapulco Shore
-- Andromeda
-- Anthony Bourdain: Parts Unknown
-- Auction Hunters
-- Bar Rescue
-- Beverly Hills 90210
-- Black Ink Crew
-- Britain's Next Top Model
-- Bull
-- CSI
-- CSI
-- CSI: Crime Scene Investigation
-- CSI: NY
-- Cagney & Lacey
-- Car Chase ᴴᴰ
-- Cheers
+### English (Intl) - Series (134) (3)
 - Cops ᴴᴰ
-- Dallas Cowboys Cheerleaders
-- Dating Naked UK
-- Degrassi
-- Doc Martin
-- Doc Martin
-- Dynasty
-- FBoy Island
-- Farscape
-- Feel Good Drama
-- Frasier
-- Ghost Dimension
-- Gunsmoke
-- Happy Days
-- Highway to Heaven
-- Investiga
 - Iron Chef
-- JAG
-- Judge Judy
-- Luksusfellen Sverige
-- Married with Children
-- Matlock
-- Medium
-- Mission Impossible
-- More TV Crime
-- More True Crime
-- NCIS
-- NCIS: Det bedste med Gibbs
-- NCIS: Det bedste med Tony & Ziva
-- NCIS: Los Angeles
-- Nashville
-- Nordisk krim fra Viaplay
-- Perry Mason
-- Pluto TV Crime
-- Pluto TV FBI
-- Pluto TV Lives
-- Pluto TV Military
-- Pluto TV Sanctuary
-- Pluto TV Sci-fi Series
-- Pluto TV Wipeout
 - Rookie Blue
-- Skjonnhetsfellen Danmark
-- Star Trek
-- Telemundo Telenovelas Clasicas
-- The Addams Family
-- The Asylum
-- The Bob Ross Channel
-- The L Word
-- The New Detectives
-- The New Detectives
-- The Rifleman
-- The Walking Dead Universe ᴴᴰ
-- Three's Company
-- Tosh.0
-- True crime fran Viaplay
-- Unga Mammor
-- Walker Texas Ranger
-- Wild at Heart
-- Wildfire
-- Z Nation
 
-### English (Intl) - Sports (180) (24)
-- AYM Sports 3
-- Brondby TV
-- CBS Sports HQ ᴴᴰ
-- DAZN Combat
+### English (Intl) - Sports (180) (8)
 - DAZN Fast
 - DAZN Rise
 - DP World Tour Golf UK
-- FCK Lovinderne
+- Fox Deportes ᴴᴰ
 - Fubo Sports Network ᶠᴴᴰ
-- Golazo Network ᴴᴰ
-- Golf Kingdom
-- MLB ᴴᴰ
-- NFL Channel ᴴᴰ
-- PBR RidePass ᴴᴰ
-- PFL MMA ᴴᴰ
-- Pluto TV Competition
-- Pluto TV Handboll Highlights
-- Pluto TV Handboll Live
-- Pluto TV Snooker 900
-- Pluto TV Snooker 900 ᴴᴰ
-- Pluto TV Snooker 900 ᴴᴰ
-- Pluto TV Sport
+- MSG ᴴᴰ
 - Premier Football
 - Stadium ᴴᴰ
 
-### Hindi - Documentary (22) (3)
-- BVG
+### Hindi - Documentary (22) (2)
 - Sony BBC Earth ᶠᴴᴰ
 - Travelxp 4K
 
-### Hindi - Entertainment (40) (7)
+### Hindi - Entertainment (40) (8)
+- Mango
 - Sony Entertainment Television ᶠᴴᴰ
 - Sony Pal ᶠᴴᴰ
 - Sony SAB ᶠᴴᴰ
@@ -564,26 +189,32 @@ _Checked 2026-10-12 13:51 UTC · 2574 channels · 2039 reachable · **535 unreac
 - Zee Dil Se ᶠᴴᴰ
 - Zee Horror Nights ᶠᴴᴰ
 
-### Hindi - Kids (17) (2)
+### Hindi - General (32) (1)
+- Diya TV ᶠᴴᴰ
+
+### Hindi - Kids (17) (4)
 - Disney Channel
+- Hungama TV
+- Nick Jr.
 - Sony Yay! ᶠᴴᴰ
 
-### Hindi - Movies (36) (6)
+### Hindi - Movies (36) (7)
 - Colors Cineplex Bollywood
 - NH BollyGold ᶠᴴᴰ
 - Shemaroo Filmi Gaane ᶠᴴᴰ
 - Sony Pix ᶠᴴᴰ
 - Sony Wah ᶠᴴᴰ
 - Zee Cine Classic ᶠᴴᴰ
+- Zee Cinema
 
 ### Hindi - Music (20) (1)
 - 9XM ᶠᴴᴰ
 
 ### Hindi - News (95) (7)
 - AmarUjala ᶠᴴᴰ
+- Awaaz India TV ᴴᴰ
 - Bansal News ᴴᴰ
 - Only Bharat
-- Sadhna News Madhya Pradesh/Chhattisgarh
 - Times Now Navbharat ᶠᴴᴰ
 - Times Now ᴴᴰ
 - VIP News
