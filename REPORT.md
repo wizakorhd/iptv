@@ -1,55 +1,56 @@
 # Playlist health report
 
-_Last built: 2026-09-27 14:32 UTC_
+_Last built: 2026-10-24 14:10 UTC_
 
-- **Total channels:** 2574
-- **Candidates before validation:** 3528 (dropped 954 dead/geo-blocked from build location)
-- **Channels without EPG guide:** 1630
+- **Total channels:** 2766
+- **Candidates before validation:** 3752 (dropped 986 dead/geo-blocked from build location)
+- **Channels without EPG guide:** 1159
 - **Channels without a logo:** 0
 
 ## By group
 
 | Group | Channels | File |
 |---|---:|---|
-| Hindi | 303 | `playlist-hindi.m3u` |
-| English (India) | 33 | `playlist-english-india.m3u` |
-| English (Intl) | 2227 | `playlist-english-intl.m3u` |
-| Anime | 11 | `playlist-anime.m3u` |
+| Hindi | 321 | `playlist-hindi.m3u` |
+| English (India) | 37 | `playlist-english-india.m3u` |
+| English (Intl) | 2393 | `playlist-english-intl.m3u` |
+| Anime | 15 | `playlist-anime.m3u` |
 
 ## Sub-groups
 
 | Sub-group | Channels |
 |---|---:|
-| Anime | 11 |
-| English (India) - Documentary | 3 |
-| English (India) - Entertainment | 3 |
-| English (India) - General | 10 |
+| Anime | 15 |
+| English (India) - Documentary | 4 |
+| English (India) - Entertainment | 4 |
+| English (India) - General | 9 |
 | English (India) - Movies | 4 |
-| English (India) - News | 23 |
-| English (India) - Sports | 4 |
-| English (Intl) - Comedy | 94 |
-| English (Intl) - Crime | 40 |
-| English (Intl) - Documentary | 262 |
-| English (Intl) - Entertainment | 262 |
-| English (Intl) - Food & Travel | 94 |
-| English (Intl) - General | 201 |
-| English (Intl) - Horror | 35 |
-| English (Intl) - Kids | 142 |
-| English (Intl) - Movies | 328 |
-| English (Intl) - Music | 186 |
-| English (Intl) - News | 222 |
-| English (Intl) - Reality | 36 |
+| English (India) - News | 25 |
+| English (India) - Sports | 5 |
+| English (Intl) - Comedy | 100 |
+| English (Intl) - Crime | 30 |
+| English (Intl) - Documentary | 270 |
+| English (Intl) - Entertainment | 323 |
+| English (Intl) - Food & Travel | 110 |
+| English (Intl) - General | 214 |
+| English (Intl) - Horror | 36 |
+| English (Intl) - Kids | 153 |
+| English (Intl) - Movies | 331 |
+| English (Intl) - Music | 192 |
+| English (Intl) - News | 242 |
+| English (Intl) - Reality | 35 |
 | English (Intl) - Sci-Fi | 8 |
-| English (Intl) - Series | 134 |
-| English (Intl) - Sports | 180 |
-| Hindi - Documentary | 22 |
-| Hindi - Entertainment | 40 |
-| Hindi - Food & Travel | 16 |
-| Hindi - General | 32 |
-| Hindi - Kids | 17 |
+| English (Intl) - Series | 150 |
+| English (Intl) - Sports | 196 |
+| Hindi - Documentary | 26 |
+| Hindi - Entertainment | 46 |
+| Hindi - Food & Travel | 15 |
+| Hindi - General | 36 |
+| Hindi - Kids | 14 |
 | Hindi - Movies | 36 |
-| Hindi - Music | 20 |
-| Hindi - News | 95 |
-| Hindi - Sports | 11 |
+| Hindi - Music | 21 |
+| Hindi - News | 99 |
+| Hindi - Reality | 2 |
+| Hindi - Sports | 12 |
 | Korean | 3 |
 
