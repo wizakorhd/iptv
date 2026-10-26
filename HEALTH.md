@@ -1,79 +1,44 @@
-_Checked 2026-10-19 11:32 UTC · 2574 channels · 2404 reachable · **170 unreachable**_
+_Checked 2026-10-26 11:51 UTC · 2471 channels · 2391 reachable · **80 unreachable**_
 
 > Probed from the GitHub runner (US region). Geo-restricted streams may appear dead here but still work from the intended region — verify before removing.
 
 ## Unreachable channels
 
-### English (India) - Entertainment (3) (1)
-- Disney International HD
-
-### English (India) - Movies (4) (1)
-- MNX
-
-### English (India) - News (23) (1)
+### English (India) - News (24) (1)
 - ET Now ᴴᴰ
 
-### English (India) - Sports (4) (4)
-- Sony Sports Ten 1 ᶠᴴᴰ
-- Sony Sports Ten 2 ᶠᴴᴰ
-- Sony Sports Ten 5 ᶠᴴᴰ
-- Unite8 Sports 2
+### English (Intl) - Comedy (88) (1)
+- Laff
 
-### English (Intl) - Comedy (94) (1)
-- Distrito Comedia ᶠᴴᴰ
-
-### English (Intl) - Crime (40) (7)
-- Cops (PE)
-- Cops .Au
-- Cops .CA
-- Crime Beat TV
-- Free Crime TV
+### English (Intl) - Crime (31) (1)
 - REAL CRIME APLHA
-- True Crime Now C8 not fully identified
 
-### English (Intl) - Documentary (262) (20)
-- BTB Info ᶠᴴᴰ
+### English (Intl) - Documentary (241) (14)
 - BX Arts ᴴᴰ
 - BX Culture ᴴᴰ
 - CMAC 2 ᴴᴰ
 - Channel S
 - CreaTV Channel 28 ᴴᴰ
 - Detroit Channel 22
+- Discovery Family ᴴᴰ
 - Docsville
-- GZT ᶠᴴᴰ
-- Jail
+- HCTV Educational Access Channel
 - LA36 ᶠᴴᴰ
 - Love The Planet [DE]
 - Love The Planet [IT]
-- Maldives TV ᴴᴰ
 - Monroe Community Media Education Channel
-- Natural TV ᴴᴰ
 - St Lucie Public Schools
-- Travel+Adventure ᶠᴴᴰ
-- Tu Discovery
-- Viasat Epic Drama
 
-### English (Intl) - Entertainment (262) (12)
-- AP TV
-- AXN White
-- ArubaTV +
-- Canal Motor ᴴᴰ
-- Crime + Investigation CEE
-- Det sene show med Christian Fuhlendorff
-- KC2 ᴴᴰ
-- MTV Global
-- MTV ᶠᴴᴰ
-- Public 4K TV
+### English (Intl) - Entertainment (277) (2)
 - Real Crime
 - Western Time
 
-### English (Intl) - Food & Travel (94) (4)
+### English (Intl) - Food & Travel (97) (3)
 - Pet Club TV
-- Tastemade Hogar
 - The Design Network ᶠᴴᴰ
 - Travel & More",Gusto TV
 
-### English (Intl) - General (201) (12)
+### English (Intl) - General (177) (13)
 - BPTV
 - CGTV ᴴᴰ
 - CMAC 3 ᴴᴰ
@@ -82,144 +47,75 @@ _Checked 2026-10-19 11:32 UTC · 2574 channels · 2404 reachable · **170 unreac
 - Channel 18 GAC
 - City of Monroe Government Channel
 - CityTV Whittier ᴴᴰ
-- Community 12TV ᴴᴰ
 - Detroit Channel 10
-- Dr. Phil's Merit TV
-- Noticias Telemundo AHORA
+- GARDEN with Monty Don
+- HCTV Government Channel
+- Spark TV - Luz & Amor
+- Stingray Free Riding
 
-### English (Intl) - Kids (142) (18)
+### English (Intl) - Kids (142) (3)
 - Cartoon
-- Disney Junior
-- Disney XD ᴴᴰ
-- Free Kids TV
-- JimJam
-- JimJam Europe
-- Minimax
-- Minimax CEE
-- New Channel
-- New Channel Pop!
-- Nick Jr.
-- Nick Jr. ᶠᴴᴰ
-- Nicktoons
-- Nicktoons ᶠᴴᴰ
+- Giggle Mug
 - Pop Up ᶠᴴᴰ
-- S KPop!
-- S Tom Sings ᶠᴴᴰ
-- TeenNick
 
-### English (Intl) - Movies (328) (20)
-- AXN CEE
-- AXN Crime
+### English (Intl) - Movies (301) (6)
 - Cine Paura
 - Cine Thriller
-- Cinemax Action ᶠᴴᴰ
-- FILMBOX+ Comedy
-- FILMBOX+ Emotion ᶠᴴᴰ
-- FILMBOX+ Love & Crime
-- GREAT! Mystery
-- HBO Drama ᶠᴴᴰ
-- HBO Movies ᴴᴰ
-- HER Free Movies
-- More TV Sci-fi
-- SYFY ᴴᴰ
-- Starz Cinema ᴴᴰ
-- The Film Detective ᴴᴰ
 - Wedo Movies Italy
 - wedotv Movies [FI]
 - wedotv Movies [NO]
 - wedotv Movies [SE]
 
-### English (Intl) - Music (186) (16)
-- CMT ᴴᴰ
-- MTV Live ᴴᴰ
+### English (Intl) - Music (179) (9)
 - Metal.Rocks
-- Music Box Classic
-- Music Box Dance
-- Music Box Hits
-- Music Box Sexy
+- Stingray Cityscapes ᶠᴴᴰ
+- TikTok Radio
 - Trace Africa ᶠᴴᴰ
 - Trace Jama ᶠᴴᴰ
 - Trace Mziki ᶠᴴᴰ
 - Trace Naija ᶠᴴᴰ
 - Trace Ngoma ᶠᴴᴰ
 - Trace UK ᶠᴴᴰ
-- Vantage Classic ᴴᴰ
-- Vantage Dance ᴴᴰ
-- Vantage Music ᴴᴰ
 
-### English (Intl) - News (222) (6)
-- Afrique Media ᴴᴰ
-- BBC News ᶠᴴᴰ
+### English (Intl) - News (224) (6)
 - BX Inform ᶠᴴᴰ
-- CP24 ᴴᴰ
+- CP24
+- Fox Business Network
+- Fox News Channel ᶠᴴᴰ
 - NW Info 2
-- News of the World ᴴᴰ
+- Silverbird News 24
 
-### English (Intl) - Reality (36) (3)
-- Bachelor Nation
-- E! Keeping Up ᶠᴴᴰ
+### English (Intl) - Reality (32) (1)
 - Hells Kitchen Germany
 
-### English (Intl) - Series (134) (3)
-- Cops ᴴᴰ
-- Iron Chef
+### English (Intl) - Series (136) (1)
 - Rookie Blue
 
-### English (Intl) - Sports (180) (8)
-- DAZN Fast
+### English (Intl) - Sports (174) (4)
 - DAZN Rise
 - DP World Tour Golf UK
-- Fox Deportes ᴴᴰ
-- Fubo Sports Network ᶠᴴᴰ
-- MSG ᴴᴰ
-- Premier Football
 - Stadium ᴴᴰ
+- Willow ᴴᴰ
 
-### Hindi - Documentary (22) (2)
-- Sony BBC Earth ᶠᴴᴰ
+### Hindi - Documentary (18) (1)
 - Travelxp 4K
 
-### Hindi - Entertainment (40) (8)
-- Mango
-- Sony Entertainment Television ᶠᴴᴰ
-- Sony Pal ᶠᴴᴰ
-- Sony SAB ᶠᴴᴰ
-- StarPlus
+### Hindi - Entertainment (43) (4)
+- Q TV
 - Zee Comedy Nation ᶠᴴᴰ
 - Zee Dil Se ᶠᴴᴰ
 - Zee Horror Nights ᶠᴴᴰ
 
-### Hindi - General (32) (1)
-- Diya TV ᶠᴴᴰ
-
-### Hindi - Kids (17) (4)
-- Disney Channel
-- Hungama TV
-- Nick Jr.
-- Sony Yay! ᶠᴴᴰ
-
-### Hindi - Movies (36) (7)
-- Colors Cineplex Bollywood
-- NH BollyGold ᶠᴴᴰ
+### Hindi - Movies (34) (3)
 - Shemaroo Filmi Gaane ᶠᴴᴰ
 - Sony Pix ᶠᴴᴰ
-- Sony Wah ᶠᴴᴰ
 - Zee Cine Classic ᶠᴴᴰ
-- Zee Cinema
-
-### Hindi - Music (20) (1)
-- 9XM ᶠᴴᴰ
 
 ### Hindi - News (95) (7)
-- AmarUjala ᶠᴴᴰ
-- Awaaz India TV ᴴᴰ
 - Bansal News ᴴᴰ
-- Only Bharat
+- Hindi Khabar ᶠᴴᴰ
+- News Nation 81 ᶠᴴᴰ
+- Sadhna News Madhya Pradesh/Chhattisgarh
 - Times Now Navbharat ᶠᴴᴰ
 - Times Now ᴴᴰ
 - VIP News
-
-### Hindi - Sports (11) (3)
-- Sony Sports Ten 3 Hindi ᶠᴴᴰ
-- Star Sports 2 Hindi ᴴᴰ
-- Star Sports 2 ᴴᴰ
