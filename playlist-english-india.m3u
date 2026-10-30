@@ -1,15 +1,17 @@
 #EXTM3U x-tvg-url="https://raw.githubusercontent.com/wizakorhd/iptv/main/guide.xml.gz"
-#EXTINF:-1 tvg-id="DiscoveryTurbo.in" tvg-chno="311" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_DISCOVERY_TURBO/images/LOGO_HD/image.png" group-title="English (India) - Documentary (4)" resolution="hd",Discovery Turbo ᴴᴰ
+#EXTINF:-1 tvg-id="DiscoveryTurbo.in" tvg-chno="310" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_DISCOVERY_TURBO/images/LOGO_HD/image.png" group-title="English (India) - Documentary (4)" resolution="hd",Discovery Turbo ᴴᴰ
 https://drk6xq0vhn.gpcdn.net/live/discovery_turbo_abr/index.m3u8
-#EXTINF:-1 tvg-id="DocuBayTV.in" tvg-chno="312" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/DocuBay.png" group-title="English (India) - Documentary (4)" resolution="fhd",DocuBay TV ᶠᴴᴰ
+#EXTINF:-1 tvg-id="DocuBayTV.in" tvg-chno="311" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/DocuBay.png" group-title="English (India) - Documentary (4)" resolution="fhd",DocuBay TV ᶠᴴᴰ
 https://cc-mgr91yrk4pehy.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-mgr91yrk4pehy/playlist.m3u8
-#EXTINF:-1 tvg-id="MediBizTV.in" tvg-chno="313" tvg-logo="https://www.medibiztv.com/assets/logo-E76jcvP9.png" group-title="English (India) - Documentary (4)" resolution="hd",MediBizTV ᴴᴰ
+#EXTINF:-1 tvg-id="MediBizTV.in" tvg-chno="312" tvg-logo="https://www.medibiztv.com/assets/logo-E76jcvP9.png" group-title="English (India) - Documentary (4)" resolution="hd",MediBizTV ᴴᴰ
 https://43wrzjnpqoxe-hls-live.wmncdn.net/marinebiztvlive/marinebiztvlive/playlist.m3u8
-#EXTINF:-1 tvg-id="VyasChannel.in" tvg-chno="314" tvg-logo="https://www.yupptv.com/seo_img/UGC_GEC_big.jpg" group-title="English (India) - Documentary (4)" resolution="fhd",Vyas Channel
+#EXTINF:-1 tvg-id="VyasChannel.in" tvg-chno="313" tvg-logo="https://www.yupptv.com/seo_img/UGC_GEC_big.jpg" group-title="English (India) - Documentary (4)" resolution="fhd",Vyas Channel
 https://playhls.media.nic.in/hls/live/vyas/vyas.m3u8
-#EXTINF:-1 tvg-id="HiDost.in" tvg-chno="315" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Hi_Dost.png" group-title="English (India) - Entertainment (2)" resolution="sd",Hi Dost! ᴴᴰ
+#EXTINF:-1 tvg-id="Eurosport.in" tvg-chno="314" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_EUROSPORT_HD/images/LOGO_HD/image.png" group-title="English (India) - Entertainment (3)" resolution="hd",Eurosport ᴴᴰ
+https://drk6xq0vhn.gpcdn.net/live/euro_sports_hd_abr/index.m3u8
+#EXTINF:-1 tvg-id="HiDost.in" tvg-chno="315" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Hi_Dost.png" group-title="English (India) - Entertainment (3)" resolution="sd",Hi Dost! ᴴᴰ
 https://cdn.pishow.tv/ott/live/224/master.m3u8
-#EXTINF:-1 tvg-id="StarVijay.in" tvg-chno="316" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/yupptvnew/content/common/logos/channel/logos/iuxvzu.png" group-title="English (India) - Entertainment (2)" resolution="hd",Star Vijay
+#EXTINF:-1 tvg-id="StarVijay.in" tvg-chno="316" tvg-logo="https://d229kpbsb5jevy.cloudfront.net/yupptvnew/content/common/logos/channel/logos/iuxvzu.png" group-title="English (India) - Entertainment (3)" resolution="hd",Star Vijay
 https://da86m1sqpm3o0.cloudfront.net/28072023/smil:starvijayuk.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="DDIndia.in" tvg-chno="317" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_DD_INDIA_HD/images/LOGO_HD/LOGO_HD_image.png" group-title="English (India) - General (9)" resolution="fhd",DD India ᶠᴴᴰ
 https://mumbai-edge.smartplaytv.in/DDIndia/index.m3u8
@@ -60,7 +62,3 @@ https://d7x8z4yuq42qn.cloudfront.net/index_7.m3u8
 #EXTINF:-1 tvg-id="apsat-inlg-zeewion" tvg-chno="339" tvg-logo="https://dvvlqr1rtlak3.cloudfront.net/ZEE/WION/200x-400-px-landscape-wion.jpg" group-title="English (India) - News (25)" resolution="hd",Zee Wion
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36
 https://amg02481-amg02481c1-lg-in-5173.playouts.now.amagi.tv/playlist/amg02481-indiadotcomdigitalprivatelimitedfast-wion-lgin/playlist.m3u8?ads.deviceid=[DEVICE_ID]&ads.ifa=[IFA]&ads.ifatype=[IFA_TYPE]&ads.lat=[LMT]&ads.donotsell=[DNS]&ads.ua=[UA]&ads.ip=[IP]&ads.gdpr=[GDPR]&ads.gdprconsent=[GDPR_CONSENT]&ads.country=[COUNTRY]&ads.usprivacy=[US_PRIVACY]&ads.appstoreurl=[APP_STOREURL]&ads.bundleid=[APP_BUNDLE]&ads.appname=[APP_NAME]&ads.appversion=[APP_VERSION]&ads.devicetype=[DEVICE_TYPE]&ads.devicemake=[DEVICE_MAKE]&ads.devicemodel=[DEVICE_MODEL]&ads.targetad=[TARGETAD_ALLOWED]&coppa=0&ads.fck=[FCK]&ads.viewsize=[VIEWSIZE]&ads.givn=[NONCE]
-#EXTINF:-1 tvg-id="Eurosport.in" tvg-chno="340" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_EUROSPORT_HD/images/LOGO_HD/image.png" group-title="English (India) - Sports (2)" resolution="hd",Eurosport ᴴᴰ
-https://drk6xq0vhn.gpcdn.net/live/euro_sports_hd_abr/index.m3u8
-#EXTINF:-1 tvg-id="StarSportsSelect2.in" tvg-chno="341" tvg-logo="https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_STAR_SPORTS_SELECT_2/images/LOGO_HD/image.png" group-title="English (India) - Sports (2)" resolution="hd",Star Sports Select 2 ᴴᴰ
-http://tvsen7.aynascope.net/ssport2hd/index.m3u8
