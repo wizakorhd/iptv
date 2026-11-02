@@ -1,44 +1,46 @@
-_Checked 2026-10-26 11:51 UTC · 2471 channels · 2391 reachable · **80 unreachable**_
+_Checked 2026-11-02 14:10 UTC · 2749 channels · 2649 reachable · **100 unreachable**_
 
 > Probed from the GitHub runner (US region). Geo-restricted streams may appear dead here but still work from the intended region — verify before removing.
 
 ## Unreachable channels
 
-### English (India) - News (24) (1)
+### English (India) - News (25) (3)
 - ET Now ᴴᴰ
-
-### English (Intl) - Comedy (88) (1)
-- Laff
+- NewsX
+- NewsX World
 
 ### English (Intl) - Crime (31) (1)
 - REAL CRIME APLHA
 
-### English (Intl) - Documentary (241) (14)
+### English (Intl) - Documentary (276) (16)
 - BX Arts ᴴᴰ
 - BX Culture ᴴᴰ
+- Beach TV Florida & Alabama ᴴᴰ
+- Beach TV Key West & Florida Keys ᴴᴰ
+- Beach TV Myrtle Beach & The Grand Strand ᴴᴰ
+- Beach TV Panama City ᴴᴰ
 - CMAC 2 ᴴᴰ
-- Channel S
-- CreaTV Channel 28 ᴴᴰ
 - Detroit Channel 22
-- Discovery Family ᴴᴰ
 - Docsville
 - HCTV Educational Access Channel
+- KNOV-CD 41.1 ᴴᴰ
 - LA36 ᶠᴴᴰ
 - Love The Planet [DE]
 - Love The Planet [IT]
 - Monroe Community Media Education Channel
 - St Lucie Public Schools
 
-### English (Intl) - Entertainment (277) (2)
+### English (Intl) - Entertainment (325) (3)
 - Real Crime
+- The Yellow Couch with Jeremy Lynch
 - Western Time
 
-### English (Intl) - Food & Travel (97) (3)
+### English (Intl) - Food & Travel (111) (3)
 - Pet Club TV
 - The Design Network ᶠᴴᴰ
 - Travel & More",Gusto TV
 
-### English (Intl) - General (177) (13)
+### English (Intl) - General (209) (11)
 - BPTV
 - CGTV ᴴᴰ
 - CMAC 3 ᴴᴰ
@@ -48,28 +50,32 @@ _Checked 2026-10-26 11:51 UTC · 2471 channels · 2391 reachable · **80 unreach
 - City of Monroe Government Channel
 - CityTV Whittier ᴴᴰ
 - Detroit Channel 10
-- GARDEN with Monty Don
+- First Alert 4 St. Louis
 - HCTV Government Channel
-- Spark TV - Luz & Amor
-- Stingray Free Riding
 
-### English (Intl) - Kids (142) (3)
+### English (Intl) - Horror (36) (2)
+- Pluto TV Masters of Horror
+- Pluto TV Slasher Movies
+
+### English (Intl) - Kids (150) (4)
 - Cartoon
-- Giggle Mug
 - Pop Up ᶠᴴᴰ
+- Superscreen TV
+- Tooncast ᶠᴴᴰ
 
-### English (Intl) - Movies (301) (6)
+### English (Intl) - Movies (331) (8)
+- 30A Tv Movies
 - Cine Paura
 - Cine Thriller
+- GREAT! Mystery
 - Wedo Movies Italy
 - wedotv Movies [FI]
 - wedotv Movies [NO]
 - wedotv Movies [SE]
 
-### English (Intl) - Music (179) (9)
+### English (Intl) - Music (194) (8)
+- HMTV ᴴᴰ
 - Metal.Rocks
-- Stingray Cityscapes ᶠᴴᴰ
-- TikTok Radio
 - Trace Africa ᶠᴴᴰ
 - Trace Jama ᶠᴴᴰ
 - Trace Mziki ᶠᴴᴰ
@@ -77,45 +83,67 @@ _Checked 2026-10-26 11:51 UTC · 2471 channels · 2391 reachable · **80 unreach
 - Trace Ngoma ᶠᴴᴰ
 - Trace UK ᶠᴴᴰ
 
-### English (Intl) - News (224) (6)
+### English (Intl) - News (239) (6)
 - BX Inform ᶠᴴᴰ
-- CP24
-- Fox Business Network
+- CNNi
+- For You TV
 - Fox News Channel ᶠᴴᴰ
+- KPTV FOX 12 Oregon News
 - NW Info 2
-- Silverbird News 24
 
-### English (Intl) - Reality (32) (1)
+### English (Intl) - Reality (34) (1)
 - Hells Kitchen Germany
 
-### English (Intl) - Series (136) (1)
+### English (Intl) - Series (151) (2)
+- Duck Dynasty ᶠᴴᴰ
 - Rookie Blue
 
-### English (Intl) - Sports (174) (4)
+### English (Intl) - Sports (192) (6)
+- DAZN Fast
 - DAZN Rise
 - DP World Tour Golf UK
+- Dominance FC TV
+- Lacrosse TV ᴴᴰ
 - Stadium ᴴᴰ
-- Willow ᴴᴰ
 
-### Hindi - Documentary (18) (1)
+### Hindi - Documentary (26) (1)
 - Travelxp 4K
 
-### Hindi - Entertainment (43) (4)
+### Hindi - Entertainment (44) (4)
 - Q TV
 - Zee Comedy Nation ᶠᴴᴰ
 - Zee Dil Se ᶠᴴᴰ
 - Zee Horror Nights ᶠᴴᴰ
 
-### Hindi - Movies (34) (3)
+### Hindi - Food & Travel (15) (1)
+- Food Food
+
+### Hindi - General (34) (1)
+- Sarv Dharm Sangam
+
+### Hindi - Movies (32) (7)
+- All Time Movies
+- Goldmines 2
+- Goldmines Action
+- Goldmines Bollywood
+- MH One Movies
 - Shemaroo Filmi Gaane ᶠᴴᴰ
-- Sony Pix ᶠᴴᴰ
 - Zee Cine Classic ᶠᴴᴰ
 
-### Hindi - News (95) (7)
+### Hindi - Music (21) (1)
+- Andy Haryana
+
+### Hindi - News (101) (10)
+- APN
 - Bansal News ᴴᴰ
-- Hindi Khabar ᶠᴴᴰ
-- News Nation 81 ᶠᴴᴰ
-- Sadhna News Madhya Pradesh/Chhattisgarh
+- Bharat Samachar
+- First India News
+- News 24
+- News Daily 24
+- Sahana News
 - Times Now Navbharat ᶠᴴᴰ
 - Times Now ᴴᴰ
 - VIP News
+
+### Hindi - Sports (9) (1)
+- Kabaddi 24x7 ᴴᴰ
