@@ -1,149 +1,178 @@
-_Checked 2026-11-02 14:10 UTC · 2749 channels · 2649 reachable · **100 unreachable**_
+_Checked 2026-11-09 14:40 UTC · 2702 channels · 2581 reachable · **121 unreachable**_
 
 > Probed from the GitHub runner (US region). Geo-restricted streams may appear dead here but still work from the intended region — verify before removing.
 
 ## Unreachable channels
 
-### English (India) - News (25) (3)
-- ET Now ᴴᴰ
-- NewsX
-- NewsX World
+### English (India) - Documentary (4) (1)
+- Discovery Turbo ᴴᴰ
 
-### English (Intl) - Crime (31) (1)
+### English (India) - Entertainment (3) (1)
+- Eurosport ᴴᴰ
+
+### English (India) - Movies (4) (1)
+- Movies Now ᶠᴴᴰ
+
+### English (India) - News (27) (2)
+- ET Now Swadesh ᶠᴴᴰ
+- ET Now ᴴᴰ
+
+### English (Intl) - Comedy (100) (2)
+- TVS Comedy Network ᴴᴰ
+- Telecyan ᴴᴰ
+
+### English (Intl) - Crime (28) (1)
 - REAL CRIME APLHA
 
-### English (Intl) - Documentary (276) (16)
+### English (Intl) - Documentary (270) (13)
 - BX Arts ᴴᴰ
 - BX Culture ᴴᴰ
-- Beach TV Florida & Alabama ᴴᴰ
-- Beach TV Key West & Florida Keys ᴴᴰ
-- Beach TV Myrtle Beach & The Grand Strand ᴴᴰ
-- Beach TV Panama City ᴴᴰ
 - CMAC 2 ᴴᴰ
 - Detroit Channel 22
 - Docsville
 - HCTV Educational Access Channel
-- KNOV-CD 41.1 ᴴᴰ
 - LA36 ᶠᴴᴰ
 - Love The Planet [DE]
 - Love The Planet [IT]
 - Monroe Community Media Education Channel
+- Pardesi TV ᴴᴰ
 - St Lucie Public Schools
+- TVS Travel Network ᴴᴰ
 
-### English (Intl) - Entertainment (325) (3)
+### English (Intl) - Entertainment (311) (5)
+- NuView TV
+- Omid e Iran TV
 - Real Crime
-- The Yellow Couch with Jeremy Lynch
+- Turismo HD
 - Western Time
 
-### English (Intl) - Food & Travel (111) (3)
+### English (Intl) - Food & Travel (112) (7)
+- Better Health TV
+- Chef Roc Show ᴴᴰ
+- Home Refresh
+- Mad Dog and Merrill
 - Pet Club TV
 - The Design Network ᶠᴴᴰ
 - Travel & More",Gusto TV
 
-### English (Intl) - General (209) (11)
+### English (Intl) - General (201) (13)
 - BPTV
+- Bassmaster
 - CGTV ᴴᴰ
 - CMAC 3 ᴴᴰ
 - COStv
 - Capital City Connection Montgomery
+- Channel 10 ᴴᴰ
 - Channel 18 GAC
 - City of Monroe Government Channel
 - CityTV Whittier ᴴᴰ
 - Detroit Channel 10
-- First Alert 4 St. Louis
 - HCTV Government Channel
+- Highway Thru Hell
 
-### English (Intl) - Horror (36) (2)
-- Pluto TV Masters of Horror
-- Pluto TV Slasher Movies
-
-### English (Intl) - Kids (150) (4)
+### English (Intl) - Kids (149) (4)
 - Cartoon
 - Pop Up ᶠᴴᴰ
-- Superscreen TV
-- Tooncast ᶠᴴᴰ
+- TVS Family Channel
+- TVS Hi Tops ᴴᴰ
 
-### English (Intl) - Movies (331) (8)
-- 30A Tv Movies
+### English (Intl) - Movies (324) (19)
 - Cine Paura
 - Cine Thriller
+- Classic Cinema
 - GREAT! Mystery
+- TVS Classic Movies
+- TVS Drive In Movie
+- TVS Hollywood History
+- TVS Mainstreet
+- TVS Nostalgia
+- TVS Nostalgia Movies
+- TVS Pet Parade Network
+- TVS Quiz Show Network ᴴᴰ
+- TVS Talk Network
+- TVS Tavern
+- The Loop ᶠᴴᴰ
 - Wedo Movies Italy
 - wedotv Movies [FI]
 - wedotv Movies [NO]
 - wedotv Movies [SE]
 
-### English (Intl) - Music (194) (8)
-- HMTV ᴴᴰ
+### English (Intl) - Music (184) (2)
+- Gex TV ᶠᴴᴰ
 - Metal.Rocks
-- Trace Africa ᶠᴴᴰ
-- Trace Jama ᶠᴴᴰ
-- Trace Mziki ᶠᴴᴰ
-- Trace Naija ᶠᴴᴰ
-- Trace Ngoma ᶠᴴᴰ
-- Trace UK ᶠᴴᴰ
 
-### English (Intl) - News (239) (6)
+### English (Intl) - News (230) (5)
 - BX Inform ᶠᴴᴰ
-- CNNi
-- For You TV
-- Fox News Channel ᶠᴴᴰ
-- KPTV FOX 12 Oregon News
+- CP24
+- HollyWire ᴴᴰ
 - NW Info 2
+- News12+ Long Island ᶠᴴᴰ
 
-### English (Intl) - Reality (34) (1)
+### English (Intl) - Reality (35) (1)
 - Hells Kitchen Germany
 
-### English (Intl) - Series (151) (2)
-- Duck Dynasty ᶠᴴᴰ
+### English (Intl) - Series (147) (1)
 - Rookie Blue
 
-### English (Intl) - Sports (192) (6)
+### English (Intl) - Sports (186) (9)
 - DAZN Fast
 - DAZN Rise
 - DP World Tour Golf UK
-- Dominance FC TV
-- Lacrosse TV ᴴᴰ
+- Golf Channel
+- Marquee Sports Network
 - Stadium ᴴᴰ
+- TVS Classic Sports
+- TVS Sports Bureau ᴴᴰ
+- TVS Turbo
 
-### Hindi - Documentary (26) (1)
+### Hindi - Documentary (26) (7)
+- Animal Planet ᴴᴰ
+- Discovery Channel ᴴᴰ
+- Discovery Kids ᴴᴰ
+- Discovery Science ᴴᴰ
+- Investigation Discovery ᴴᴰ
+- National Geographic ᶠᴴᴰ
 - Travelxp 4K
 
-### Hindi - Entertainment (44) (4)
-- Q TV
+### Hindi - Entertainment (44) (5)
+- Sony SAB ᴴᴰ
 - Zee Comedy Nation ᶠᴴᴰ
 - Zee Dil Se ᶠᴴᴰ
 - Zee Horror Nights ᶠᴴᴰ
+- Zee TV ᶠᴴᴰ
 
-### Hindi - Food & Travel (15) (1)
-- Food Food
+### Hindi - General (39) (1)
+- VTU ᶠᴴᴰ
 
-### Hindi - General (34) (1)
-- Sarv Dharm Sangam
+### Hindi - Kids (17) (8)
+- Cartoon Network HD+ ᶠᴴᴰ
+- Cartoon Network ᴴᴰ
+- Doraemon ᴴᴰ
+- Hungama TV
+- Nick Jr.
+- Pogo
+- Shin-chan ᴴᴰ
+- Sony Yay!
 
-### Hindi - Movies (32) (7)
-- All Time Movies
-- Goldmines 2
-- Goldmines Action
-- Goldmines Bollywood
-- MH One Movies
+### Hindi - Movies (40) (4)
+- &pictures ᶠᴴᴰ
 - Shemaroo Filmi Gaane ᶠᴴᴰ
+- Sony Max ᶠᴴᴰ
 - Zee Cine Classic ᶠᴴᴰ
 
-### Hindi - Music (21) (1)
+### Hindi - Music (20) (1)
 - Andy Haryana
 
-### Hindi - News (101) (10)
-- APN
+### Hindi - News (110) (6)
 - Bansal News ᴴᴰ
-- Bharat Samachar
-- First India News
-- News 24
-- News Daily 24
+- Pratham News
+- Public First
 - Sahana News
-- Times Now Navbharat ᶠᴴᴰ
+- TTN24 ᴴᴰ
 - Times Now ᴴᴰ
-- VIP News
 
-### Hindi - Sports (9) (1)
+### Hindi - Reality (2) (1)
+- TLC ᴴᴰ
+
+### Hindi - Sports (8) (1)
 - Kabaddi 24x7 ᴴᴰ
