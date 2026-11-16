@@ -1,32 +1,20 @@
-_Checked 2026-11-09 14:40 UTC · 2702 channels · 2581 reachable · **121 unreachable**_
+_Checked 2026-11-16 14:16 UTC · 2337 channels · 2276 reachable · **61 unreachable**_
 
 > Probed from the GitHub runner (US region). Geo-restricted streams may appear dead here but still work from the intended region — verify before removing.
 
 ## Unreachable channels
 
-### English (India) - Documentary (4) (1)
-- Discovery Turbo ᴴᴰ
-
-### English (India) - Entertainment (3) (1)
-- Eurosport ᴴᴰ
-
-### English (India) - Movies (4) (1)
-- Movies Now ᶠᴴᴰ
+### English (India) - Entertainment (4) (1)
+- Eurosport ᶠᴴᴰ
 
 ### English (India) - News (27) (2)
 - ET Now Swadesh ᶠᴴᴰ
 - ET Now ᴴᴰ
 
-### English (Intl) - Comedy (100) (2)
-- TVS Comedy Network ᴴᴰ
-- Telecyan ᴴᴰ
-
-### English (Intl) - Crime (28) (1)
+### English (Intl) - Crime (25) (1)
 - REAL CRIME APLHA
 
-### English (Intl) - Documentary (270) (13)
-- BX Arts ᴴᴰ
-- BX Culture ᴴᴰ
+### English (Intl) - Documentary (261) (8)
 - CMAC 2 ᴴᴰ
 - Detroit Channel 22
 - Docsville
@@ -35,144 +23,80 @@ _Checked 2026-11-09 14:40 UTC · 2702 channels · 2581 reachable · **121 unreac
 - Love The Planet [DE]
 - Love The Planet [IT]
 - Monroe Community Media Education Channel
-- Pardesi TV ᴴᴰ
-- St Lucie Public Schools
-- TVS Travel Network ᴴᴰ
 
-### English (Intl) - Entertainment (311) (5)
-- NuView TV
-- Omid e Iran TV
+### English (Intl) - Entertainment (293) (2)
 - Real Crime
-- Turismo HD
 - Western Time
 
-### English (Intl) - Food & Travel (112) (7)
-- Better Health TV
-- Chef Roc Show ᴴᴰ
-- Home Refresh
-- Mad Dog and Merrill
+### English (Intl) - Food & Travel (97) (2)
 - Pet Club TV
 - The Design Network ᶠᴴᴰ
-- Travel & More",Gusto TV
 
-### English (Intl) - General (201) (13)
+### English (Intl) - General (67) (7)
 - BPTV
-- Bassmaster
 - CGTV ᴴᴰ
 - CMAC 3 ᴴᴰ
-- COStv
-- Capital City Connection Montgomery
-- Channel 10 ᴴᴰ
 - Channel 18 GAC
 - City of Monroe Government Channel
-- CityTV Whittier ᴴᴰ
 - Detroit Channel 10
 - HCTV Government Channel
-- Highway Thru Hell
 
-### English (Intl) - Kids (149) (4)
-- Cartoon
+### English (Intl) - Kids (143) (3)
+- Nickelodeon
 - Pop Up ᶠᴴᴰ
-- TVS Family Channel
-- TVS Hi Tops ᴴᴰ
+- Tom Sings TV ᶠᴴᴰ
 
-### English (Intl) - Movies (324) (19)
+### English (Intl) - Movies (285) (7)
 - Cine Paura
 - Cine Thriller
-- Classic Cinema
 - GREAT! Mystery
-- TVS Classic Movies
-- TVS Drive In Movie
-- TVS Hollywood History
-- TVS Mainstreet
-- TVS Nostalgia
-- TVS Nostalgia Movies
-- TVS Pet Parade Network
-- TVS Quiz Show Network ᴴᴰ
-- TVS Talk Network
-- TVS Tavern
-- The Loop ᶠᴴᴰ
 - Wedo Movies Italy
 - wedotv Movies [FI]
 - wedotv Movies [NO]
 - wedotv Movies [SE]
 
-### English (Intl) - Music (184) (2)
-- Gex TV ᶠᴴᴰ
+### English (Intl) - Music (165) (7)
 - Metal.Rocks
+- Trace Africa ᶠᴴᴰ
+- Trace Jama ᶠᴴᴰ
+- Trace Mziki ᶠᴴᴰ
+- Trace Naija ᶠᴴᴰ
+- Trace Ngoma ᶠᴴᴰ
+- Trace UK ᶠᴴᴰ
 
-### English (Intl) - News (230) (5)
-- BX Inform ᶠᴴᴰ
-- CP24
-- HollyWire ᴴᴰ
-- NW Info 2
-- News12+ Long Island ᶠᴴᴰ
+### English (Intl) - News (189) (3)
+- DHA ᴴᴰ
+- For You TV
+- Le Monde en 24h
 
-### English (Intl) - Reality (35) (1)
-- Hells Kitchen Germany
-
-### English (Intl) - Series (147) (1)
+### English (Intl) - Series (134) (1)
 - Rookie Blue
 
-### English (Intl) - Sports (186) (9)
-- DAZN Fast
-- DAZN Rise
+### English (Intl) - Sports (172) (3)
 - DP World Tour Golf UK
-- Golf Channel
-- Marquee Sports Network
+- NHL AntenaPlay
 - Stadium ᴴᴰ
-- TVS Classic Sports
-- TVS Sports Bureau ᴴᴰ
-- TVS Turbo
 
-### Hindi - Documentary (26) (7)
-- Animal Planet ᴴᴰ
-- Discovery Channel ᴴᴰ
-- Discovery Kids ᴴᴰ
-- Discovery Science ᴴᴰ
-- Investigation Discovery ᴴᴰ
-- National Geographic ᶠᴴᴰ
+### Hindi - Documentary (20) (1)
 - Travelxp 4K
 
-### Hindi - Entertainment (44) (5)
-- Sony SAB ᴴᴰ
+### Hindi - Entertainment (45) (4)
+- StarPlus ᶠᴴᴰ
 - Zee Comedy Nation ᶠᴴᴰ
 - Zee Dil Se ᶠᴴᴰ
 - Zee Horror Nights ᶠᴴᴰ
-- Zee TV ᶠᴴᴰ
 
-### Hindi - General (39) (1)
-- VTU ᶠᴴᴰ
-
-### Hindi - Kids (17) (8)
-- Cartoon Network HD+ ᶠᴴᴰ
-- Cartoon Network ᴴᴰ
-- Doraemon ᴴᴰ
-- Hungama TV
-- Nick Jr.
-- Pogo
-- Shin-chan ᴴᴰ
-- Sony Yay!
-
-### Hindi - Movies (40) (4)
-- &pictures ᶠᴴᴰ
+### Hindi - Movies (31) (4)
+- Goldmines 2
+- Goldmines Bollywood
 - Shemaroo Filmi Gaane ᶠᴴᴰ
-- Sony Max ᶠᴴᴰ
 - Zee Cine Classic ᶠᴴᴰ
 
 ### Hindi - Music (20) (1)
 - Andy Haryana
 
-### Hindi - News (110) (6)
-- Bansal News ᴴᴰ
+### Hindi - News (117) (4)
+- HNN 24x7
 - Pratham News
-- Public First
 - Sahana News
-- TTN24 ᴴᴰ
 - Times Now ᴴᴰ
-
-### Hindi - Reality (2) (1)
-- TLC ᴴᴰ
-
-### Hindi - Sports (8) (1)
-- Kabaddi 24x7 ᴴᴰ
